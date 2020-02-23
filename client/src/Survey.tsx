@@ -2,7 +2,7 @@ import React from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 
-const GET_SESSION = gql`
+export const GET_SESSION = gql`
   query GetSession($sessionId: ID!) {
     session(id: $sessionId) {
       id

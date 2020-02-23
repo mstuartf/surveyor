@@ -7,7 +7,14 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
 
-const cache = new InMemoryCache();
+const cache = new InMemoryCache({
+  cacheRedirects: {
+    Query: {
+      session: (_, args, { getCacheKey }) =>
+        getCacheKey({ __typename: "Session", id: args.id })
+    }
+  }
+});
 
 const client = new ApolloClient({
   cache,
@@ -16,12 +23,12 @@ const client = new ApolloClient({
   typeDefs
 });
 
-// const sessionStr = localStorage.getItem('session');
-// const sessionId = sessionStr ? JSON.parse(sessionStr).id : null;
+const sessionStr = localStorage.getItem("session");
+const sessionId = sessionStr ? JSON.parse(sessionStr).id : null;
 
 cache.writeData({
   data: {
-    sessionId: null
+    sessionId
   }
 });
 

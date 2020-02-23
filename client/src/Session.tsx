@@ -1,8 +1,9 @@
 import React from "react";
 import { gql } from "apollo-boost";
 import { useApolloClient, useMutation } from "@apollo/react-hooks";
+import { GET_SESSION } from "./Survey";
 
-const CREATE_SESSION = gql`
+export const CREATE_SESSION = gql`
   mutation CreateSession($surveyId: ID!) {
     createSession(surveyId: $surveyId) {
       success
@@ -31,10 +32,21 @@ const Session = () => {
 
   const [createSession] = useMutation(CREATE_SESSION, {
     variables: { surveyId: 2 },
-    onCompleted: data => {
-      const id = data.createSession.session.id;
-      // localStorage.setItem("session", JSON.stringify({id}));
-      client.writeData({ data: { sessionId: id } });
+
+    update(cache, { data: { createSession } }) {
+      client.writeData({
+        data: { sessionId: createSession.session.id }
+      });
+
+      cache.writeQuery({
+        query: GET_SESSION,
+        data: { session: createSession.session }
+      });
+
+      localStorage.setItem(
+        "session",
+        JSON.stringify({ id: createSession.session.id })
+      );
     }
   });
 
