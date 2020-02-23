@@ -1,7 +1,7 @@
 // Your GraphQL schema defines what types of data a client can read and write to your data graph.
 // Schemas are strongly typed, which unlocks powerful developer tooling.
 
-const { gql } = require("apollo-server");
+import { gql } from "apollo-server";
 
 // The language we'll use to write the schema is GraphQL's schema definition language (SDL).
 export const typeDefs = gql`
@@ -24,20 +24,14 @@ export const typeDefs = gql`
   type Session {
     id: ID!
     survey: Survey
-  }
-
-  type Info {
-    survey: Survey
-    session: Session
     questions: [Question]
   }
 
   type Query {
-    sessions: [Session]
+    session(id: ID!): Session
     surveys: [Survey]
     questions(surveyId: ID!): [Question]
     answers(sessionId: ID!, questionId: ID!): [Answer]
-    info(sessionId: ID!): Info
   }
 
   type Mutation {

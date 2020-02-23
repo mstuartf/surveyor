@@ -8,14 +8,14 @@ export class SessionAPI extends DataSource {
     this.store = store;
   }
 
-  async get(id) {
+  async get(id?) {
     if (id) {
       return await this.store.sessions.findOne({ where: { id } });
     }
     return await this.store.sessions.findAll();
   }
 
-  async create() {
-    return await this.store.sessions.create();
+  async create(surveyId) {
+    return await this.store.sessions.create({ surveyId });
   }
 }

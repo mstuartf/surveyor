@@ -1,21 +1,22 @@
 const resolvers = {
   Query: {
-    sessions: async (_, __, { dataSources }) => dataSources.sessions.get(),
     surveys: async (_, __, { dataSources }) => dataSources.surveys.get(),
     questions: async (_, { surveyId, userId }, { dataSources }) =>
-      dataSources.questions.getForSurvey(surveyId, userId),
+      dataSources.questions.getForSurvey(surveyId),
     answers: async (_, { sessionId, questionId }, { dataSources }) =>
       dataSources.answers.get(sessionId, questionId),
-    info: async (_, { sessionId }, { dataSources }) => {
-      const session = await dataSources.sessions.get(sessionId);
+    session: async (_, { id }, { dataSources }) => {
+      const session = await dataSources.sessions.get(id);
       const survey = await dataSources.surveys.get(session.dataValues.surveyId);
       const questions = await dataSources.questions.getForSurvey(
         survey.dataValues.id
       );
-      let answers = await dataSources.answers.getForSession(sessionId);
+      const answers = await dataSources.answers.getForSession(id);
       return {
-        survey,
-        session,
+        id: session.dataValues.id,
+        survey: {
+          ...survey.dataValues
+        },
         questions: questions.map(question => ({
           ...question.dataValues,
           answers: answers
@@ -42,7 +43,7 @@ const resolvers = {
       );
       return {
         success: true,
-        message: `answer created'}`,
+        message: `answer created`,
         answer
       };
     },
@@ -50,16 +51,28 @@ const resolvers = {
       const answer = await dataSources.answers.update(answerId, value);
       return {
         success: true,
-        message: `answer updated'}`,
+        message: `answer updated`,
         answer
       };
     },
-    createSession: async (_, {}, { dataSources }) => {
-      const session = await dataSources.sessions.create();
+    createSession: async (_, { surveyId }, { dataSources }) => {
+      const survey = await dataSources.surveys.get(surveyId);
+      const session = await dataSources.sessions.create(surveyId);
+      const questions = await dataSources.questions.getForSurvey(surveyId);
       return {
         success: true,
         message: "session created",
-        session
+        session: {
+          id: session.dataValues.id,
+          survey: {
+            ...survey.dataValues
+          },
+          ...session.dataValues,
+          questions: questions.map(question => ({
+            ...question.dataValues,
+            answers: []
+          }))
+        }
       };
     },
     createSurvey: async (_, { name }, { dataSources }) => {

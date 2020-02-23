@@ -8,7 +8,7 @@ export class SurveyAPI extends DataSource {
     this.store = store;
   }
 
-  async get(id) {
+  async get(id?) {
     if (id) {
       return await this.store.surveys.findOne({ where: { id } });
     }
