@@ -1,21 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router";
 import Home from "./Home";
-import Survey from "./Survey";
-import Session from "./Session";
-import { gql } from "apollo-boost";
-import { useQuery } from "@apollo/react-hooks";
-
-const HAS_SESSION = gql`
-  query HasSession {
-    sessionId @client
-  }
-`;
-
-function HasSession() {
-  const { data } = useQuery(HAS_SESSION);
-  return data.sessionId ? <Survey sessionId={data.sessionId} /> : <Session />;
-}
+import HasSession from "./HasSession";
 
 const App = () => {
   return (

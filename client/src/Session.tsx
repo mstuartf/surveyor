@@ -1,7 +1,6 @@
 import React from "react";
 import { gql } from "apollo-boost";
 import { useApolloClient, useMutation } from "@apollo/react-hooks";
-import { GET_SESSION } from "./Survey";
 
 export const CREATE_SESSION = gql`
   mutation CreateSession($surveyId: ID!) {
@@ -35,12 +34,10 @@ const Session = () => {
 
     update(cache, { data: { createSession } }) {
       client.writeData({
-        data: { sessionId: createSession.session.id }
-      });
-
-      cache.writeQuery({
-        query: GET_SESSION,
-        data: { session: createSession.session }
+        data: {
+          session: createSession.session,
+          sessionId: createSession.session.id
+        }
       });
 
       localStorage.setItem(
