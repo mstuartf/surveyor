@@ -10,18 +10,21 @@ const resolvers = {
   Mutation: {
     createAnswer: async (
       _,
-      { anonUserId, questionId, value },
+      { anonUserId, questionId, values },
       { dataSources }
     ) => {
       const answer = await dataSources.answers.create(
         anonUserId,
         questionId,
-        value
+        values.join("|")
       );
       return {
         success: true,
         message: `answer created`,
-        answer
+        answer: {
+          ...answer.dataValues,
+          values: answer.dataValues.values.split("|")
+        }
       };
     },
     createAnonUser: async (_, { surveyId }, { dataSources }) => {

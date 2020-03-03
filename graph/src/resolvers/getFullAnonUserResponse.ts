@@ -19,7 +19,8 @@ export async function getFullAnonUserResponse(dataSources, anonUser) {
           answer => answer.dataValues.questionId === question.dataValues.id
         )
         .map(answer => ({
-          ...answer.dataValues
+          ...answer.dataValues,
+          values: answer.values.split("|")
         })),
       possibleValues: values
         .filter(value => value.questionId === question.id)

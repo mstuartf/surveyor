@@ -97,9 +97,9 @@ export const createStore = (intialise?: boolean) => {
       type: SQL.INTEGER,
       allowNull: false
     },
-    value: {
-      type: SQL.STRING,
-      allowNull: true
+    values: {
+      type: SQL.STRING, // SQLite does not support arrays so have to have string list
+      allowNull: false
     }
   });
 

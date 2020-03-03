@@ -22,7 +22,7 @@ export const typeDefs = gql`
 
   type Answer {
     id: ID!
-    value: String
+    values: [String]
   }
 
   type PossibleValue {
@@ -46,7 +46,7 @@ export const typeDefs = gql`
     createAnswer(
       anonUserId: ID!
       questionId: ID!
-      value: String
+      values: [String]
     ): CreateAnswerResponse
   }
 

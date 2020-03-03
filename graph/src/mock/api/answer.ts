@@ -18,8 +18,8 @@ export class AnswerAPI extends DataSource {
     });
   }
 
-  async create(anonUserId, questionId, value) {
-    return await this.store.answers.create({ anonUserId, questionId, value });
+  async create(anonUserId, questionId, values) {
+    return await this.store.answers.create({ anonUserId, questionId, values });
   }
 
   async update(anonUserId, questionId, value, answerId) {
