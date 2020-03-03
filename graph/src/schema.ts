@@ -22,7 +22,7 @@ export const typeDefs = gql`
 
   type Answer {
     id: ID!
-    values: [String]
+    value: String
   }
 
   type PossibleValue {
@@ -39,33 +39,15 @@ export const typeDefs = gql`
 
   type Query {
     anonUser(id: ID!): AnonUser
-    surveys: [Survey]
-    questions(surveyId: ID!): [Question]
-    answers(anonUserId: ID!, questionId: ID!): [Answer]
   }
 
   type Mutation {
     createAnonUser(surveyId: ID!): CreateAnonUserResponse
-    createSurvey(name: String!): CreateSurveyResponse
-    createQuestion(surveyId: ID!, text: String): CreateQuestionResponse
     createAnswer(
       anonUserId: ID!
       questionId: ID!
       value: String
-    ): CreateOrUpdateAnswerResponse
-    updateAnswer(answerId: ID!, value: String): CreateOrUpdateAnswerResponse
-  }
-
-  type CreateSurveyResponse {
-    success: Boolean!
-    message: String
-    survey: Survey
-  }
-
-  type CreateQuestionResponse {
-    success: Boolean!
-    message: String
-    question: Question
+    ): CreateAnswerResponse
   }
 
   type CreateAnonUserResponse {
@@ -74,7 +56,7 @@ export const typeDefs = gql`
     anonUser: AnonUser
   }
 
-  type CreateOrUpdateAnswerResponse {
+  type CreateAnswerResponse {
     success: Boolean!
     message: String
     answer: Answer

@@ -1,7 +1,7 @@
 import { ApolloServer } from "apollo-server";
 
 import { typeDefs } from "./schema";
-import resolvers from "./resolvers";
+import resolvers from "./resolvers/resolvers";
 
 import { createStore } from "./mock/database/utils";
 import { AnonUserAPI } from "./mock/api/anonUser";

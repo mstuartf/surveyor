@@ -99,7 +99,7 @@ export const createStore = (intialise?: boolean) => {
     },
     value: {
       type: SQL.STRING,
-      allowNull: false
+      allowNull: true
     }
   });
 
@@ -123,34 +123,14 @@ export const createStore = (intialise?: boolean) => {
             console.log("question", question.toJSON());
             db.sync()
               .then(() =>
-                anonUsers.create({
-                  surveyId: survey.id
+                possibleValues.create({
+                  questionId: question.id,
+                  label: "Bright Green",
+                  value: "green"
                 })
               )
-              .then(anonUser => {
-                console.log("anonUser", anonUser.toJSON());
-                db.sync()
-                  .then(() =>
-                    answers.create({
-                      anonUserId: anonUser.id,
-                      questionId: question.id,
-                      value: "Green"
-                    })
-                  )
-                  .then(val => {
-                    console.log("answer", val.toJSON());
-                    db.sync()
-                      .then(() =>
-                        possibleValues.create({
-                          questionId: question.id,
-                          label: "Bright Green",
-                          value: "green"
-                        })
-                      )
-                      .then(possibleValue => {
-                        console.log("possibleValue", possibleValue.toJSON());
-                      });
-                  });
+              .then(possibleValue => {
+                console.log("possibleValue", possibleValue.toJSON());
               });
           });
       });
