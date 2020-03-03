@@ -8,8 +8,9 @@ import { SessionAPI } from "./mock/api/session";
 import { QuestionAPI } from "./mock/api/question";
 import { AnswerAPI } from "./mock/api/answer";
 import { SurveyAPI } from "./mock/api/survey";
+import { PossibleValueAPI } from "./mock/api/possibleValues";
 
-const store = createStore();
+const store = createStore(true);
 
 const server = new ApolloServer({
   typeDefs,
@@ -18,7 +19,8 @@ const server = new ApolloServer({
     surveys: new SurveyAPI({ store }),
     sessions: new SessionAPI({ store }),
     questions: new QuestionAPI({ store }),
-    answers: new AnswerAPI({ store })
+    answers: new AnswerAPI({ store }),
+    possibleValues: new PossibleValueAPI({ store })
   })
 });
 

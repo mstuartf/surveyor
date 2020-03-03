@@ -12,6 +12,7 @@ const resolvers = {
         survey.dataValues.id
       );
       const answers = await dataSources.answers.getForSession(id);
+      const values = await dataSources.possibleValues.get();
       return {
         id: session.dataValues.id,
         survey: {
@@ -25,6 +26,13 @@ const resolvers = {
             )
             .map(answer => ({
               ...answer.dataValues
+            })),
+          possibleValues: values
+            .filter(value => value.questionId === question.id)
+            .map(possibleAnswer => ({
+              id: possibleAnswer.id,
+              value: possibleAnswer.value,
+              label: possibleAnswer.label
             }))
         }))
       };

@@ -14,11 +14,21 @@ export const typeDefs = gql`
     id: ID!
     text: String
     answers: [Answer]
+    possibleValues: [PossibleValue]
+    maxValues: Int
+    minValues: Int
+    answerType: String
   }
 
   type Answer {
     id: ID!
+    values: [String]
+  }
+
+  type PossibleValue {
+    id: ID!
     value: String
+    label: String
   }
 
   type Session {

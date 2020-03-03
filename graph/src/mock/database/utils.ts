@@ -42,6 +42,31 @@ export const createStore = (intialise?: boolean) => {
     surveyId: {
       type: SQL.INTEGER,
       allowNull: false
+    },
+    minValues: SQL.INTEGER,
+    maxValues: SQL.INTEGER,
+    valueType: SQL.STRING
+  });
+
+  const possibleValues = db.define("possibleValue", {
+    id: {
+      type: SQL.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    createdAt: SQL.DATE,
+    updatedAt: SQL.DATE,
+    label: {
+      type: SQL.STRING,
+      allowNull: false
+    },
+    value: {
+      type: SQL.STRING,
+      allowNull: false
+    },
+    questionId: {
+      type: SQL.INTEGER,
+      allowNull: false
     }
   });
 
@@ -114,11 +139,22 @@ export const createStore = (intialise?: boolean) => {
                   )
                   .then(val => {
                     console.log("answer", val.toJSON());
+                    db.sync()
+                      .then(() =>
+                        possibleValues.create({
+                          questionId: question.id,
+                          label: "Bright Green",
+                          value: "green"
+                        })
+                      )
+                      .then(possibleValue => {
+                        console.log("possibleValue", possibleValue.toJSON());
+                      });
                   });
               });
           });
       });
   }
 
-  return { surveys, questions, sessions, answers };
+  return { surveys, questions, sessions, answers, possibleValues };
 };
