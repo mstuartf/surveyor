@@ -2,9 +2,9 @@ import React from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 
-export const GET_SESSION = gql`
-  query GetSession($sessionId: ID!) {
-    session(id: $sessionId) {
+export const GET_ANON_USER = gql`
+  query GetAnonUser($anonUserId: ID!) {
+    anonUser(id: $anonUserId) {
       id
       survey {
         id
@@ -15,36 +15,30 @@ export const GET_SESSION = gql`
         text
         answers {
           id
-          value
+          values
         }
       }
     }
   }
 `;
 
-const Survey = ({ sessionId }) => {
-  const { loading, error, data } = useQuery(GET_SESSION, {
-    variables: { sessionId }
+const Survey = ({ anonUserId }) => {
+  const { loading, error, data } = useQuery(GET_ANON_USER, {
+    variables: { anonUserId }
   });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  const session = data.session;
+  const anonUser = data.anonUser;
 
   return (
     <div>
-      <div>Session: {session.id}</div>
-      <div>Survey: {session.survey.name}</div>
+      <div>AnonUser: {anonUser.id}</div>
+      <div>Survey: {anonUser.survey.name}</div>
       <div>Questions:</div>
-      {session.questions.map(question => (
-        <div key={question.id}>
-          {question.text}
-          <div>Answers:</div>
-          {question.answers.map(answer => (
-            <div key={answer.id}>{answer.value}</div>
-          ))}
-        </div>
+      {anonUser.questions.map(question => (
+        <div key={question.id}>{question.text}</div>
       ))}
     </div>
   );
