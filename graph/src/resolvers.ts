@@ -3,18 +3,20 @@ const resolvers = {
     surveys: async (_, __, { dataSources }) => dataSources.surveys.get(),
     questions: async (_, { surveyId, userId }, { dataSources }) =>
       dataSources.questions.getForSurvey(surveyId),
-    answers: async (_, { sessionId, questionId }, { dataSources }) =>
-      dataSources.answers.get(sessionId, questionId),
-    session: async (_, { id }, { dataSources }) => {
-      const session = await dataSources.sessions.get(id);
-      const survey = await dataSources.surveys.get(session.dataValues.surveyId);
+    answers: async (_, { anonUserId, questionId }, { dataSources }) =>
+      dataSources.answers.get(anonUserId, questionId),
+    anonUser: async (_, { id }, { dataSources }) => {
+      const anonUser = await dataSources.anonUsers.get(id);
+      const survey = await dataSources.surveys.get(
+        anonUser.dataValues.surveyId
+      );
       const questions = await dataSources.questions.getForSurvey(
         survey.dataValues.id
       );
-      const answers = await dataSources.answers.getForSession(id);
+      const answers = await dataSources.answers.getForAnonUser(id);
       const values = await dataSources.possibleValues.get();
       return {
-        id: session.dataValues.id,
+        id: anonUser.dataValues.id,
         survey: {
           ...survey.dataValues
         },
@@ -41,11 +43,11 @@ const resolvers = {
   Mutation: {
     createAnswer: async (
       _,
-      { sessionId, questionId, value },
+      { anonUserId, questionId, value },
       { dataSources }
     ) => {
       const answer = await dataSources.answers.create(
-        sessionId,
+        anonUserId,
         questionId,
         value
       );
@@ -63,19 +65,19 @@ const resolvers = {
         answer
       };
     },
-    createSession: async (_, { surveyId }, { dataSources }) => {
+    createAnonUser: async (_, { surveyId }, { dataSources }) => {
       const survey = await dataSources.surveys.get(surveyId);
-      const session = await dataSources.sessions.create(surveyId);
+      const anonUser = await dataSources.anonUsers.create(surveyId);
       const questions = await dataSources.questions.getForSurvey(surveyId);
       return {
         success: true,
-        message: "session created",
-        session: {
-          id: session.dataValues.id,
+        message: "anonUser created",
+        anonUser: {
+          id: anonUser.dataValues.id,
           survey: {
             ...survey.dataValues
           },
-          ...session.dataValues,
+          ...anonUser.dataValues,
           questions: questions.map(question => ({
             ...question.dataValues,
             answers: []

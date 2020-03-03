@@ -4,7 +4,7 @@ import { typeDefs } from "./schema";
 import resolvers from "./resolvers";
 
 import { createStore } from "./mock/database/utils";
-import { SessionAPI } from "./mock/api/session";
+import { AnonUserAPI } from "./mock/api/anonUser";
 import { QuestionAPI } from "./mock/api/question";
 import { AnswerAPI } from "./mock/api/answer";
 import { SurveyAPI } from "./mock/api/survey";
@@ -17,7 +17,7 @@ const server = new ApolloServer({
   resolvers,
   dataSources: () => ({
     surveys: new SurveyAPI({ store }),
-    sessions: new SessionAPI({ store }),
+    anonUsers: new AnonUserAPI({ store }),
     questions: new QuestionAPI({ store }),
     answers: new AnswerAPI({ store }),
     possibleValues: new PossibleValueAPI({ store })

@@ -8,21 +8,21 @@ export class AnswerAPI extends DataSource {
     this.store = store;
   }
 
-  async getForSession(sessionId) {
-    return await this.store.answers.findAll({ where: { sessionId } });
+  async getForAnonUser(anonUserId) {
+    return await this.store.answers.findAll({ where: { anonUserId } });
   }
 
-  async get(sessionId, questionId) {
+  async get(anonUserId, questionId) {
     return await this.store.answers.findAll({
-      where: { sessionId, questionId }
+      where: { anonUserId, questionId }
     });
   }
 
-  async create(sessionId, questionId, value) {
-    return await this.store.answers.create({ sessionId, questionId, value });
+  async create(anonUserId, questionId, value) {
+    return await this.store.answers.create({ anonUserId, questionId, value });
   }
 
-  async update(sessionId, questionId, value, answerId) {
+  async update(anonUserId, questionId, value, answerId) {
     const existing = await this.store.answers.find({ where: { id: answerId } });
     return await existing.update({ value });
   }

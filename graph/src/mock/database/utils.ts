@@ -6,7 +6,7 @@ export const createStore = (intialise?: boolean) => {
     $in: Op.in
   };
 
-  const db = new SQL("database", "sessionname", "password", {
+  const db = new SQL("database", "anonUsername", "password", {
     dialect: "sqlite",
     storage: "./store.sqlite",
     operatorsAliases,
@@ -70,7 +70,7 @@ export const createStore = (intialise?: boolean) => {
     }
   });
 
-  const sessions = db.define("session", {
+  const anonUsers = db.define("anonUser", {
     id: {
       type: SQL.INTEGER,
       primaryKey: true,
@@ -93,7 +93,7 @@ export const createStore = (intialise?: boolean) => {
       type: SQL.INTEGER,
       allowNull: false
     },
-    sessionId: {
+    anonUserId: {
       type: SQL.INTEGER,
       allowNull: false
     },
@@ -123,16 +123,16 @@ export const createStore = (intialise?: boolean) => {
             console.log("question", question.toJSON());
             db.sync()
               .then(() =>
-                sessions.create({
+                anonUsers.create({
                   surveyId: survey.id
                 })
               )
-              .then(session => {
-                console.log("session", session.toJSON());
+              .then(anonUser => {
+                console.log("anonUser", anonUser.toJSON());
                 db.sync()
                   .then(() =>
                     answers.create({
-                      sessionId: session.id,
+                      anonUserId: anonUser.id,
                       questionId: question.id,
                       value: "Green"
                     })
@@ -156,5 +156,5 @@ export const createStore = (intialise?: boolean) => {
       });
   }
 
-  return { surveys, questions, sessions, answers, possibleValues };
+  return { surveys, questions, anonUsers, answers, possibleValues };
 };

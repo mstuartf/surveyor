@@ -31,25 +31,25 @@ export const typeDefs = gql`
     label: String
   }
 
-  type Session {
+  type AnonUser {
     id: ID!
     survey: Survey
     questions: [Question]
   }
 
   type Query {
-    session(id: ID!): Session
+    anonUser(id: ID!): AnonUser
     surveys: [Survey]
     questions(surveyId: ID!): [Question]
-    answers(sessionId: ID!, questionId: ID!): [Answer]
+    answers(anonUserId: ID!, questionId: ID!): [Answer]
   }
 
   type Mutation {
-    createSession(surveyId: ID!): CreateSessionResponse
+    createAnonUser(surveyId: ID!): CreateAnonUserResponse
     createSurvey(name: String!): CreateSurveyResponse
     createQuestion(surveyId: ID!, text: String): CreateQuestionResponse
     createAnswer(
-      sessionId: ID!
+      anonUserId: ID!
       questionId: ID!
       value: String
     ): CreateOrUpdateAnswerResponse
@@ -68,10 +68,10 @@ export const typeDefs = gql`
     question: Question
   }
 
-  type CreateSessionResponse {
+  type CreateAnonUserResponse {
     success: Boolean!
     message: String
-    session: Session
+    anonUser: AnonUser
   }
 
   type CreateOrUpdateAnswerResponse {
