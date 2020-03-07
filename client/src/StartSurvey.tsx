@@ -1,6 +1,8 @@
 import React from "react";
 import { gql } from "apollo-boost";
-import { useApolloClient, useMutation } from "@apollo/react-hooks";
+import { useApolloClient, useMutation, useQuery } from "@apollo/react-hooks";
+import { HAS_ANON_USER } from "./HasStarted";
+import Question from "./Question";
 
 export const CREATE_ANON_USER = gql`
   mutation CreateAnonUser($surveyId: ID!) {
@@ -26,11 +28,13 @@ export const CREATE_ANON_USER = gql`
   }
 `;
 
-const CreateAnonUser = ({ surveyId }) => {
+const StartSurvey = props => {
   const client = useApolloClient();
 
-  const [createAnonUser] = useMutation(CREATE_ANON_USER, {
-    variables: { surveyId: surveyId },
+  const { data } = useQuery(HAS_ANON_USER);
+
+  const [startSurvey] = useMutation(CREATE_ANON_USER, {
+    variables: { surveyId: props.match.params.surveyId },
 
     update(cache, { data: { createAnonUser } }) {
       client.writeData({
@@ -42,11 +46,15 @@ const CreateAnonUser = ({ surveyId }) => {
     }
   });
 
+  if (data && data.anonUserId) {
+    return <Question anonUserId={data.anonUserId} questionId={null} />;
+  }
+
   return (
     <div>
-      <button onClick={() => createAnonUser()}>Start Survey</button>
+      <button onClick={() => startSurvey()}>Start Survey</button>
     </div>
   );
 };
 
-export default CreateAnonUser;
+export default StartSurvey;

@@ -115,7 +115,7 @@ export const createStore = (intialise?: boolean) => {
         db.sync()
           .then(() =>
             questions.create({
-              text: "What's your favourite colour?",
+              text: "How tall are you?",
               surveyId: survey.id
             })
           )
@@ -123,14 +123,24 @@ export const createStore = (intialise?: boolean) => {
             console.log("question", question.toJSON());
             db.sync()
               .then(() =>
-                possibleValues.create({
-                  questionId: question.id,
-                  label: "Bright Green",
-                  value: "green"
+                questions.create({
+                  text: "What's your favourite colour?",
+                  surveyId: survey.id
                 })
               )
-              .then(possibleValue => {
-                console.log("possibleValue", possibleValue.toJSON());
+              .then(question => {
+                console.log("question", question.toJSON());
+                db.sync()
+                  .then(() =>
+                    possibleValues.create({
+                      questionId: question.id,
+                      label: "Bright Green",
+                      value: "green"
+                    })
+                  )
+                  .then(possibleValue => {
+                    console.log("possibleValue", possibleValue.toJSON());
+                  });
               });
           });
       });
