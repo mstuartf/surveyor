@@ -38,7 +38,7 @@ const Question = ({ anonUserId, questionId }) => {
     if (next) {
       history.push(`/survey/${anonUser.survey.id}/${next.id}`);
     } else {
-      history.push("/home");
+      history.push(`/completed/${anonUser.survey.id}/`);
     }
   };
 
