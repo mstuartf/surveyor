@@ -25,31 +25,27 @@ export const GET_ANON_USER = gql`
 
 const Question = ({ anonUserId, questionId }) => {
   const { data } = useQuery(GET_ANON_USER, { variables: { anonUserId } });
+  const { questions, survey } = data.anonUser;
 
   const history = useHistory();
-
-  const anonUser = data.anonUser;
-
-  const next = anonUser.questions
-    .sort()
-    .find(question => question.id > questionId);
+  const next = questions.sort().find(question => question.id > questionId);
 
   const nextQuestion = () => {
     if (next) {
-      history.push(`/survey/${anonUser.survey.id}/${next.id}`);
+      history.push(`/survey/${survey.id}/${next.id}`);
     } else {
-      history.push(`/completed/${anonUser.survey.id}/`);
+      history.push(`/completed/${survey.id}/`);
     }
   };
 
   if (!questionId) {
-    return <Redirect to={`/survey/${anonUser.survey.id}/${next.id}`} />;
+    return <Redirect to={`/survey/${survey.id}/${next.id}`} />;
   }
 
   return (
     <div>
-      <div>AnonUser: {anonUser.id}</div>
-      <div>Survey: {anonUser.survey.name}</div>
+      <div>AnonUser: {anonUserId}</div>
+      <div>Survey: {survey.name}</div>
       <div>Question: {questionId}</div>
       <button onClick={() => nextQuestion()}>next</button>
     </div>
