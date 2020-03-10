@@ -4,3 +4,4 @@ graph/store.sqlite
 
 client/build/
 client/node_modules/
+client/src/assets/main.css

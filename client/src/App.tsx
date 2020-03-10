@@ -8,7 +8,7 @@ import NotFound from "./NotFound";
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App h-full">
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/survey/:surveyId/:questionId" component={HasStarted} />
