@@ -7,6 +7,7 @@ import React from "react";
 export const HAS_ANON_USER = gql`
   query HasAnonUser {
     anonUserId @client
+    direction @client
   }
 `;
 
@@ -15,7 +16,13 @@ const HasStarted = props => {
   const { questionId, surveyId } = props.match.params;
 
   if (data && data.anonUserId) {
-    return <Question anonUserId={data.anonUserId} questionId={questionId} />;
+    return (
+      <Question
+        anonUserId={data.anonUserId}
+        questionId={questionId}
+        direction={data.direction}
+      />
+    );
   }
 
   return <Redirect to={`/survey/${surveyId}`} />;

@@ -40,14 +40,17 @@ const StartSurvey = props => {
       client.writeData({
         data: {
           anonUser: createAnonUser.anonUser,
-          anonUserId: createAnonUser.anonUser.id
+          anonUserId: createAnonUser.anonUser.id,
+          direction: 0
         }
       });
     }
   });
 
   if (data && data.anonUserId) {
-    return <Question anonUserId={data.anonUserId} questionId={null} />;
+    return (
+      <Question anonUserId={data.anonUserId} questionId={null} direction={0} />
+    );
   }
 
   return (
