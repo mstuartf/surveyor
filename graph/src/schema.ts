@@ -8,6 +8,7 @@ export const typeDefs = gql`
   type Survey {
     id: ID!
     name: String!
+    questions: [Question]
   }
 
   type Question {
@@ -34,11 +35,11 @@ export const typeDefs = gql`
   type AnonUser {
     id: ID!
     survey: Survey
-    questions: [Question]
   }
 
   type Query {
     anonUser(id: ID!): AnonUser
+    survey(id: ID!): Survey
   }
 
   type Mutation {

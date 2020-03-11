@@ -26,7 +26,7 @@ const CardStack = ({ val, direction, nextCard, previousCard, children }) => {
             opacity: { duration: 0.2 }
           }}
         >
-          <DraggableCard onDraggedRight={nextCard} onDraggedLeft={previousCard}>
+          <DraggableCard onDraggedRight={previousCard} onDraggedLeft={nextCard}>
             {children}
           </DraggableCard>
         </motion.div>

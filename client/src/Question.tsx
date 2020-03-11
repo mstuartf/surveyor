@@ -51,7 +51,7 @@ const Question = ({ anonUserId, questionId, direction }) => {
     }
     client.writeData({
       data: {
-        direction: next ? 1 : -1
+        // direction: next ? 1 : -1
       }
     });
   };
