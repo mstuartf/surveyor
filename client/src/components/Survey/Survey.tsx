@@ -1,9 +1,9 @@
 import React from "react";
 import { useApolloClient, useQuery } from "@apollo/react-hooks";
-import CardStack from "../CardStack/CardStack";
+import DraggableStack from "../DraggableStack/DraggableStack";
+import { CardEntryDirection } from "../DraggableStack/variants";
 import { gql } from "apollo-boost";
 import { useHistory } from "react-router";
-import { CardEntryDirection } from "../CardStack/variants";
 import { getQuestion } from "./nextQuestion";
 import SurveyContents from "./SurveyContents";
 import Loading from "../Loading/Loading";
@@ -64,18 +64,20 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
         {!data ? (
           <Loading />
         ) : (
-          <CardStack
+          <DraggableStack
             val={cardKey}
             direction={data.cardEntryDirection}
             nextCard={() => cardSwiped(true)}
             previousCard={() => cardSwiped(false)}
           >
-            <SurveyContents
-              surveyId={surveyId}
-              questionId={questionId}
-              isComplete={isComplete}
-            />
-          </CardStack>
+            <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
+              <SurveyContents
+                surveyId={surveyId}
+                questionId={questionId}
+                isComplete={isComplete}
+              />
+            </div>
+          </DraggableStack>
         )}
       </div>
     </div>

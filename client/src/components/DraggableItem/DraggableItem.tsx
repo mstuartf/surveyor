@@ -2,7 +2,7 @@ import * as React from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { swipePower, swipeConfidenceThreshold } from "./swipePower";
 
-const DraggableCard = ({ children, onDraggedLeft, onDraggedRight }) => {
+const DraggableItem = ({ children, onDraggedLeft, onDraggedRight }) => {
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-300, 300], [-45, 45]);
 
@@ -35,4 +35,4 @@ const DraggableCard = ({ children, onDraggedLeft, onDraggedRight }) => {
   );
 };
 
-export default DraggableCard;
+export default DraggableItem;

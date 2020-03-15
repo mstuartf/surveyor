@@ -1,9 +1,15 @@
 import React from "react";
-import DraggableCard from "../DraggableCard/DraggableCard";
+import DraggableItem from "../DraggableItem/DraggableItem";
 import { AnimatePresence, motion } from "framer-motion";
 import { variants } from "./variants";
 
-const CardStack = ({ val, direction, nextCard, previousCard, children }) => {
+const DraggableStack = ({
+  val,
+  direction,
+  nextCard,
+  previousCard,
+  children
+}) => {
   return (
     <>
       <AnimatePresence>
@@ -26,13 +32,13 @@ const CardStack = ({ val, direction, nextCard, previousCard, children }) => {
             opacity: { duration: 0.2 }
           }}
         >
-          <DraggableCard onDraggedRight={previousCard} onDraggedLeft={nextCard}>
+          <DraggableItem onDraggedRight={previousCard} onDraggedLeft={nextCard}>
             {children}
-          </DraggableCard>
+          </DraggableItem>
         </motion.div>
       </AnimatePresence>
     </>
   );
 };
 
-export default CardStack;
+export default DraggableStack;

@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec8a2548-b22d-4e0e-9724-40096b1a3bb4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Completed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Completed.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Root.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/StartSurvey.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/StartSurvey.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Loading/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Loading/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CardStack/CardStack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/DraggableStack/DraggableStack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CardStack/variants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/DraggableStack/variants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/DraggableCard/DraggableCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/DraggableItem/DraggableItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/DraggableCard/swipePower.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/DraggableItem/swipePower.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Question/Question.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Question/Question.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Survey/Survey.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Survey/Survey.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Survey/SurveyContents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Survey/SurveyContents.tsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,10 +26,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/App.tsx">
+        <entry file="file://$PROJECT_DIR$/client/src/Root.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="285">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -30,14 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/Root.tsx">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/src/Completed.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="165">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -45,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/Survey/Survey.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
+            <state relative-caret-position="423">
+              <caret line="72" column="42" selection-start-line="72" selection-start-column="42" selection-end-line="72" selection-end-column="42" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -55,21 +59,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/Loading/Loading.tsx">
+        <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyContents.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="66" />
+            <state relative-caret-position="120">
+              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyContents.tsx">
+        <entry file="file://$PROJECT_DIR$/client/src/StartSurvey.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+            <state relative-caret-position="543">
+              <caret line="46" column="80" selection-start-line="46" selection-start-column="80" selection-end-line="46" selection-end-column="80" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,36 +86,18 @@
         <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.tsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="127" selection-start-line="4" selection-start-column="127" selection-end-line="4" selection-end-column="127" />
+              <caret line="4" column="77" selection-start-line="4" selection-start-column="77" selection-end-line="4" selection-end-column="77" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/Survey/nextQuestion.ts">
+        <entry file="file://$PROJECT_DIR$/client/src/components/DraggableStack/DraggableStack.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/HasStarted.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/StartSurvey.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="46" column="127" selection-start-line="46" selection-start-column="127" selection-end-line="46" selection-end-column="127" />
+            <state relative-caret-position="75">
+              <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,7 +114,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sessionId</find>
       <find>surveyId</find>
       <find>impl</find>
       <find>4000</find>
@@ -155,6 +143,7 @@
       <find>SurveyContents</find>
       <find>Surveycon</find>
       <find>Question</find>
+      <find>border border-gray-300 rounded bg-white box-border shadow-md</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/client/src</dir>
@@ -166,7 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/graph/src/mock/database/utils.js" />
         <option value="$PROJECT_DIR$/graph/src/resolvers.js" />
         <option value="$PROJECT_DIR$/graph/src/mock/api/answer.ts" />
         <option value="$PROJECT_DIR$/graph/src/mock/api/question.ts" />
@@ -202,21 +190,22 @@
         <option value="$PROJECT_DIR$/graph/src/resolvers/getFullAnonUserResponse.ts" />
         <option value="$PROJECT_DIR$/graph/src/schema.ts" />
         <option value="$PROJECT_DIR$/client/src/components/CardStack/CardStack.tsx" />
-        <option value="$PROJECT_DIR$/client/src/Completed.tsx" />
         <option value="$PROJECT_DIR$/client/src/Question.tsx" />
         <option value="$PROJECT_DIR$/client/src/Home.tsx" />
         <option value="$PROJECT_DIR$/client/src/App.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/CardStack/variants.ts" />
-        <option value="$PROJECT_DIR$/client/src/Root.tsx" />
         <option value="$PROJECT_DIR$/client/src/Survey.tsx" />
         <option value="$PROJECT_DIR$/client/src/HasStarted.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/Survey/nextQuestion.ts" />
         <option value="$PROJECT_DIR$/client/src/components/Survey/Surveycontents.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyContents.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/Loading/Loading.tsx" />
+        <option value="$PROJECT_DIR$/client/src/components/DraggableStack/DraggableStack.tsx" />
+        <option value="$PROJECT_DIR$/client/src/Root.tsx" />
+        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyContents.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/Survey/Survey.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/Question/Question.tsx" />
         <option value="$PROJECT_DIR$/client/src/StartSurvey.tsx" />
+        <option value="$PROJECT_DIR$/client/src/components/Question/Question.tsx" />
+        <option value="$PROJECT_DIR$/client/src/Completed.tsx" />
       </list>
     </option>
   </component>
@@ -316,13 +305,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62996000" />
+    <option name="totallyTimeSpent" value="63544000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20243205" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20243205" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -396,14 +385,14 @@
     <entry file="file://$PROJECT_DIR$/client/src/styles.css" />
     <entry file="file://$PROJECT_DIR$/node_modules/@popmotion/popcorn/lib/utils/wrap.d.ts" />
     <entry file="file://$PROJECT_DIR$/client/src/image-data.ts" />
-    <entry file="file://$PROJECT_DIR$/client/src/components/DraggableCard/swipePower.ts">
+    <entry file="file://$PROJECT_DIR$/client/src/components/DraggableItem/swipePower.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="37" selection-start-column="13" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/DraggableCard/DraggableCard.tsx">
+    <entry file="file://$PROJECT_DIR$/client/src/components/DraggableItem/DraggableItem.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="38" selection-start-line="38" selection-end-line="38" />
@@ -508,13 +497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/Completed.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/Question.tsx" />
     <entry file="file://$PROJECT_DIR$/client/node_modules/apollo-boost/src/index.ts">
       <provider selected="true" editor-type-id="text-editor">
@@ -530,27 +512,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/CardStack/variants.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/Home.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/CardStack/CardStack.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -578,44 +543,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/Root.tsx">
+    <entry file="file://$PROJECT_DIR$/client/src/components/Loading/Loading.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/DraggableStack/DraggableStack.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Loading/Loading.tsx">
+    <entry file="file://$PROJECT_DIR$/client/src/Root.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="66" />
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/DraggableStack/variants.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/Survey/Survey.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
+        <state relative-caret-position="423">
+          <caret line="72" column="42" selection-start-line="72" selection-start-column="42" selection-end-line="72" selection-end-column="42" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="127" selection-start-line="4" selection-start-column="127" selection-end-line="4" selection-end-column="127" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyContents.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+        <state relative-caret-position="120">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -625,10 +600,24 @@
     <entry file="file://$PROJECT_DIR$/client/src/StartSurvey.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="543">
-          <caret line="46" column="127" selection-start-line="46" selection-start-column="127" selection-end-line="46" selection-end-column="127" />
+          <caret line="46" column="80" selection-start-line="46" selection-start-column="80" selection-end-line="46" selection-end-column="80" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="77" selection-start-line="4" selection-start-column="77" selection-end-line="4" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/Completed.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>

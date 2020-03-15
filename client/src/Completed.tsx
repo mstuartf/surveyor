@@ -2,7 +2,7 @@ import React from "react";
 
 const Completed = () => {
   return (
-    <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
+    <div className="w-full h-full flex items-center justify-center bg-blue-100">
       Completed
     </div>
   );

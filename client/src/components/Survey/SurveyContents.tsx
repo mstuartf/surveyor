@@ -6,7 +6,7 @@ import Question from "../Question/Question";
 const SurveyContents = ({ questionId, surveyId, isComplete }) => {
   return (
     <>
-      {questionId ? (
+      {questionId && !isComplete ? (
         <Question questionId={questionId} />
       ) : !isComplete ? (
         <StartSurvey surveyId={surveyId} />
