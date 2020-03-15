@@ -40,7 +40,7 @@ export const typeDefs = gql`
   type Query {
     anonUser(id: ID!): AnonUser
     survey(id: ID!): Survey
-    question(id: ID!): Question
+    question(id: ID!, anonUserId: ID): Question
   }
 
   type Mutation {

@@ -6,10 +6,15 @@ const resolvers = {
       const anonUser = await dataSources.anonUsers.get(id);
       return getFullAnonUserResponse(dataSources, anonUser);
     },
-    question: async (_, { id }, { dataSources }) => {
+    question: async (_, { id, anonUserId }, { dataSources }) => {
       const question = await dataSources.questions.get(id);
+      const answers = await dataSources.answers.get(anonUserId, id);
       return {
-        ...question.dataValues
+        ...question.dataValues,
+        answers: answers.map(answer => ({
+          ...answer.dataValues,
+          values: answer.dataValues.values.split("|")
+        }))
       };
     },
     survey: async (_, { id }, { dataSources }) => {

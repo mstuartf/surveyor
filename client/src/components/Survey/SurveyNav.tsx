@@ -17,6 +17,10 @@ export const GET_SURVEY = gql`
       questions {
         id
         text
+        answers {
+          id
+          values
+        }
       }
     }
   }
