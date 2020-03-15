@@ -18,19 +18,22 @@ const defaults: ClientData = {
   anonUserId: null
 };
 
+// In some cases, a query requests data that already exists in the client store under a different key.
+// A very common example of this is when your UI has a list view and a detail view that both use the same data.
+// https://www.apollographql.com/docs/react/caching/cache-interaction/#cache-redirects-with-cacheredirects
 const cache = new InMemoryCache({
   cacheRedirects: {
     Query: {
-      anonUser: (_, args, { getCacheKey }) =>
-        getCacheKey({ __typename: "AnonUser", id: args.id })
+      question: (_, args, { getCacheKey }) =>
+        getCacheKey({ __typename: "Question", id: args.id })
     }
   }
 });
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/",
+  cache, // don't put this inside of clientState or you can't cache network data
   clientState: {
-    cache,
     resolvers,
     typeDefs,
     defaults

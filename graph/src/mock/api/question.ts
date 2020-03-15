@@ -8,6 +8,13 @@ export class QuestionAPI extends DataSource {
     this.store = store;
   }
 
+  async get(id?) {
+    if (id) {
+      return await this.store.questions.findOne({ where: { id } });
+    }
+    return await this.store.questions.findAll();
+  }
+
   async getForSurvey(surveyId) {
     return await this.store.questions.findAll({ where: { surveyId } });
   }
