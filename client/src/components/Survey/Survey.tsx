@@ -1,27 +1,24 @@
 import React from "react";
 import { useApolloClient, useQuery } from "@apollo/react-hooks";
-import CardStack from "./components/CardStack/CardStack";
-import StartSurvey from "./StartSurvey";
+import CardStack from "../CardStack/CardStack";
+import StartSurvey from "../../StartSurvey";
 import { gql } from "apollo-boost";
 import { useHistory } from "react-router";
-import Completed from "./Completed";
-import { CardEntryDirection } from "./components/CardStack/variants";
+import Completed from "../../Completed";
+import { CardEntryDirection } from "../CardStack/variants";
+import { getQuestion } from "./nextQuestion";
 
 export const GET_SURVEY = gql`
   query GetSurvey($surveyId: ID!) {
+    cardEntryDirection @client
     survey(id: $surveyId) {
       id
       name
       questions {
         id
         text
-        answers {
-          id
-          values
-        }
       }
     }
-    cardEntryDirection @client
   }
 `;
 
@@ -35,17 +32,6 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
     return <div>Loading...</div>;
   }
 
-  const { questions } = data.survey;
-  const nextId = questions
-    .map(q => q.id)
-    .sort()
-    .find(id => id > (questionId || 0));
-  const prevId = questions
-    .map(q => q.id)
-    .sort()
-    .reverse()
-    .find(id => id < (questionId || 1000));
-
   const nextQuestion = (next: boolean) => {
     const cardEntryDirection: CardEntryDirection = next
       ? "fromRight"
@@ -57,14 +43,7 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
       }
     });
 
-    // can't go forward if on the complete page
-    if (!questionId && isComplete && next) {
-      return;
-    }
-    // can't go back if on the start page
-    if (!questionId && !isComplete && !next) {
-      return;
-    }
+    const [prevId, nextId] = getQuestion(questionId, data.survey.questions);
 
     if (next && nextId) {
       history.push(`/survey/${surveyId}/question/${nextId}`);

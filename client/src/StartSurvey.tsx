@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import { gql } from "apollo-boost";
 import { useApolloClient, useMutation, useQuery } from "@apollo/react-hooks";
-import { HAS_ANON_USER } from "./HasStarted";
 
-export const CREATE_ANON_USER = gql`
+export const START_SURVEY = gql`
   mutation CreateAnonUser($surveyId: ID!) {
     createAnonUser(surveyId: $surveyId) {
-      success
-      message
       anonUser {
         id
       }
@@ -15,12 +12,18 @@ export const CREATE_ANON_USER = gql`
   }
 `;
 
+export const GET_USER_ID = gql`
+  query HasAnonUser {
+    anonUserId @client
+  }
+`;
+
 const StartSurvey = ({ surveyId }) => {
   const client = useApolloClient();
 
-  const { data } = useQuery(HAS_ANON_USER);
+  const { data } = useQuery(GET_USER_ID);
 
-  const [startSurvey] = useMutation(CREATE_ANON_USER, {
+  const [startSurvey] = useMutation(START_SURVEY, {
     variables: { surveyId: surveyId },
 
     update(cache, { data: { createAnonUser } }) {

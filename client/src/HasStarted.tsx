@@ -2,9 +2,9 @@ import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 import { Redirect } from "react-router";
 import React from "react";
-import Survey from "./Survey";
+import Survey from "./components/Survey/Survey";
 
-export const HAS_ANON_USER = gql`
+export const GET_USER_ID = gql`
   query HasAnonUser {
     anonUserId @client
   }
@@ -18,7 +18,7 @@ const HasStarted = props => {
   const { questionId, surveyId } = props.match.params;
   const isComplete: boolean = questionId === "complete";
 
-  const { data } = useQuery(HAS_ANON_USER);
+  const { data } = useQuery(GET_USER_ID);
 
   if (questionId && (!data || !data.anonUserId)) {
     return <Redirect to={`/survey/${surveyId}`} />;
