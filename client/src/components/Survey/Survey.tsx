@@ -28,8 +28,8 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
 
   const { data } = useQuery(GET_SURVEY, { variables: { surveyId } });
 
-  const nextQuestion = (next: boolean) => {
-    const cardEntryDirection: CardEntryDirection = next
+  const cardSwiped = (navigateForward: boolean) => {
+    const cardEntryDirection: CardEntryDirection = navigateForward
       ? "fromRight"
       : "fromLeft";
     // this needs to happen before the history push state or the animation re-triggers with the old direction
@@ -39,14 +39,17 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
       }
     });
 
-    const [prevId, nextId] = getQuestion(questionId, data.survey.questions);
+    const [prevQuestionId, nextQuestionId] = getQuestion(
+      questionId,
+      data.survey.questions
+    );
 
-    if (next && nextId) {
-      history.push(`/survey/${surveyId}/question/${nextId}`);
-    } else if (next) {
+    if (navigateForward && nextQuestionId) {
+      history.push(`/survey/${surveyId}/question/${nextQuestionId}`);
+    } else if (navigateForward) {
       history.push(`/survey/${surveyId}/complete`);
-    } else if (prevId) {
-      history.push(`/survey/${surveyId}/question/${prevId}`);
+    } else if (prevQuestionId) {
+      history.push(`/survey/${surveyId}/question/${prevQuestionId}`);
     } else {
       history.push(`/survey/${surveyId}`);
     }
@@ -64,8 +67,8 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
           <CardStack
             val={cardKey}
             direction={data.cardEntryDirection}
-            nextCard={() => nextQuestion(true)}
-            previousCard={() => nextQuestion(false)}
+            nextCard={() => cardSwiped(true)}
+            previousCard={() => cardSwiped(false)}
           >
             <SurveyContents
               surveyId={surveyId}
