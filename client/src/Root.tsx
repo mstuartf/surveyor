@@ -10,10 +10,12 @@ import { CardEntryDirection } from "./components/CardStack/variants";
 
 interface ClientData {
   cardEntryDirection: CardEntryDirection;
+  anonUserId: number | null;
 }
 
 const defaults: ClientData = {
-  cardEntryDirection: "fromRight" // default to sliding in from the right
+  cardEntryDirection: "fromRight", // default to sliding in from the right
+  anonUserId: null
 };
 
 const cache = new InMemoryCache({
