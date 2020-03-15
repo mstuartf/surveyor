@@ -3,9 +3,8 @@ import { useApolloClient, useQuery } from "@apollo/react-hooks";
 import CardStack from "./components/CardStack/CardStack";
 import StartSurvey from "./StartSurvey";
 import { gql } from "apollo-boost";
-import { Redirect, useHistory } from "react-router";
+import { useHistory } from "react-router";
 import Completed from "./Completed";
-import { HAS_ANON_USER } from "./HasStarted";
 
 export const GET_SURVEY = gql`
   query GetSurvey($surveyId: ID!) {
@@ -21,6 +20,7 @@ export const GET_SURVEY = gql`
         }
       }
     }
+    cardEntryDirection @client
   }
 `;
 
@@ -29,28 +29,27 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
   const history = useHistory();
 
   const { data } = useQuery(GET_SURVEY, { variables: { surveyId } });
-  const dir = useQuery(HAS_ANON_USER);
 
-  let nextId, prevId;
-
-  if (data) {
-    const { questions } = data.survey;
-    nextId = questions
-      .map(q => q.id)
-      .sort()
-      .find(id => id > (questionId || 0));
-    prevId = questions
-      .map(q => q.id)
-      .sort()
-      .reverse()
-      .find(id => id < (questionId || 1000));
+  if (!data) {
+    return <div>Loading...</div>;
   }
+
+  const { questions } = data.survey;
+  const nextId = questions
+    .map(q => q.id)
+    .sort()
+    .find(id => id > (questionId || 0));
+  const prevId = questions
+    .map(q => q.id)
+    .sort()
+    .reverse()
+    .find(id => id < (questionId || 1000));
 
   const nextQuestion = (next: boolean) => {
     // this needs to happen before the history push state or the animation re-triggers with the old direction
     client.writeData({
       data: {
-        direction: next ? 1 : -1
+        cardEntryDirection: next ? 1 : -1
       }
     });
 
@@ -76,14 +75,13 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
 
   // this needs to be unique or transitions get messed up
   const cardKey = questionId ? questionId : isComplete ? "complete" : "start";
-  const direction = dir.data ? dir.data.direction : 1; // default to easing in from the left
 
   return (
     <div className="border border-dashed border-gray-300 rounded overflow-hidden p-8 w-full max-w-lg h-full max-h-2xl m-auto mt-16">
       <div className="w-full h-full relative">
         <CardStack
           val={cardKey}
-          direction={direction}
+          direction={data.cardEntryDirection}
           nextCard={() => nextQuestion(true)}
           previousCard={() => nextQuestion(false)}
         >

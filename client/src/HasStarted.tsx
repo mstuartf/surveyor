@@ -7,7 +7,6 @@ import Survey from "./Survey";
 export const HAS_ANON_USER = gql`
   query HasAnonUser {
     anonUserId @client
-    direction @client
   }
 `;
 

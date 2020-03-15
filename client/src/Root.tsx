@@ -17,10 +17,15 @@ const cache = new InMemoryCache({
 });
 
 const client = new ApolloClient({
-  cache,
   uri: "http://localhost:4000/",
-  resolvers,
-  typeDefs
+  clientState: {
+    cache,
+    resolvers,
+    typeDefs,
+    defaults: {
+      cardEntryDirection: 1 // default to sliding in from the right
+    }
+  }
 });
 
 const Root = () => {
