@@ -44,7 +44,7 @@ const StartSurvey = ({ surveyId }) => {
   }, []);
 
   return (
-    <div className="w-full h-full flex items-center justify-center bg-yellow-100">
+    <div className="w-full h-full flex flex-col items-center justify-center bg-yellow-100 overflow-y-auto">
       Survey {surveyId} - swipe to start...
     </div>
   );
