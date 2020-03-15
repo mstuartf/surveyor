@@ -3,7 +3,7 @@ import { useApolloClient, useQuery } from "@apollo/react-hooks";
 import CardStack from "./components/CardStack/CardStack";
 import StartSurvey from "./StartSurvey";
 import { gql } from "apollo-boost";
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import Completed from "./Completed";
 import { HAS_ANON_USER } from "./HasStarted";
 
@@ -80,6 +80,10 @@ const Survey = props => {
   // this needs to be unique or transitions get messed up
   const cardKey = questionId ? questionId : isComplete ? "complete" : "start";
   const direction = dir.data ? dir.data.direction : 1; // default to easing in from the left
+
+  if ((questionId || isComplete) && (!dir.data || !dir.data.anonUserId)) {
+    return <Redirect to={`/survey/${surveyId}`} />;
+  }
 
   return (
     <div className="border border-dashed border-gray-300 rounded overflow-hidden p-8 w-full max-w-lg h-full max-h-2xl m-auto mt-16">
