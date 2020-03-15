@@ -23,13 +23,3 @@ export const getQuestion = (
 
   return [prev && prev.id, next && next.id];
 };
-
-// export const getFirstQuestion = (questions: {id: number}[]): number => {
-//   questions.sort((a, b) => a[sortProp] > b[sortProp] ? 1 : -1);
-//   return questions[0].id
-// };
-//
-// export const getLastQuestion = (questions: {id: number}[]): number => {
-//   questions.sort((a, b) => a[sortProp] > b[sortProp] ? 1 : -1);
-//   return questions[0].id
-// };

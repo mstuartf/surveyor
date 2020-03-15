@@ -1,12 +1,12 @@
 import React from "react";
 import { useApolloClient, useQuery } from "@apollo/react-hooks";
 import CardStack from "../CardStack/CardStack";
-import StartSurvey from "../../StartSurvey";
 import { gql } from "apollo-boost";
 import { useHistory } from "react-router";
-import Completed from "../../Completed";
 import { CardEntryDirection } from "../CardStack/variants";
 import { getQuestion } from "./nextQuestion";
+import SurveyContents from "./SurveyContents";
+import Loading from "../Loading/Loading";
 
 export const GET_SURVEY = gql`
   query GetSurvey($surveyId: ID!) {
@@ -27,10 +27,6 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
   const history = useHistory();
 
   const { data } = useQuery(GET_SURVEY, { variables: { surveyId } });
-
-  if (!data) {
-    return <div>Loading...</div>;
-  }
 
   const nextQuestion = (next: boolean) => {
     const cardEntryDirection: CardEntryDirection = next
@@ -62,22 +58,22 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
   return (
     <div className="border border-dashed border-gray-300 rounded overflow-hidden p-8 w-full max-w-lg h-full max-h-2xl m-auto mt-16">
       <div className="w-full h-full relative">
-        <CardStack
-          val={cardKey}
-          direction={data.cardEntryDirection}
-          nextCard={() => nextQuestion(true)}
-          previousCard={() => nextQuestion(false)}
-        >
-          {questionId ? (
-            <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
-              Question: {questionId}
-            </div>
-          ) : !isComplete ? (
-            <StartSurvey surveyId={surveyId} />
-          ) : (
-            <Completed />
-          )}
-        </CardStack>
+        {!data ? (
+          <Loading />
+        ) : (
+          <CardStack
+            val={cardKey}
+            direction={data.cardEntryDirection}
+            nextCard={() => nextQuestion(true)}
+            previousCard={() => nextQuestion(false)}
+          >
+            <SurveyContents
+              surveyId={surveyId}
+              questionId={questionId}
+              isComplete={isComplete}
+            />
+          </CardStack>
+        )}
       </div>
     </div>
   );
