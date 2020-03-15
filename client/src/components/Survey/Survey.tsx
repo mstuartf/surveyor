@@ -1,5 +1,5 @@
 import React from "react";
-import { useApolloClient, useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 import DraggableStack from "../DraggableStack/DraggableStack";
 import { CardEntryDirection } from "../DraggableStack/variants";
 import { gql } from "apollo-boost";
@@ -23,10 +23,11 @@ export const GET_SURVEY = gql`
 `;
 
 const Survey = ({ questionId, surveyId, isComplete }) => {
-  const client = useApolloClient();
   const history = useHistory();
 
-  const { data } = useQuery(GET_SURVEY, { variables: { surveyId } });
+  const { data, client, loading } = useQuery(GET_SURVEY, {
+    variables: { surveyId }
+  });
 
   const cardSwiped = (navigateForward: boolean) => {
     const cardEntryDirection: CardEntryDirection = navigateForward
@@ -60,7 +61,7 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
 
   return (
     <>
-      {!data ? (
+      {loading ? (
         <Loading />
       ) : (
         <DraggableStack
