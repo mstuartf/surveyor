@@ -24,12 +24,9 @@ export const GET_SURVEY = gql`
   }
 `;
 
-const Survey = props => {
+const Survey = ({ questionId, surveyId, isComplete }) => {
   const client = useApolloClient();
   const history = useHistory();
-
-  const { questionId, surveyId } = props.match.params;
-  const isComplete: boolean = props.match.url.indexOf("complete") > -1;
 
   const { data } = useQuery(GET_SURVEY, { variables: { surveyId } });
   const dir = useQuery(HAS_ANON_USER);
@@ -80,10 +77,6 @@ const Survey = props => {
   // this needs to be unique or transitions get messed up
   const cardKey = questionId ? questionId : isComplete ? "complete" : "start";
   const direction = dir.data ? dir.data.direction : 1; // default to easing in from the left
-
-  if ((questionId || isComplete) && (!dir.data || !dir.data.anonUserId)) {
-    return <Redirect to={`/survey/${surveyId}`} />;
-  }
 
   return (
     <div className="border border-dashed border-gray-300 rounded overflow-hidden p-8 w-full max-w-lg h-full max-h-2xl m-auto mt-16">

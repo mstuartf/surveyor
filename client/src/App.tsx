@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router";
 import Home from "./Home";
 import NotFound from "./NotFound";
-import Survey from "./Survey";
+import HasStarted from "./HasStarted";
 
 // tested regex: https://pshrmn.github.io/route-tester
 // optional question id
@@ -14,7 +14,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route
           path="/survey/:surveyId/(question)?/:questionId?"
-          component={Survey}
+          component={HasStarted}
         />
         <Route component={NotFound} />
       </Switch>
