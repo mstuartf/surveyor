@@ -1,10 +1,4 @@
-import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import App from "./App";
-import { resolvers, typeDefs } from "./resolvers";
 import { InMemoryCache } from "apollo-cache-inmemory";
-
-import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
 import { CardEntryDirection } from "./components/DraggableStack/variants";
 
@@ -30,24 +24,11 @@ const cache = new InMemoryCache({
   }
 });
 
-const client = new ApolloClient({
+export const apolloClient = new ApolloClient({
   uri: "http://localhost:4000/",
   cache, // don't put this inside of clientState or you can't cache network data
   clientState: {
-    resolvers,
-    typeDefs,
+    resolvers: {},
     defaults
   }
 });
-
-const Root = () => {
-  return (
-    <ApolloProvider client={client}>
-      <Router>
-        <Route component={App} />
-      </Router>
-    </ApolloProvider>
-  );
-};
-
-export default Root;

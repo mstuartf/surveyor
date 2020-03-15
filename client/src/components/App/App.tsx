@@ -1,11 +1,13 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import Home from "./Home";
-import NotFound from "./NotFound";
-import HasStarted from "./HasStarted";
+import Home from "../Home/Home";
+import NotFound from "../NotFound/NotFound";
+import Survey from "../Survey/Survey";
 
 // tested regex: https://pshrmn.github.io/route-tester
 // optional question id
+
+// important to have overflow hidden somewhere on draggable stack parent for animations to work
 
 const App = () => {
   return (
@@ -14,7 +16,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route
           path="/survey/:surveyId/(question)?/:questionId?"
-          component={HasStarted}
+          component={Survey}
         />
         <Route component={NotFound} />
       </Switch>

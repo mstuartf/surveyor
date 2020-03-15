@@ -1,85 +1,35 @@
-import React from "react";
-import { useQuery } from "@apollo/react-hooks";
-import DraggableStack from "../DraggableStack/DraggableStack";
-import { CardEntryDirection } from "../DraggableStack/variants";
 import { gql } from "apollo-boost";
-import { useHistory } from "react-router";
-import { getQuestion } from "./nextQuestion";
-import SurveyContents from "./SurveyContents";
-import Loading from "../Loading/Loading";
+import { useQuery } from "@apollo/react-hooks";
+import { Redirect } from "react-router";
+import React from "react";
+import SurveyNav from "./SurveyNav";
 
-export const GET_SURVEY = gql`
-  query GetSurvey($surveyId: ID!) {
-    cardEntryDirection @client
-    survey(id: $surveyId) {
-      id
-      name
-      questions {
-        id
-        text
-      }
-    }
+export const GET_USER_ID = gql`
+  query HasAnonUser {
+    anonUserId @client
   }
 `;
 
-const Survey = ({ questionId, surveyId, isComplete }) => {
-  const history = useHistory();
+// when the user tries to access a survey page (start, question, or complete)
+// this component checks whether the survey has been started
+// if not, the user is redirected to the start page
 
-  const { data, client, loading } = useQuery(GET_SURVEY, {
-    variables: { surveyId }
-  });
+const Survey = props => {
+  const { questionId, surveyId } = props.match.params;
+  const isComplete: boolean = questionId === "complete";
 
-  const cardSwiped = (navigateForward: boolean) => {
-    const cardEntryDirection: CardEntryDirection = navigateForward
-      ? "fromRight"
-      : "fromLeft";
-    // this needs to happen before the history push state or the animation re-triggers with the old direction
-    client.writeData({
-      data: {
-        cardEntryDirection
-      }
-    });
+  const { data } = useQuery(GET_USER_ID);
 
-    const [prevQuestionId, nextQuestionId] = getQuestion(
-      questionId,
-      data.survey.questions
-    );
-
-    if (navigateForward && nextQuestionId) {
-      history.push(`/survey/${surveyId}/question/${nextQuestionId}`);
-    } else if (navigateForward) {
-      history.push(`/survey/${surveyId}/complete`);
-    } else if (prevQuestionId) {
-      history.push(`/survey/${surveyId}/question/${prevQuestionId}`);
-    } else {
-      history.push(`/survey/${surveyId}`);
-    }
-  };
-
-  // this needs to be unique or transitions get messed up
-  const cardKey = questionId ? questionId : isComplete ? "complete" : "start";
+  if (questionId && (!data || !data.anonUserId)) {
+    return <Redirect to={`/survey/${surveyId}`} />;
+  }
 
   return (
-    <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <DraggableStack
-          val={cardKey}
-          direction={data.cardEntryDirection}
-          nextCard={() => cardSwiped(true)}
-          previousCard={() => cardSwiped(false)}
-        >
-          <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
-            <SurveyContents
-              surveyId={surveyId}
-              questionId={questionId}
-              isComplete={isComplete}
-            />
-          </div>
-        </DraggableStack>
-      )}
-    </>
+    <SurveyNav
+      surveyId={surveyId}
+      questionId={questionId}
+      isComplete={isComplete}
+    />
   );
 };
 
