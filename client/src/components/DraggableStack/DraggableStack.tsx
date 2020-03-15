@@ -11,7 +11,7 @@ const DraggableStack = ({
   children
 }) => {
   return (
-    <>
+    <div className="w-full h-full relative">
       <AnimatePresence>
         <motion.div
           style={{
@@ -37,7 +37,7 @@ const DraggableStack = ({
           </DraggableItem>
         </motion.div>
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 

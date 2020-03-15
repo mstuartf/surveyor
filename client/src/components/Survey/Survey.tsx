@@ -59,28 +59,26 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
   const cardKey = questionId ? questionId : isComplete ? "complete" : "start";
 
   return (
-    <div className="border border-dashed border-gray-300 rounded overflow-hidden p-8 w-full max-w-lg h-full max-h-2xl m-auto mt-16">
-      <div className="w-full h-full relative">
-        {!data ? (
-          <Loading />
-        ) : (
-          <DraggableStack
-            val={cardKey}
-            direction={data.cardEntryDirection}
-            nextCard={() => cardSwiped(true)}
-            previousCard={() => cardSwiped(false)}
-          >
-            <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
-              <SurveyContents
-                surveyId={surveyId}
-                questionId={questionId}
-                isComplete={isComplete}
-              />
-            </div>
-          </DraggableStack>
-        )}
-      </div>
-    </div>
+    <>
+      {!data ? (
+        <Loading />
+      ) : (
+        <DraggableStack
+          val={cardKey}
+          direction={data.cardEntryDirection}
+          nextCard={() => cardSwiped(true)}
+          previousCard={() => cardSwiped(false)}
+        >
+          <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
+            <SurveyContents
+              surveyId={surveyId}
+              questionId={questionId}
+              isComplete={isComplete}
+            />
+          </div>
+        </DraggableStack>
+      )}
+    </>
   );
 };
 

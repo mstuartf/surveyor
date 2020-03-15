@@ -9,7 +9,7 @@ import HasStarted from "./HasStarted";
 
 const App = () => {
   return (
-    <div className="App h-full">
+    <div className="overflow-hidden p-8 w-full h-screen m-auto">
       <Switch>
         <Route exact path="/" component={Home} />
         <Route
