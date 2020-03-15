@@ -5,6 +5,7 @@ import StartSurvey from "./StartSurvey";
 import { gql } from "apollo-boost";
 import { useHistory } from "react-router";
 import Completed from "./Completed";
+import { CardEntryDirection } from "./components/CardStack/variants";
 
 export const GET_SURVEY = gql`
   query GetSurvey($surveyId: ID!) {
@@ -46,10 +47,13 @@ const Survey = ({ questionId, surveyId, isComplete }) => {
     .find(id => id < (questionId || 1000));
 
   const nextQuestion = (next: boolean) => {
+    const cardEntryDirection: CardEntryDirection = next
+      ? "fromRight"
+      : "fromLeft";
     // this needs to happen before the history push state or the animation re-triggers with the old direction
     client.writeData({
       data: {
-        cardEntryDirection: next ? 1 : -1
+        cardEntryDirection
       }
     });
 

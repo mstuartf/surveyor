@@ -1,9 +1,11 @@
+export type CardEntryDirection = "fromRight" | "fromLeft";
+
 export const variants = {
-  enter: (direction: number) => {
+  enter: (direction: CardEntryDirection) => {
     return {
-      x: direction > 0 ? 1000 : -1000,
+      x: direction === "fromLeft" ? -1000 : 1000,
       opacity: 0,
-      rotate: direction > 0 ? 45 : -45
+      rotate: direction === "fromLeft" ? -45 : 45
     };
   },
   center: {
@@ -11,11 +13,11 @@ export const variants = {
     opacity: 1,
     rotate: 0
   },
-  exit: (direction: number) => {
+  exit: (direction: CardEntryDirection) => {
     return {
-      x: direction < 0 ? 1000 : -1000,
+      x: direction === "fromLeft" ? 1000 : -1000,
       opacity: 0,
-      rotate: direction < 0 ? 45 : -45
+      rotate: direction === "fromLeft" ? 45 : -45
     };
   }
 };

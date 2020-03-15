@@ -6,6 +6,15 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
+import { CardEntryDirection } from "./components/CardStack/variants";
+
+interface ClientData {
+  cardEntryDirection: CardEntryDirection;
+}
+
+const defaults: ClientData = {
+  cardEntryDirection: "fromRight" // default to sliding in from the right
+};
 
 const cache = new InMemoryCache({
   cacheRedirects: {
@@ -22,9 +31,7 @@ const client = new ApolloClient({
     cache,
     resolvers,
     typeDefs,
-    defaults: {
-      cardEntryDirection: 1 // default to sliding in from the right
-    }
+    defaults
   }
 });
 
