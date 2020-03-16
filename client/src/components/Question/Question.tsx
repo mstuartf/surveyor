@@ -48,6 +48,19 @@ interface CreateAnswer {
   };
 }
 
+const optimisticCreateAnswer = (value: number): CreateAnswer => ({
+  createAnswer: {
+    __typename: "CreateAnswerResponse",
+    success: true,
+    message: "",
+    answer: {
+      id: 123,
+      __typename: "Answer",
+      values: [`${value}`]
+    }
+  }
+});
+
 const Question = ({ questionId }) => {
   // this should be fetched from the cache so no need to handle loading state
   const { data } = useQuery(GET_QUESTION, { variables: { questionId } });
@@ -83,18 +96,7 @@ const Question = ({ questionId }) => {
         });
       },
 
-      optimisticResponse: {
-        createAnswer: {
-          __typename: "CreateAnswerResponse",
-          success: true,
-          message: "",
-          answer: {
-            id: 123,
-            __typename: "Answer",
-            values: [`${value}`]
-          }
-        }
-      }
+      optimisticResponse: optimisticCreateAnswer(value)
     });
   };
 
