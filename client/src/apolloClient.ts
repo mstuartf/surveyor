@@ -5,11 +5,13 @@ import { CardEntryDirection } from "./components/DraggableStack/variants";
 interface ClientData {
   cardEntryDirection: CardEntryDirection;
   anonUserId: number | null;
+  minValuesReminder: boolean;
 }
 
 const defaults: ClientData = {
   cardEntryDirection: "fromRight", // default to sliding in from the right
-  anonUserId: null
+  anonUserId: null,
+  minValuesReminder: false
 };
 
 // In some cases, a query requests data that already exists in the client store under a different key.

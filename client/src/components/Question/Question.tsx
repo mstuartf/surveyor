@@ -5,6 +5,7 @@ import { useMutation, useQuery } from "@apollo/react-hooks";
 export const GET_QUESTION = gql`
   query GetQuestion($questionId: ID!) {
     anonUserId @client
+    minValuesReminder @client
     question(id: $questionId) {
       id
       text
@@ -64,7 +65,9 @@ const optimisticCreateAnswer = (value: number): CreateAnswer => ({
 
 const Question = ({ questionId }) => {
   // this should be fetched from the cache so no need to handle loading state
-  const { data } = useQuery(GET_QUESTION, { variables: { questionId } });
+  const { data, client } = useQuery(GET_QUESTION, {
+    variables: { questionId }
+  });
 
   const [createAnswer] = useMutation<CreateAnswer>(CREATE_ANSWER);
 
@@ -101,11 +104,27 @@ const Question = ({ questionId }) => {
     });
   };
 
+  const wipeMinValuesReminder = () => {
+    setTimeout(() => {
+      client.writeData({
+        data: {
+          minValuesReminder: false
+        }
+      });
+    }, 1000);
+  };
+
+  if (data.minValuesReminder) {
+    wipeMinValuesReminder();
+  }
+
   return (
     <div className="w-full h-full flex flex-col items-center justify-center bg-red-100">
       <div>Question: {questionId}</div>
       <div>{data.question.text}</div>
-      <div>Min values: {data.question.minValues || "n/a"}</div>
+      <div className={data.minValuesReminder ? "text-red-600 underline" : ""}>
+        Min values: {data.question.minValues || "n/a"}
+      </div>
       <div className="mt-2">Existing answers:</div>
       {data.question.answers.map(answer => (
         <div key={answer.id}>{answer.values}</div>

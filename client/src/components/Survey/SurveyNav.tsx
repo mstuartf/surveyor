@@ -34,7 +34,12 @@ const SurveyNav = ({ questionId, surveyId, isComplete, belowMinValues }) => {
   });
 
   const cardSwiped = (navigateForward: boolean) => {
-    if (belowMinValues) {
+    if (navigateForward && belowMinValues) {
+      client.writeData({
+        data: {
+          minValuesReminder: true
+        }
+      });
       return;
     }
 
