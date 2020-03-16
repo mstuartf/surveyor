@@ -8,6 +8,7 @@ export const GET_QUESTION = gql`
     question(id: $questionId) {
       id
       text
+      minValues
       answers {
         id
         values
@@ -104,6 +105,7 @@ const Question = ({ questionId }) => {
     <div className="w-full h-full flex flex-col items-center justify-center bg-red-100">
       <div>Question: {questionId}</div>
       <div>{data.question.text}</div>
+      <div>Min values: {data.question.minValues || "n/a"}</div>
       <div className="mt-2">Existing answers:</div>
       {data.question.answers.map(answer => (
         <div key={answer.id}>{answer.values}</div>

@@ -6,7 +6,6 @@ import { gql } from "apollo-boost";
 import { useHistory } from "react-router";
 import { getQuestion } from "./nextQuestion";
 import SurveyInner from "./SurveyInner";
-import Loading from "../Loading/Loading";
 
 export const GET_SURVEY = gql`
   query GetSurvey($surveyId: ID!) {
@@ -17,6 +16,7 @@ export const GET_SURVEY = gql`
       questions {
         id
         text
+        minValues
         answers {
           id
           values
@@ -26,14 +26,18 @@ export const GET_SURVEY = gql`
   }
 `;
 
-const SurveyNav = ({ questionId, surveyId, isComplete }) => {
+const SurveyNav = ({ questionId, surveyId, isComplete, belowMinValues }) => {
   const history = useHistory();
 
-  const { data, client, loading } = useQuery(GET_SURVEY, {
+  const { data, client } = useQuery(GET_SURVEY, {
     variables: { surveyId }
   });
 
   const cardSwiped = (navigateForward: boolean) => {
+    if (belowMinValues) {
+      return;
+    }
+
     const cardEntryDirection: CardEntryDirection = navigateForward
       ? "fromRight"
       : "fromLeft";
@@ -65,24 +69,20 @@ const SurveyNav = ({ questionId, surveyId, isComplete }) => {
 
   return (
     <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <DraggableStack
-          val={cardKey}
-          direction={data.cardEntryDirection}
-          nextCard={() => cardSwiped(true)}
-          previousCard={() => cardSwiped(false)}
-        >
-          <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
-            <SurveyInner
-              surveyId={surveyId}
-              questionId={questionId}
-              isComplete={isComplete}
-            />
-          </div>
-        </DraggableStack>
-      )}
+      <DraggableStack
+        val={cardKey}
+        direction={data.cardEntryDirection}
+        nextCard={() => cardSwiped(true)}
+        previousCard={() => cardSwiped(false)}
+      >
+        <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
+          <SurveyInner
+            surveyId={surveyId}
+            questionId={questionId}
+            isComplete={isComplete}
+          />
+        </div>
+      </DraggableStack>
     </>
   );
 };

@@ -125,7 +125,8 @@ export const createStore = (intialise?: boolean) => {
               .then(() =>
                 questions.create({
                   text: "What's your favourite colour?",
-                  surveyId: survey.id
+                  surveyId: survey.id,
+                  minValues: 1
                 })
               )
               .then(question => {
