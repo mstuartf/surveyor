@@ -23,39 +23,80 @@ export const CREATE_ANSWER = gql`
       questionId: $questionId
       values: $values
     ) {
+      __typename
       success
       message
       answer {
         id
         values
+        __typename
       }
     }
   }
 `;
 
+interface CreateAnswer {
+  createAnswer: {
+    __typename: "CreateAnswerResponse";
+    success: boolean;
+    message: string;
+    answer: {
+      id: number;
+      values: string[];
+      __typename: "Answer";
+    };
+  };
+}
+
 const Question = ({ questionId }) => {
   // this should be fetched from the cache so no need to handle loading state
   const { data } = useQuery(GET_QUESTION, { variables: { questionId } });
 
-  const [createAnswer] = useMutation(CREATE_ANSWER, {
-    // variables: { anonUserId: data.anonUserId, questionId: questionId },
-    update(cache, { data: { createAnswer } }) {
-      const { question }: any = cache.readQuery({
-        query: GET_QUESTION,
-        variables: { questionId }
-      });
-      cache.writeQuery({
-        query: GET_QUESTION,
-        variables: { questionId },
-        data: {
-          question: {
-            ...question,
-            answers: question.answers.concat(createAnswer.answer)
+  const [createAnswer] = useMutation<CreateAnswer>(CREATE_ANSWER);
+
+  const saveAnswer = (value: number) => {
+    createAnswer({
+      variables: {
+        anonUserId: data.anonUserId,
+        questionId: questionId,
+        values: [`${value}`]
+      },
+
+      // update is called twice:
+      // firstly with the optimistic response
+      // secondly with the server response (with the cache state how it was prior to adding the optimistic response)
+      update(cache, { data }: any) {
+        const { question }: any = cache.readQuery({
+          query: GET_QUESTION,
+          variables: { questionId }
+        });
+
+        cache.writeQuery({
+          query: GET_QUESTION,
+          variables: { questionId },
+          data: {
+            question: {
+              ...question,
+              answers: question.answers.concat(data.createAnswer.answer)
+            }
+          }
+        });
+      },
+
+      optimisticResponse: {
+        createAnswer: {
+          __typename: "CreateAnswerResponse",
+          success: true,
+          message: "",
+          answer: {
+            id: 123,
+            __typename: "Answer",
+            values: [`${value}`]
           }
         }
-      });
-    }
-  });
+      }
+    });
+  };
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center bg-red-100">
@@ -67,18 +108,7 @@ const Question = ({ questionId }) => {
       ))}
       <div className="mt-2">Select answers:</div>
       {[1, 2, 3].map(val => (
-        <button
-          key={val}
-          onClick={() => {
-            createAnswer({
-              variables: {
-                anonUserId: data.anonUserId,
-                questionId: questionId,
-                values: [`${val}`]
-              }
-            });
-          }}
-        >
+        <button key={val} onClick={() => saveAnswer(val)}>
           {val}
         </button>
       ))}
