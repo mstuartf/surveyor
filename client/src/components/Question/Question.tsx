@@ -10,7 +10,7 @@ export const GET_QUESTION = gql`
       id
       text
       minValues
-      answers {
+      answer {
         id
         values
       }
@@ -71,6 +71,7 @@ const Question = ({ questionId }) => {
 
   const [createAnswer] = useMutation<CreateAnswer>(CREATE_ANSWER);
 
+  // todo this should save all values depending on allowed number of values logic and remove a value if it is clicked twice
   const saveAnswer = (value: number) => {
     createAnswer({
       variables: {
@@ -94,7 +95,7 @@ const Question = ({ questionId }) => {
           data: {
             question: {
               ...question,
-              answers: question.answers.concat(data.createAnswer.answer)
+              answer: data.createAnswer.answer
             }
           }
         });
@@ -125,9 +126,9 @@ const Question = ({ questionId }) => {
       <div className={data.minValuesReminder ? "text-red-600 underline" : ""}>
         Min values: {data.question.minValues || "n/a"}
       </div>
-      <div className="mt-2">Existing answers:</div>
-      {data.question.answers.map(answer => (
-        <div key={answer.id}>{answer.values}</div>
+      <div className="mt-2">Existing answer values:</div>
+      {(data.question.answer ? data.question.answer.values : []).map(value => (
+        <div key={value}>{value}</div>
       ))}
       <div className="mt-2">Select answers:</div>
       {[1, 2, 3].map(val => (

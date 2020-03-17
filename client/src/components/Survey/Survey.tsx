@@ -15,7 +15,7 @@ export const GET_USER_ID = gql`
         id
         text
         minValues
-        answers {
+        answer {
           id
           values
         }
@@ -33,7 +33,7 @@ interface HasAnonUser {
       id: number;
       text: string;
       minValues;
-      answers: {
+      answer: {
         id: number;
         values: string[];
       }[];
@@ -67,7 +67,8 @@ const Survey = props => {
   );
   // @ts-ignore
   const belowMinValues: boolean = question
-    ? !!question.minValues && !question.answers.length
+    ? !!question.minValues &&
+      (!question.answer || question.answer.values.length < question.minValues)
     : false;
 
   return (

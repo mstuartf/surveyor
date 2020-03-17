@@ -11,10 +11,14 @@ const resolvers = {
       const answers = await dataSources.answers.get(anonUserId, id);
       return {
         ...question.dataValues,
-        answers: answers.map(answer => ({
-          ...answer.dataValues,
-          values: answer.dataValues.values.split("|")
-        }))
+        answer: answers
+          .map(answer => ({
+            ...answer.dataValues,
+            values: answer.dataValues.values.split("|")
+          }))
+          .sort()
+          .reverse()
+          .first()
       };
     },
     survey: async (_, { id }, { dataSources }) => {
@@ -29,7 +33,7 @@ const resolvers = {
         ...survey.dataValues,
         questions: questions.map(question => ({
           ...question.dataValues,
-          answers: [],
+          answer: null,
           possibleValues: values
             .filter(value => value.questionId === question.id)
             .map(possibleAnswer => ({

@@ -14,7 +14,7 @@ export const typeDefs = gql`
   type Question {
     id: ID!
     text: String
-    answers: [Answer]
+    answer: Answer
     possibleValues: [PossibleValue]
     maxValues: Int
     minValues: Int

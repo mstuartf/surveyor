@@ -17,7 +17,7 @@ export const GET_SURVEY = gql`
         id
         text
         minValues
-        answers {
+        answer {
           id
           values
         }
