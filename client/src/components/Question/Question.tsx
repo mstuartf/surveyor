@@ -50,7 +50,7 @@ interface CreateAnswer {
   };
 }
 
-const optimisticCreateAnswer = (value: number): CreateAnswer => ({
+const optimisticCreateAnswer = (values: string[]): CreateAnswer => ({
   createAnswer: {
     __typename: "CreateAnswerResponse",
     success: true,
@@ -58,7 +58,7 @@ const optimisticCreateAnswer = (value: number): CreateAnswer => ({
     answer: {
       id: 123,
       __typename: "Answer",
-      values: [`${value}`]
+      values
     }
   }
 });
@@ -71,13 +71,18 @@ const Question = ({ questionId }) => {
 
   const [createAnswer] = useMutation<CreateAnswer>(CREATE_ANSWER);
 
-  // todo this should save all values depending on allowed number of values logic and remove a value if it is clicked twice
+  // todo this should check allowed number of values logic and remove a value if it is clicked twice
   const saveAnswer = (value: number) => {
+    const values: string[] = (data.question.answer
+      ? data.question.answer.values
+      : []
+    ).concat(`${value}`);
+
     createAnswer({
       variables: {
         anonUserId: data.anonUserId,
         questionId: questionId,
-        values: [`${value}`]
+        values
       },
 
       // update is called twice:
@@ -101,7 +106,7 @@ const Question = ({ questionId }) => {
         });
       },
 
-      optimisticResponse: optimisticCreateAnswer(value)
+      optimisticResponse: optimisticCreateAnswer(values)
     });
   };
 
@@ -126,15 +131,15 @@ const Question = ({ questionId }) => {
       <div className={data.minValuesReminder ? "text-red-600 underline" : ""}>
         Min values: {data.question.minValues || "n/a"}
       </div>
-      <div className="mt-2">Existing answer values:</div>
-      {(data.question.answer ? data.question.answer.values : []).map(value => (
-        <div key={value}>{value}</div>
-      ))}
       <div className="mt-2">Select answers:</div>
       {[1, 2, 3].map(val => (
         <button key={val} onClick={() => saveAnswer(val)}>
           {val}
         </button>
+      ))}
+      <div className="mt-2">Answer values:</div>
+      {(data.question.answer ? data.question.answer.values : []).map(value => (
+        <div key={value}>{value}</div>
       ))}
     </div>
   );

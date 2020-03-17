@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec8a2548-b22d-4e0e-9724-40096b1a3bb4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Question/Question.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Question/Question.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Survey/Survey.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Survey/Survey.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Survey/SurveyNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Survey/SurveyNav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph/src/resolvers/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/graph/src/resolvers/resolvers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph/src/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/graph/src/schema.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="73" column="123" selection-start-line="73" selection-start-column="123" selection-end-line="73" selection-end-column="123" />
+            <state relative-caret-position="513">
+              <caret line="137" column="29" selection-start-line="137" selection-start-column="29" selection-end-line="137" selection-end-column="29" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -41,11 +36,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/node_modules/typescript/lib/lib.es5.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="1236" column="4" selection-start-line="1236" selection-start-column="4" selection-end-line="1236" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/Survey/Survey.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="69" column="101" selection-start-line="69" selection-start-column="101" selection-end-line="69" selection-end-column="101" />
+            <state relative-caret-position="648">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -56,20 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyNav.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-196">
-              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyInner.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+            <state relative-caret-position="648">
+              <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -102,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/graph/src/resolvers/resolvers.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="20">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
@@ -213,8 +205,8 @@
         <option value="$PROJECT_DIR$/graph/src/schema.ts" />
         <option value="$PROJECT_DIR$/graph/src/resolvers/resolvers.ts" />
         <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyNav.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/Question/Question.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/Survey/Survey.tsx" />
+        <option value="$PROJECT_DIR$/client/src/components/Question/Question.tsx" />
       </list>
     </option>
   </component>
@@ -327,12 +319,12 @@
       <workItem from="1584111196737" duration="15000" />
       <workItem from="1584262447949" duration="2444000" />
       <workItem from="1584303071217" duration="8347000" />
-      <workItem from="1584433536710" duration="705000" />
+      <workItem from="1584433536710" duration="1135000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81468000" />
+    <option name="totallyTimeSpent" value="81898000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -441,13 +433,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/node_modules/typescript/lib/lib.es5.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="1468" column="5" selection-start-line="1468" selection-start-column="5" selection-end-line="1468" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -671,6 +656,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/graph/src/resolvers/resolvers.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Survey/Survey.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyInner.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -681,39 +683,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/graph/src/resolvers/resolvers.ts">
+    <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyNav.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="648">
+          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/node_modules/typescript/lib/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="1236" column="4" selection-start-line="1236" selection-start-column="4" selection-end-line="1236" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="73" column="123" selection-start-line="73" selection-start-column="123" selection-end-line="73" selection-end-column="123" />
+        <state relative-caret-position="513">
+          <caret line="137" column="29" selection-start-line="137" selection-start-column="29" selection-end-line="137" selection-end-column="29" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyNav.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-196">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Survey/Survey.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="69" column="101" selection-start-line="69" selection-start-column="101" selection-end-line="69" selection-end-column="101" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
