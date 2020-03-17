@@ -15,9 +15,15 @@ export const GET_USER_ID = gql`
         id
         text
         minValues
+        maxValues
         answer {
           id
           values
+        }
+        possibleValues {
+          id
+          label
+          value
         }
       }
     }

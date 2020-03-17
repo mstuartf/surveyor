@@ -1,6 +1,8 @@
 import React from "react";
 import { gql } from "apollo-boost";
 import { useMutation, useQuery } from "@apollo/react-hooks";
+import MultipleChoice from "../MultipleChoice/MultipleChoice";
+import SingleInput from "../SingleInput/SingleInput";
 
 export const GET_QUESTION = gql`
   query GetQuestion($questionId: ID!) {
@@ -10,9 +12,15 @@ export const GET_QUESTION = gql`
       id
       text
       minValues
+      maxValues
       answer {
         id
         values
+      }
+      possibleValues {
+        id
+        label
+        value
       }
     }
   }
@@ -71,13 +79,7 @@ const Question = ({ questionId }) => {
 
   const [createAnswer] = useMutation<CreateAnswer>(CREATE_ANSWER);
 
-  // todo this should check allowed number of values logic and remove a value if it is clicked twice
-  const saveAnswer = (value: number) => {
-    const values: string[] = (data.question.answer
-      ? data.question.answer.values
-      : []
-    ).concat(`${value}`);
-
+  const saveAnswerValues = (values: string[]) => {
     createAnswer({
       variables: {
         anonUserId: data.anonUserId,
@@ -128,19 +130,23 @@ const Question = ({ questionId }) => {
     <div className="w-full h-full flex flex-col items-center justify-center bg-red-100">
       <div>Question: {questionId}</div>
       <div>{data.question.text}</div>
-      <div className={data.minValuesReminder ? "text-red-600 underline" : ""}>
-        Min values: {data.question.minValues || "n/a"}
-      </div>
-      <div className="mt-2">Select answers:</div>
-      {[1, 2, 3].map(val => (
-        <button key={val} onClick={() => saveAnswer(val)}>
-          {val}
-        </button>
-      ))}
-      <div className="mt-2">Answer values:</div>
-      {(data.question.answer ? data.question.answer.values : []).map(value => (
-        <div key={value}>{value}</div>
-      ))}
+      {data.question.possibleValues.length ? (
+        <MultipleChoice
+          onSave={saveAnswerValues}
+          possibleValues={data.question.possibleValues}
+          min={data.question.minValues}
+          max={data.question.maxValues}
+          minValuesReminder={data.minValuesReminder}
+          answer={data.question.answer}
+        />
+      ) : (
+        <SingleInput
+          onSave={saveAnswerValues}
+          minValues={data.question.minValues}
+          minValuesReminder={data.minValuesReminder}
+          answer={data.question.answer}
+        />
+      )}
     </div>
   );
 };

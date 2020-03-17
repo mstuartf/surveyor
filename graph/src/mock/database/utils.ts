@@ -126,7 +126,8 @@ export const createStore = (intialise?: boolean) => {
                 questions.create({
                   text: "What's your favourite colour?",
                   surveyId: survey.id,
-                  minValues: 1
+                  minValues: 1,
+                  maxValues: 1
                 })
               )
               .then(question => {
@@ -139,8 +140,19 @@ export const createStore = (intialise?: boolean) => {
                       value: "green"
                     })
                   )
-                  .then(possibleValue => {
-                    console.log("possibleValue", possibleValue.toJSON());
+                  .then(() => {
+                    console.log("question", question.toJSON());
+                    db.sync()
+                      .then(() =>
+                        possibleValues.create({
+                          questionId: question.id,
+                          label: "Bright Pink",
+                          value: "pink"
+                        })
+                      )
+                      .then(possibleValue => {
+                        console.log("possibleValue", possibleValue.toJSON());
+                      });
                   });
               });
           });

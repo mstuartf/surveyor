@@ -61,7 +61,9 @@ const resolvers = {
         message: `answer created`,
         answer: {
           ...answer.dataValues,
-          values: answer.dataValues.values.split("|")
+          values: answer.dataValues.values.length
+            ? answer.dataValues.values.split("|")
+            : []
         }
       };
     },
