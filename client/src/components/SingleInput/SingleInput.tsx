@@ -15,7 +15,7 @@ const SingleInput = ({ minValuesReminder, min, answer, onSave }: Props) => {
   return (
     <>
       <div className="mt-2">Input answer</div>
-      <DebouncedInput init={value} saveFn={v => onSave([v])} />
+      <DebouncedInput initialValue={value} callback={v => onSave([v])} />
     </>
   );
 };

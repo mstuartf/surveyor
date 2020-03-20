@@ -1,18 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
 
-export const DebouncedInput = ({ init, saveFn, timeout = 500 }) => {
-  const [value, setValue] = useState(init);
-  const timeoutRef = useRef(null);
+interface Props {
+  initialValue: string;
+  callback: (v: string) => void;
+  timeout?: number;
+}
+
+export const DebouncedInput = ({
+  initialValue,
+  callback,
+  timeout = 500
+}: Props) => {
+  const [value, setValue] = useState(initialValue);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (timeoutRef.current !== null) {
-      clearTimeout(timeoutRef.current as any);
+      clearTimeout(timeoutRef.current);
     }
 
-    (timeoutRef.current as any) = setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       timeoutRef.current = null;
-      if (value !== init) {
-        saveFn(value);
+      if (value !== initialValue) {
+        callback(value);
       }
     }, timeout);
   }, [value]);
