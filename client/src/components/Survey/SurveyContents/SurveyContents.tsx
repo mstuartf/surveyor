@@ -1,9 +1,9 @@
 import React from "react";
-import StartSurvey from "../StartSurvey/StartSurvey";
-import Completed from "../Completed/Completed";
-import Question from "../Question/Question";
+import StartSurvey from "../../StartSurvey/StartSurvey";
+import Completed from "../../Completed/Completed";
+import Question from "../../Question/Question";
 
-const SurveyInner = ({ questionId, surveyId, isComplete }) => {
+const SurveyContents = ({ questionId, surveyId, isComplete }) => {
   return (
     <>
       {questionId && !isComplete ? (
@@ -17,4 +17,4 @@ const SurveyInner = ({ questionId, surveyId, isComplete }) => {
   );
 };
 
-export default SurveyInner;
+export default SurveyContents;

@@ -1,11 +1,11 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import DraggableStack from "../DraggableStack/DraggableStack";
-import { CardEntryDirection } from "../DraggableStack/variants";
+import DraggableStack from "../../DraggableStack/DraggableStack";
+import { CardEntryDirection } from "../../DraggableStack/variants";
 import { gql } from "apollo-boost";
 import { useHistory } from "react-router";
 import { getQuestion } from "./nextQuestion";
-import SurveyInner from "./SurveyInner";
+import SurveyContents from "../SurveyContents/SurveyContents";
 
 export const GET_SURVEY = gql`
   query GetSurvey($surveyId: ID!) {
@@ -26,7 +26,12 @@ export const GET_SURVEY = gql`
   }
 `;
 
-const SurveyNav = ({ questionId, surveyId, isComplete, belowMinValues }) => {
+const SurveyNavigation = ({
+  questionId,
+  surveyId,
+  isComplete,
+  belowMinValues
+}) => {
   const history = useHistory();
 
   const { data, client } = useQuery(GET_SURVEY, {
@@ -81,7 +86,7 @@ const SurveyNav = ({ questionId, surveyId, isComplete, belowMinValues }) => {
         previousCard={() => cardSwiped(false)}
       >
         <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
-          <SurveyInner
+          <SurveyContents
             surveyId={surveyId}
             questionId={questionId}
             isComplete={isComplete}
@@ -92,4 +97,4 @@ const SurveyNav = ({ questionId, surveyId, isComplete, belowMinValues }) => {
   );
 };
 
-export default SurveyNav;
+export default SurveyNavigation;
