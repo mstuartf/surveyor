@@ -1,10 +1,10 @@
 import React from "react";
-import { AnswerInterface } from "../../interfaces";
+import { GQLAnswer } from "../../generated/graphql";
 
 interface Props {
   minValuesReminder: boolean;
   min: number;
-  answer: AnswerInterface;
+  answer?: GQLAnswer | null;
   onSave: Function;
 }
 

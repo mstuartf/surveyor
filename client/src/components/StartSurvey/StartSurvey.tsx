@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
 import { gql } from "apollo-boost";
-import { useApolloClient, useMutation, useQuery } from "@apollo/react-hooks";
+import { useApolloClient } from "@apollo/react-hooks";
+import {
+  useStartSurveyMutationMutation,
+  useStartSurveyQueryQuery
+} from "../../generated/graphql";
 
 export const START_SURVEY = gql`
-  mutation CreateAnonUser($surveyId: ID!) {
+  mutation StartSurveyMutation($surveyId: ID!) {
     createAnonUser(surveyId: $surveyId) {
       anonUser {
         id
@@ -13,7 +17,7 @@ export const START_SURVEY = gql`
 `;
 
 export const GET_USER_ID = gql`
-  query HasAnonUser {
+  query StartSurveyQuery {
     anonUserId @client
   }
 `;
@@ -21,15 +25,19 @@ export const GET_USER_ID = gql`
 const StartSurvey = ({ surveyId }) => {
   const client = useApolloClient();
 
-  const { data } = useQuery(GET_USER_ID);
+  const { data } = useStartSurveyQueryQuery();
 
-  const [startSurvey] = useMutation(START_SURVEY, {
+  const [startSurvey] = useStartSurveyMutationMutation({
     variables: { surveyId: surveyId },
 
-    update(cache, { data: { createAnonUser } }) {
+    update(cache, { data }) {
+      if (!data) {
+        return;
+      }
+
       client.writeData({
         data: {
-          anonUserId: createAnonUser.anonUser.id
+          anonUserId: data.createAnonUser.anonUser.id
         }
       });
     }

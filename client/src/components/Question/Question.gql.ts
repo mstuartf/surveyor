@@ -1,14 +1,7 @@
-import { CreateAnswerResponse, QuestionInterface } from "../../interfaces";
 import { gql } from "apollo-boost";
 
-export interface GetQuestionQuery {
-  question: QuestionInterface;
-  anonUserId: string;
-  minValuesReminder: boolean;
-}
-
 export const GET_QUESTION = gql`
-  query GetQuestion($questionId: ID!) {
+  query QuestionQuery($questionId: ID!) {
     anonUserId @client
     minValuesReminder @client
     question(id: $questionId) {
@@ -29,12 +22,12 @@ export const GET_QUESTION = gql`
   }
 `;
 
-export interface CreateAnswerMutation {
-  createAnswer: CreateAnswerResponse;
-}
-
 export const CREATE_ANSWER = gql`
-  mutation CreateAnswer($anonUserId: ID!, $questionId: ID!, $values: [String]) {
+  mutation QuestionMutation(
+    $anonUserId: ID!
+    $questionId: ID!
+    $values: [String]
+  ) {
     createAnswer(
       anonUserId: $anonUserId
       questionId: $questionId

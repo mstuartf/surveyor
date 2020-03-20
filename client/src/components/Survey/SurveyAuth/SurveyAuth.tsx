@@ -4,10 +4,10 @@ import { Redirect, RouteComponentProps } from "react-router";
 import React from "react";
 import SurveyNavigation from "../SurveyNavigation/SurveyNavigation";
 import Loading from "../../Loading/Loading";
-import { SurveyInterface } from "../../../interfaces";
+import { GQLSurvey } from "../../../generated/graphql";
 
 export const GET_USER_ID = gql`
-  query HasAnonUser($surveyId: ID!) {
+  query SurveyAuthQuery($surveyId: ID!) {
     anonUserId @client
     survey(id: $surveyId) {
       id
@@ -33,7 +33,7 @@ export const GET_USER_ID = gql`
 
 interface HasAnonUser {
   anonUserId: string;
-  survey: SurveyInterface;
+  survey: GQLSurvey;
 }
 
 interface MatchParams {

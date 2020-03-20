@@ -1,0 +1,21 @@
+overwrite: true
+schema:
+  - "./src/schema.ts"
+  - "../graph/src/schema.ts"
+config:
+  typesPrefix: "GQL"
+  withHooks: true
+  withHOC: false
+  withComponent: false
+  hooksImportFrom: "@apollo/react-hooks"
+documents: "src/**/*.{ts,tsx}"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+      - "fragment-matcher"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

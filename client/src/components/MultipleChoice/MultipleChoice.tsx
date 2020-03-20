@@ -1,12 +1,12 @@
 import React from "react";
-import { PossibleValueInterface, AnswerInterface } from "../../interfaces";
+import { GQLAnswer, GQLPossibleValue } from "../../generated/graphql";
 
 interface Props {
   minValuesReminder: boolean;
   min: number;
   max: number;
-  answer: AnswerInterface;
-  possibleValues: PossibleValueInterface[];
+  answer?: GQLAnswer | null;
+  possibleValues: GQLPossibleValue[];
   onSave: Function;
 }
 

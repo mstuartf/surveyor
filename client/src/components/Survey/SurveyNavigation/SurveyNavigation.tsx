@@ -8,7 +8,7 @@ import { getQuestion } from "./nextQuestion";
 import SurveyContents from "../SurveyContents/SurveyContents";
 
 export const GET_SURVEY = gql`
-  query GetSurvey($surveyId: ID!) {
+  query SurveyNavigationQuery($surveyId: ID!) {
     cardEntryDirection @client
     survey(id: $surveyId) {
       id
