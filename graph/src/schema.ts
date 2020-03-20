@@ -8,14 +8,14 @@ export const typeDefs = gql`
   type Survey {
     id: ID!
     name: String!
-    questions: [Question]
+    questions: [Question!]!
   }
 
   type Question {
     id: ID!
-    text: String
+    text: String!
     answer: Answer
-    possibleValues: [PossibleValue]
+    possibleValues: [PossibleValue!]!
     maxValues: Int
     minValues: Int
     answerType: String
@@ -23,44 +23,44 @@ export const typeDefs = gql`
 
   type Answer {
     id: ID!
-    values: [String]
+    values: [String!]!
   }
 
   type PossibleValue {
     id: ID!
-    value: String
-    label: String
+    value: String!
+    label: String!
   }
 
   type AnonUser {
     id: ID!
-    survey: Survey
+    survey: Survey!
   }
 
   type Query {
-    anonUser(id: ID!): AnonUser
-    survey(id: ID!): Survey
-    question(id: ID!, anonUserId: ID): Question
+    anonUser(id: ID!): AnonUser!
+    survey(id: ID!): Survey!
+    question(id: ID!, anonUserId: ID): Question!
   }
 
   type Mutation {
-    createAnonUser(surveyId: ID!): CreateAnonUserResponse
+    createAnonUser(surveyId: ID!): CreateAnonUserResponse!
     createAnswer(
       anonUserId: ID!
       questionId: ID!
       values: [String]
-    ): CreateAnswerResponse
+    ): CreateAnswerResponse!
   }
 
   type CreateAnonUserResponse {
     success: Boolean!
-    message: String
-    anonUser: AnonUser
+    message: String!
+    anonUser: AnonUser!
   }
 
   type CreateAnswerResponse {
     success: Boolean!
-    message: String
-    answer: Answer
+    message: String!
+    answer: Answer!
   }
 `;
