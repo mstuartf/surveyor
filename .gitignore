@@ -6,3 +6,4 @@ client/build/
 client/node_modules/
 client/src/generated/
 client/src/assets/main.css
+client/graphql.schema.json
