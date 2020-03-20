@@ -2,16 +2,22 @@ import * as React from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { swipePower, swipeConfidenceThreshold } from "./swipePower";
 
-const DraggableItem = ({ children, onDraggedLeft, onDraggedRight }) => {
+interface Props {
+  children: React.ReactNode;
+  onDraggedLeft: () => void;
+  onDraggedRight: () => void;
+}
+
+const DraggableItem = ({ children, onDraggedLeft, onDraggedRight }: Props) => {
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-300, 300], [-45, 45]);
 
   const onDragEnd = (e, { offset, velocity }) => {
     const swipe = swipePower(offset.x, velocity.x);
     if (swipe < -swipeConfidenceThreshold) {
-      onDraggedLeft(-1);
+      onDraggedLeft();
     } else if (swipe > swipeConfidenceThreshold) {
-      onDraggedRight(1);
+      onDraggedRight();
     }
   };
 

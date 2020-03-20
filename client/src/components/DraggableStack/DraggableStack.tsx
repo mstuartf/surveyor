@@ -1,15 +1,23 @@
 import React from "react";
 import DraggableItem from "../DraggableItem/DraggableItem";
 import { AnimatePresence, motion } from "framer-motion";
-import { variants } from "./variants";
+import { CardEntryDirection, variants } from "./variants";
+
+interface Props {
+  cardKey: string;
+  direction: CardEntryDirection;
+  nextCard: () => void;
+  previousCard: () => void;
+  children: React.ReactNode;
+}
 
 const DraggableStack = ({
-  val,
+  cardKey,
   direction,
   nextCard,
   previousCard,
   children
-}) => {
+}: Props) => {
   return (
     <div className="w-full h-full relative">
       <AnimatePresence>
@@ -21,7 +29,7 @@ const DraggableStack = ({
             right: 0,
             position: "absolute"
           }}
-          key={val}
+          key={cardKey}
           custom={direction}
           variants={variants}
           initial="enter"

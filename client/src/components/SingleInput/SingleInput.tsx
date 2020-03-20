@@ -1,6 +1,14 @@
 import React from "react";
+import { AnswerInterface } from "../../interfaces";
 
-const SingleInput = ({ minValuesReminder, minValues, answer, onSave }) => {
+interface Props {
+  minValuesReminder: boolean;
+  min: number;
+  answer: AnswerInterface;
+  onSave: Function;
+}
+
+const SingleInput = ({ minValuesReminder, min, answer, onSave }: Props) => {
   let timer;
 
   const saveValueDebounce = (value: string) => {

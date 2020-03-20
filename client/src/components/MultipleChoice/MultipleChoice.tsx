@@ -1,4 +1,14 @@
 import React from "react";
+import { PossibleValueInterface, AnswerInterface } from "../../interfaces";
+
+interface Props {
+  minValuesReminder: boolean;
+  min: number;
+  max: number;
+  answer: AnswerInterface;
+  possibleValues: PossibleValueInterface[];
+  onSave: Function;
+}
 
 const MultipleChoice = ({
   minValuesReminder,
@@ -7,7 +17,7 @@ const MultipleChoice = ({
   answer,
   possibleValues,
   onSave
-}) => {
+}: Props) => {
   const toggleValue = value => {
     let values: string[];
     if (answer) {
@@ -19,7 +29,7 @@ const MultipleChoice = ({
     } else {
       values = [value];
     }
-    values = values.slice(Math.max(values.length - max, 0));
+    values = values.slice(-Math.max(values.length - max, 0));
     onSave(values);
   };
 

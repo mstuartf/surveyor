@@ -1,83 +1,43 @@
 import React from "react";
-import { gql } from "apollo-boost";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import MultipleChoice from "../MultipleChoice/MultipleChoice";
 import SingleInput from "../SingleInput/SingleInput";
+import Loading from "../Loading/Loading";
+import {
+  CREATE_ANSWER,
+  CreateAnswerMutation,
+  GET_QUESTION,
+  GetQuestionQuery
+} from "./Question.gql";
 
-export const GET_QUESTION = gql`
-  query GetQuestion($questionId: ID!) {
-    anonUserId @client
-    minValuesReminder @client
-    question(id: $questionId) {
-      id
-      text
-      minValues
-      maxValues
-      answer {
-        id
-        values
-      }
-      possibleValues {
-        id
-        label
-        value
-      }
-    }
-  }
-`;
-
-export const CREATE_ANSWER = gql`
-  mutation CreateAnswer($anonUserId: ID!, $questionId: ID!, $values: [String]) {
-    createAnswer(
-      anonUserId: $anonUserId
-      questionId: $questionId
-      values: $values
-    ) {
-      __typename
-      success
-      message
-      answer {
-        id
-        values
-        __typename
-      }
-    }
-  }
-`;
-
-interface CreateAnswer {
-  createAnswer: {
-    __typename: "CreateAnswerResponse";
-    success: boolean;
-    message: string;
-    answer: {
-      id: number;
-      values: string[];
-      __typename: "Answer";
-    };
-  };
-}
-
-const optimisticCreateAnswer = (values: string[]): CreateAnswer => ({
+const optimisticCreateAnswer = (values: string[]): CreateAnswerMutation => ({
   createAnswer: {
     __typename: "CreateAnswerResponse",
     success: true,
     message: "",
     answer: {
-      id: 123,
+      id: "123",
       __typename: "Answer",
       values
     }
   }
 });
 
-const Question = ({ questionId }) => {
+interface Props {
+  questionId: string;
+}
+
+const Question = ({ questionId }: Props) => {
   // this should be fetched from the cache so no need to handle loading state
-  const { data, client } = useQuery(GET_QUESTION, {
+  const { data, client } = useQuery<GetQuestionQuery>(GET_QUESTION, {
     variables: { questionId }
   });
 
-  const [createAnswer] = useMutation<CreateAnswer>(CREATE_ANSWER);
+  const [createAnswer] = useMutation<CreateAnswerMutation>(CREATE_ANSWER);
+
+  if (data === undefined) {
+    return <Loading />;
+  }
 
   const saveAnswerValues = (values: string[]) => {
     createAnswer({
@@ -129,11 +89,11 @@ const Question = ({ questionId }) => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center bg-red-100">
       <div>Question: {questionId}</div>
-      <div>{data.question.text}</div>
-      {data.question.possibleValues.length ? (
+      <div>{data!.question.text}</div>
+      {data!.question.possibleValues.length ? (
         <MultipleChoice
           onSave={saveAnswerValues}
-          possibleValues={data.question.possibleValues}
+          possibleValues={data!.question.possibleValues}
           min={data.question.minValues}
           max={data.question.maxValues}
           minValuesReminder={data.minValuesReminder}
@@ -142,7 +102,7 @@ const Question = ({ questionId }) => {
       ) : (
         <SingleInput
           onSave={saveAnswerValues}
-          minValues={data.question.minValues}
+          min={data.question.minValues}
           minValuesReminder={data.minValuesReminder}
           answer={data.question.answer}
         />

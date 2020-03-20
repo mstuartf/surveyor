@@ -75,7 +75,7 @@ const SurveyNav = ({ questionId, surveyId, isComplete, belowMinValues }) => {
   return (
     <>
       <DraggableStack
-        val={cardKey}
+        cardKey={cardKey}
         direction={data.cardEntryDirection}
         nextCard={() => cardSwiped(true)}
         previousCard={() => cardSwiped(false)}
