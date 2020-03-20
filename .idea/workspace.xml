@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec8a2548-b22d-4e0e-9724-40096b1a3bb4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/DebouncedInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SingleInput/SingleInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SingleInput/SingleInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Question/Question.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Question/Question.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/tailwind.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/tailwind.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,11 +17,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="89" column="62" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="62" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/tailwind.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="282" column="19" selection-start-line="282" selection-start-column="19" selection-end-line="282" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyNavigation/SurveyNavigation.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+            <state relative-caret-position="-627">
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -31,22 +50,23 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/SingleInput/SingleInput.tsx">
+        <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyAuth/SurveyAuth.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="-162">
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#61#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/components/DebouncedInput.tsx">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyContents/SurveyContents.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state>
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,8 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>children</find>
-      <find>paginate</find>
       <find>max-h</find>
       <find>anonUserId</find>
       <find>lastQuestionId</find>
@@ -92,6 +110,8 @@
       <find>MultipleChoice</find>
       <find>GET_QUESTION</find>
       <find>InputField</find>
+      <find>saveFn</find>
+      <find>height</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/client/src</dir>
@@ -103,7 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/src/assets/styles.css" />
         <option value="$PROJECT_DIR$/graph/src/resolvers/getFullAnonUserResponse.ts" />
         <option value="$PROJECT_DIR$/client/src/components/CardStack/CardStack.tsx" />
         <option value="$PROJECT_DIR$/client/src/Question.tsx" />
@@ -149,11 +168,12 @@
         <option value="$PROJECT_DIR$/client/src/components/StartSurvey/StartSurvey.graphql.ts" />
         <option value="$PROJECT_DIR$/client/codegen.yml" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/client/src/components/Question/Question.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/MultipleChoice/MultipleChoice.tsx" />
         <option value="$PROJECT_DIR$/graph/src/schema.ts" />
         <option value="$PROJECT_DIR$/client/src/components/SingleInput/SingleInput.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/DebouncedInput.tsx" />
+        <option value="$PROJECT_DIR$/client/tailwind.js" />
+        <option value="$PROJECT_DIR$/client/src/components/Question/Question.tsx" />
       </list>
     </option>
   </component>
@@ -182,19 +202,6 @@
               <item name="surveyor" type="b2602c69:ProjectViewProjectNode" />
               <item name="surveyor" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="surveyor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="surveyor" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="surveyor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="surveyor" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -256,13 +263,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93435000" />
+    <option name="totallyTimeSpent" value="94744000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26752505" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26752505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -280,7 +287,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Terminal" order="3" weight="0.37911302" />
+      <window_info active="true" anchor="right" id="Terminal" order="3" visible="true" weight="0.37911302" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20529328" />
@@ -312,6 +319,15 @@
     <entry file="file://$PROJECT_DIR$/client/src/Question.tsx" />
     <entry file="file://$PROJECT_DIR$/client/src/resolvers.ts" />
     <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.interfaces.ts" />
+    <entry file="file://$PROJECT_DIR$/client/src/components/MultipleChoice/MultipleChoice.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/DraggableItem/DraggableItem.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -321,16 +337,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/DraggableStack/DraggableStack.tsx">
+    <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyAuth/SurveyAuth.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="-162">
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.tsx">
+    <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyContents/SurveyContents.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -341,28 +357,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyNavigation/SurveyNavigation.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+        <state relative-caret-position="-627">
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/SingleInput/SingleInput.tsx">
+    <entry file="file://$PROJECT_DIR$/client/tailwind.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="311">
+          <caret line="282" column="19" selection-start-line="282" selection-start-column="19" selection-end-line="282" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/DebouncedInput.tsx">
+    <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="303">
+          <caret line="89" column="62" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

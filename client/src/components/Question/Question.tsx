@@ -83,26 +83,29 @@ const Question = ({ questionId }: Props) => {
   }
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center bg-red-100">
-      <div>Question: {questionId}</div>
-      <div>{data!.question.text}</div>
-      {data.question.possibleValues && data.question.possibleValues.length ? (
-        <MultipleChoice
-          onSave={saveAnswerValues}
-          possibleValues={data.question.possibleValues}
-          min={data.question.minValues || 0}
-          max={data.question.maxValues || 0}
-          minValuesReminder={data.minValuesReminder}
-          answer={data.question.answer}
-        />
-      ) : (
-        <SingleInput
-          onSave={saveAnswerValues}
-          min={data.question.minValues || 0}
-          minValuesReminder={data.minValuesReminder}
-          answer={data.question.answer}
-        />
-      )}
+    <div className="w-full h-full flex flex-col items-center justify-center">
+      <div className="h-1/4 border w-full flex justify-center items-center">
+        {data!.question.text}
+      </div>
+      <div className="flex-grow border border-red-400 w-full">
+        {data.question.possibleValues && data.question.possibleValues.length ? (
+          <MultipleChoice
+            onSave={saveAnswerValues}
+            possibleValues={data.question.possibleValues}
+            min={data.question.minValues || 0}
+            max={data.question.maxValues || 0}
+            minValuesReminder={data.minValuesReminder}
+            answer={data.question.answer}
+          />
+        ) : (
+          <SingleInput
+            onSave={saveAnswerValues}
+            min={data.question.minValues || 0}
+            minValuesReminder={data.minValuesReminder}
+            answer={data.question.answer}
+          />
+        )}
+      </div>
     </div>
   );
 };
