@@ -1,10 +1,9 @@
 import { gql } from "apollo-boost";
-import { useQuery } from "@apollo/react-hooks";
 import { Redirect, RouteComponentProps } from "react-router";
 import React from "react";
 import SurveyNavigation from "../SurveyNavigation/SurveyNavigation";
 import Loading from "../../Loading/Loading";
-import { GQLSurvey } from "../../../generated/graphql";
+import { useSurveyAuthQueryQuery } from "../../../generated/graphql";
 
 export const GET_USER_ID = gql`
   query SurveyAuthQuery($surveyId: ID!) {
@@ -31,11 +30,6 @@ export const GET_USER_ID = gql`
   }
 `;
 
-interface HasAnonUser {
-  anonUserId: string;
-  survey: GQLSurvey;
-}
-
 interface MatchParams {
   surveyId: string;
   questionId: string;
@@ -51,7 +45,7 @@ const SurveyAuth = (props: Props) => {
   const { questionId, surveyId } = props.match.params;
   const isComplete: boolean = questionId === "complete";
 
-  const { data, loading } = useQuery<HasAnonUser>(GET_USER_ID, {
+  const { data, loading } = useSurveyAuthQueryQuery({
     variables: { surveyId }
   });
 

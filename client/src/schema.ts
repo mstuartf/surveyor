@@ -1,9 +1,14 @@
 import { gql } from "apollo-boost";
 
 export const typeDefs = gql`
+  enum CardEntryDirection {
+    fromRight
+    fromLeft
+  }
+
   type Query {
     anonUserId: String!
-    cardEntryDirection: String!
+    cardEntryDirection: CardEntryDirection!
     minValuesReminder: Boolean!
   }
 `;

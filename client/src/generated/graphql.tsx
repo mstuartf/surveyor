@@ -23,6 +23,11 @@ export type GQLAnswer = {
   values: Array<Scalars["String"]>;
 };
 
+export enum GQLCardEntryDirection {
+  FromRight = "fromRight",
+  FromLeft = "fromLeft"
+}
+
 export type GQLCreateAnonUserResponse = {
   __typename?: "CreateAnonUserResponse";
   success: Scalars["Boolean"];
@@ -64,7 +69,7 @@ export type GQLQuery = {
   __typename?: "Query";
   anonUser: GQLAnonUser;
   anonUserId: Scalars["String"];
-  cardEntryDirection: Scalars["String"];
+  cardEntryDirection: GQLCardEntryDirection;
   minValuesReminder: Scalars["Boolean"];
   question: GQLQuestion;
   survey: GQLSurvey;

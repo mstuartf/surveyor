@@ -1,9 +1,9 @@
 const sortProp: string = "id";
 
 export const getQuestion = (
-  currentQuestionId: number,
-  questions: { id: number }[]
-): [number, number] => {
+  currentQuestionId: string,
+  questions: { id: string }[]
+): [string, string] => {
   questions.sort((a, b) => (a[sortProp] > b[sortProp] ? 1 : -1));
 
   let index: number = questions.findIndex(

@@ -1,11 +1,12 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
 import DraggableStack from "../../DraggableStack/DraggableStack";
 import { CardEntryDirection } from "../../DraggableStack/variants";
 import { gql } from "apollo-boost";
 import { useHistory } from "react-router";
 import { getQuestion } from "./nextQuestion";
 import SurveyContents from "../SurveyContents/SurveyContents";
+import { useSurveyNavigationQueryQuery } from "../../../generated/graphql";
+import Loading from "../../Loading/Loading";
 
 export const GET_SURVEY = gql`
   query SurveyNavigationQuery($surveyId: ID!) {
@@ -34,9 +35,13 @@ const SurveyNavigation = ({
 }) => {
   const history = useHistory();
 
-  const { data, client } = useQuery(GET_SURVEY, {
+  const { data, client } = useSurveyNavigationQueryQuery({
     variables: { surveyId }
   });
+
+  if (!data) {
+    return <Loading />;
+  }
 
   const cardSwiped = (navigateForward: boolean) => {
     if (navigateForward && belowMinValues) {
