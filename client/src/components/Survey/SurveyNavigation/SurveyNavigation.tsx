@@ -1,31 +1,11 @@
 import React from "react";
 import DraggableStack from "../../DraggableStack/DraggableStack";
 import { CardEntryDirection } from "../../DraggableStack/variants";
-import { gql } from "apollo-boost";
 import { useHistory } from "react-router";
 import { getQuestion } from "./nextQuestion";
 import SurveyContents from "../SurveyContents/SurveyContents";
 import { useSurveyNavigationQueryQuery } from "../../../generated/graphql";
 import Loading from "../../Loading/Loading";
-
-export const GET_SURVEY = gql`
-  query SurveyNavigationQuery($surveyId: ID!) {
-    cardEntryDirection @client
-    survey(id: $surveyId) {
-      id
-      name
-      questions {
-        id
-        text
-        minValues
-        answer {
-          id
-          values
-        }
-      }
-    }
-  }
-`;
 
 const SurveyNavigation = ({
   questionId,

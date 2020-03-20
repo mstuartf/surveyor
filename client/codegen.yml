@@ -8,7 +8,7 @@ config:
   withHOC: false
   withComponent: false
   hooksImportFrom: "@apollo/react-hooks"
-documents: "src/**/*.{ts,tsx}"
+documents: "src/**/*.graphql.ts"
 generates:
   src/generated/graphql.tsx:
     plugins:

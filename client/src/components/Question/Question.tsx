@@ -2,7 +2,7 @@ import React from "react";
 import MultipleChoice from "../MultipleChoice/MultipleChoice";
 import SingleInput from "../SingleInput/SingleInput";
 import Loading from "../Loading/Loading";
-import { GET_QUESTION } from "./Question.gql";
+import { GET_QUESTION } from "./Question.graphql";
 import {
   useQuestionMutationMutation,
   useQuestionQueryQuery

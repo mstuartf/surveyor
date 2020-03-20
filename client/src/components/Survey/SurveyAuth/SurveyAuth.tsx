@@ -1,34 +1,8 @@
-import { gql } from "apollo-boost";
 import { Redirect, RouteComponentProps } from "react-router";
 import React from "react";
 import SurveyNavigation from "../SurveyNavigation/SurveyNavigation";
 import Loading from "../../Loading/Loading";
 import { useSurveyAuthQueryQuery } from "../../../generated/graphql";
-
-export const GET_USER_ID = gql`
-  query SurveyAuthQuery($surveyId: ID!) {
-    anonUserId @client
-    survey(id: $surveyId) {
-      id
-      name
-      questions {
-        id
-        text
-        minValues
-        maxValues
-        answer {
-          id
-          values
-        }
-        possibleValues {
-          id
-          label
-          value
-        }
-      }
-    }
-  }
-`;
 
 interface MatchParams {
   surveyId: string;

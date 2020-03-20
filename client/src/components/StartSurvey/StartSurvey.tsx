@@ -1,26 +1,9 @@
 import React, { useEffect } from "react";
-import { gql } from "apollo-boost";
 import { useApolloClient } from "@apollo/react-hooks";
 import {
   useStartSurveyMutationMutation,
   useStartSurveyQueryQuery
 } from "../../generated/graphql";
-
-export const START_SURVEY = gql`
-  mutation StartSurveyMutation($surveyId: ID!) {
-    createAnonUser(surveyId: $surveyId) {
-      anonUser {
-        id
-      }
-    }
-  }
-`;
-
-export const GET_USER_ID = gql`
-  query StartSurveyQuery {
-    anonUserId @client
-  }
-`;
 
 const StartSurvey = ({ surveyId }) => {
   const client = useApolloClient();
