@@ -1,10 +1,10 @@
-const sortProp: string = "id";
+import { sortQuestions } from "../../../sortQuestions";
 
 export const getQuestion = (
   currentQuestionId: string,
   questions: { id: string }[]
 ): [string, string] => {
-  questions.sort((a, b) => (a[sortProp] > b[sortProp] ? 1 : -1));
+  questions = sortQuestions(questions);
 
   let index: number = questions.findIndex(
     question => question.id === currentQuestionId

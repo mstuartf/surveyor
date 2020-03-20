@@ -7,7 +7,7 @@ const SurveyContents = ({ questionId, surveyId, isComplete }) => {
   return (
     <>
       {questionId && !isComplete ? (
-        <Question questionId={questionId} />
+        <Question questionId={questionId} surveyId={surveyId} />
       ) : !isComplete ? (
         <StartSurvey surveyId={surveyId} />
       ) : (
