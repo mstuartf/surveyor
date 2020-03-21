@@ -7,7 +7,11 @@ export const GET_QUESTION = gql`
     question(id: $questionId) {
       id
       text
-      inputType
+      type
+      answer {
+        id
+        values
+      }
     }
   }
 `;

@@ -90,10 +90,10 @@ const Question = ({ questionId }: Props) => {
         {question.text}
       </div>
       <div className="flex-grow border border-red-400 w-full">
-        {["CHOICE"].indexOf(question.inputType) > -1 && (
+        {["CHOICE"].indexOf(question.type) > -1 && (
           <MultipleChoice onSave={saveAnswerValues} questionId={questionId} />
         )}
-        {["TEXT", "NUMBER"].indexOf(question.inputType) > -1 && (
+        {["TEXT", "NUMBER"].indexOf(question.type) > -1 && (
           <SingleInput onSave={saveAnswerValues} questionId={questionId} />
         )}
       </div>
