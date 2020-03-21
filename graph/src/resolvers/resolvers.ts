@@ -8,23 +8,31 @@ const resolvers = {
     },
     survey: async (_, { id }, { dataSources }) => {
       const survey = await dataSources.surveys.get(id);
-      const questions = await dataSources.questions.getForSurvey(
-        survey.dataValues.id
+      const pages = await dataSources.pages.getForSurvey(survey.dataValues.id);
+      const questions = await dataSources.questions.getForPages(
+        pages.map(page => page.dataValues.id)
       );
 
       const values = await dataSources.possibleValues.get();
 
       return {
         ...survey.dataValues,
-        questions: questions.map(question => ({
-          ...question.dataValues,
-          answer: null,
-          possibleValues: values
-            .filter(value => value.questionId === question.id)
-            .map(possibleAnswer => ({
-              id: possibleAnswer.id,
-              value: possibleAnswer.value,
-              label: possibleAnswer.label
+        pages: pages.map(page => ({
+          ...page.dataValues,
+          questions: questions
+            .filter(
+              question => question.dataValues.pageId === page.dataValues.id
+            )
+            .map(question => ({
+              ...question.dataValues,
+              answer: null,
+              possibleValues: values
+                .filter(value => value.questionId === question.id)
+                .map(possibleAnswer => ({
+                  id: possibleAnswer.id,
+                  value: possibleAnswer.value,
+                  label: possibleAnswer.label
+                }))
             }))
         }))
       };

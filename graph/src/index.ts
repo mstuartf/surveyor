@@ -6,6 +6,7 @@ import resolvers from "./resolvers/resolvers";
 import { createStore } from "./mock/database/utils";
 import { AnonUserAPI } from "./mock/api/anonUser";
 import { QuestionAPI } from "./mock/api/question";
+import { PageAPI } from "./mock/api/page";
 import { AnswerAPI } from "./mock/api/answer";
 import { SurveyAPI } from "./mock/api/survey";
 import { PossibleValueAPI } from "./mock/api/possibleValues";
@@ -19,6 +20,7 @@ const server = new ApolloServer({
     surveys: new SurveyAPI({ store }),
     anonUsers: new AnonUserAPI({ store }),
     questions: new QuestionAPI({ store }),
+    pages: new PageAPI({ store }),
     answers: new AnswerAPI({ store }),
     possibleValues: new PossibleValueAPI({ store })
   })

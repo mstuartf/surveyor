@@ -27,6 +27,20 @@ export const createStore = (intialise?: boolean) => {
     }
   });
 
+  const pages = db.define("page", {
+    id: {
+      type: SQL.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    createdAt: SQL.DATE,
+    updatedAt: SQL.DATE,
+    surveyId: {
+      type: SQL.INTEGER,
+      allowNull: false
+    }
+  });
+
   const questions = db.define("question", {
     id: {
       type: SQL.INTEGER,
@@ -39,7 +53,7 @@ export const createStore = (intialise?: boolean) => {
       type: SQL.STRING,
       allowNull: false
     },
-    surveyId: {
+    pageId: {
       type: SQL.INTEGER,
       allowNull: false
     },
@@ -114,44 +128,56 @@ export const createStore = (intialise?: boolean) => {
         console.log("survey", survey.toJSON());
         db.sync()
           .then(() =>
-            questions.create({
-              text: "How tall are you?",
+            pages.create({
               surveyId: survey.id
             })
           )
-          .then(question => {
-            console.log("question", question.toJSON());
+          .then(page => {
+            console.log("page", page.toJSON());
             db.sync()
               .then(() =>
                 questions.create({
-                  text: "What's your favourite colour?",
-                  surveyId: survey.id,
-                  minValues: 1,
-                  maxValues: 1
+                  text: "How tall are you?",
+                  pageId: page.id
                 })
               )
               .then(question => {
                 console.log("question", question.toJSON());
                 db.sync()
                   .then(() =>
-                    possibleValues.create({
-                      questionId: question.id,
-                      label: "Bright Green",
-                      value: "green"
+                    questions.create({
+                      text: "What's your favourite colour?",
+                      pageId: page.id,
+                      minValues: 1,
+                      maxValues: 1
                     })
                   )
-                  .then(() => {
+                  .then(question => {
                     console.log("question", question.toJSON());
                     db.sync()
                       .then(() =>
                         possibleValues.create({
                           questionId: question.id,
-                          label: "Bright Pink",
-                          value: "pink"
+                          label: "Bright Green",
+                          value: "green"
                         })
                       )
                       .then(possibleValue => {
                         console.log("possibleValue", possibleValue.toJSON());
+                        db.sync()
+                          .then(() =>
+                            possibleValues.create({
+                              questionId: question.id,
+                              label: "Bright Pink",
+                              value: "pink"
+                            })
+                          )
+                          .then(possibleValue => {
+                            console.log(
+                              "possibleValue",
+                              possibleValue.toJSON()
+                            );
+                          });
                       });
                   });
               });
@@ -159,5 +185,5 @@ export const createStore = (intialise?: boolean) => {
       });
   }
 
-  return { surveys, questions, anonUsers, answers, possibleValues };
+  return { surveys, pages, questions, anonUsers, answers, possibleValues };
 };

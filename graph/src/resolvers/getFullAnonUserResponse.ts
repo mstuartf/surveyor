@@ -10,25 +10,25 @@ export async function getFullAnonUserResponse(dataSources, anonUser) {
   return {
     id: anonUser.dataValues.id,
     survey: {
-      ...survey.dataValues,
-      questions: questions.map(question => ({
-        ...question.dataValues,
-        answers: answers
-          .filter(
-            answer => answer.dataValues.questionId === question.dataValues.id
-          )
-          .map(answer => ({
-            ...answer.dataValues,
-            values: answer.values.split("|")
-          })),
-        possibleValues: values
-          .filter(value => value.questionId === question.id)
-          .map(possibleAnswer => ({
-            id: possibleAnswer.id,
-            value: possibleAnswer.value,
-            label: possibleAnswer.label
-          }))
-      }))
+      ...survey.dataValues
+      // questions: questions.map(question => ({
+      //   ...question.dataValues,
+      //   answers: answers
+      //     .filter(
+      //       answer => answer.dataValues.questionId === question.dataValues.id
+      //     )
+      //     .map(answer => ({
+      //       ...answer.dataValues,
+      //       values: answer.values.split("|")
+      //     })),
+      //   possibleValues: values
+      //     .filter(value => value.questionId === question.id)
+      //     .map(possibleAnswer => ({
+      //       id: possibleAnswer.id,
+      //       value: possibleAnswer.value,
+      //       label: possibleAnswer.label
+      //     }))
+      // }))
     }
   };
 }

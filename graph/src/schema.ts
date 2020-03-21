@@ -18,6 +18,11 @@ export const typeDefs = gql`
   type Survey {
     id: ID!
     name: String!
+    pages: [Page!]!
+  }
+
+  type Page {
+    id: ID!
     questions: [Question!]!
   }
 

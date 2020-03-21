@@ -15,8 +15,8 @@ export class QuestionAPI extends DataSource {
     return await this.store.questions.findAll();
   }
 
-  async getForSurvey(surveyId) {
-    return await this.store.questions.findAll({ where: { surveyId } });
+  async getForPages(pageIds) {
+    return await this.store.questions.findAll({ where: { pageId: pageIds } });
   }
 
   async create(surveyId, text) {
