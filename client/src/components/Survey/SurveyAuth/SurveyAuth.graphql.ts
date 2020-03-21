@@ -6,19 +6,21 @@ export const GET_USER_ID = gql`
     survey(id: $surveyId) {
       id
       name
-      questions {
-        id
-        text
-        minValues
-        maxValues
-        answer {
+      pages {
+        questions {
           id
-          values
-        }
-        possibleValues {
-          id
-          label
-          value
+          text
+          minValues
+          maxValues
+          answer {
+            id
+            values
+          }
+          possibleValues {
+            id
+            label
+            value
+          }
         }
       }
     }
