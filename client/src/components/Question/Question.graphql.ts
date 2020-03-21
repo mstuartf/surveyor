@@ -7,15 +7,7 @@ export const GET_QUESTION = gql`
     question(id: $questionId) {
       id
       text
-      minValues
-      answer {
-        id
-        values
-      }
       inputType
-      maxLength
-      max
-      min
     }
   }
 `;

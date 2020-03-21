@@ -94,12 +94,7 @@ const Question = ({ questionId }: Props) => {
           <MultipleChoice onSave={saveAnswerValues} questionId={questionId} />
         )}
         {["TEXT", "NUMBER"].indexOf(question.inputType) > -1 && (
-          <SingleInput
-            onSave={saveAnswerValues}
-            required={!!question.minValues}
-            requiredReminder={data.belowMinValues.indexOf(questionId) > -1}
-            answer={question.answer}
-          />
+          <SingleInput onSave={saveAnswerValues} questionId={questionId} />
         )}
       </div>
     </div>
