@@ -1,6 +1,6 @@
 import { InMemoryCache } from "apollo-cache-inmemory";
 import ApolloClient from "apollo-boost";
-import { CardEntryDirection } from "./components/DraggableStack/variants";
+import { CardEntryDirection } from "./components/Generic/DraggableStack/variants";
 
 interface ClientData {
   cardEntryDirection: CardEntryDirection;

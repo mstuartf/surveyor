@@ -1,13 +1,13 @@
 import React from "react";
-import { usePageCounterQueryQuery } from "../../generated/graphql";
-import Loading from "../Loading/Loading";
+import { usePageCounterQueryQuery } from "../../../../generated/graphql";
+import Loading from "../../../Generic/Loading/Loading";
 
 interface Props {
   surveyId: string;
   pageId: string;
 }
 
-const PageCounter = ({ surveyId, pageId }: Props) => {
+const Progress = ({ surveyId, pageId }: Props) => {
   const { data } = usePageCounterQueryQuery({
     variables: { surveyId }
   });
@@ -28,4 +28,4 @@ const PageCounter = ({ surveyId, pageId }: Props) => {
   );
 };
 
-export default PageCounter;
+export default Progress;

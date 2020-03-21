@@ -1,9 +1,9 @@
 import { Redirect, RouteComponentProps } from "react-router";
 import React from "react";
 import SurveyNavigation from "../SurveyNavigation/SurveyNavigation";
-import Loading from "../../Loading/Loading";
-import { useSurveyAuthQueryQuery } from "../../../generated/graphql";
-import NotFound from "../../NotFound/NotFound";
+import Loading from "../../../Generic/Loading/Loading";
+import { useSurveyAuthQueryQuery } from "../../../../generated/graphql";
+import NotFound from "../../../Pages/NotFound/NotFound";
 
 interface Props
   extends RouteComponentProps<{ surveyId: string; pageId: string }> {}

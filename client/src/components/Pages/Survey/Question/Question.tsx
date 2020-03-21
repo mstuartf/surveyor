@@ -1,13 +1,13 @@
 import React from "react";
-import MultipleChoice from "../MultipleChoice/MultipleChoice";
-import TypingInput from "../TypingInput/TypingInput";
-import Loading from "../Loading/Loading";
+import MultipleChoice from "../Inputs/MultipleChoice/MultipleChoice";
+import TypingInput from "../Inputs/TypingInput/TypingInput";
+import Loading from "../../../Generic/Loading/Loading";
 import { GET_QUESTION } from "./Question.graphql";
 import {
   useQuestionMutationMutation,
   useQuestionQueryQuery
-} from "../../generated/graphql";
-import BooleanInput from "../BooleanInput/BooleanInput";
+} from "../../../../generated/graphql";
+import BooleanInput from "../Inputs/BooleanInput/BooleanInput";
 
 interface Props {
   questionId: string;

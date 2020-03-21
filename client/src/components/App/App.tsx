@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import Home from "../Home/Home";
-import NotFound from "../NotFound/NotFound";
-import Survey from "../Survey/Survey";
+import Home from "../Pages/Home/Home";
+import NotFound from "../Pages/NotFound/NotFound";
+import Survey from "../Pages/Survey/Survey";
 
 // tested regex: https://pshrmn.github.io/route-tester
 // optional question id

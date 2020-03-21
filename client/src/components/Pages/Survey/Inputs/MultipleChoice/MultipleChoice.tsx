@@ -1,7 +1,7 @@
 import React from "react";
-import { useMultipleChoiceQueryQuery } from "../../generated/graphql";
-import Loading from "../Loading/Loading";
-import { sortResource } from "../../pagination";
+import { useMultipleChoiceQueryQuery } from "../../../../../generated/graphql";
+import Loading from "../../../../Generic/Loading/Loading";
+import { sortResource } from "../../../../../pagination";
 
 interface Props {
   questionId: string;

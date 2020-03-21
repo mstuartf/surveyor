@@ -3,7 +3,7 @@ import { useApolloClient } from "@apollo/react-hooks";
 import {
   useStartSurveyMutationMutation,
   useStartSurveyQueryQuery
-} from "../../generated/graphql";
+} from "../../../generated/graphql";
 
 const StartSurvey = ({ surveyId }) => {
   const client = useApolloClient();

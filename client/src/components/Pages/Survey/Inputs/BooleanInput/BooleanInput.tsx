@@ -1,6 +1,6 @@
 import React from "react";
-import { useInputQueryQuery } from "../../generated/graphql";
-import Loading from "../Loading/Loading";
+import { useInputQueryQuery } from "../../../../../generated/graphql";
+import Loading from "../../../../Generic/Loading/Loading";
 
 interface Props {
   questionId: string;

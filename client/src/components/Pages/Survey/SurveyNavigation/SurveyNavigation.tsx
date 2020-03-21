@@ -1,11 +1,11 @@
 import React from "react";
-import DraggableStack from "../../DraggableStack/DraggableStack";
-import { CardEntryDirection } from "../../DraggableStack/variants";
+import DraggableStack from "../../../Generic/DraggableStack/DraggableStack";
+import { CardEntryDirection } from "../../../Generic/DraggableStack/variants";
 import { useHistory } from "react-router";
-import { getPage } from "../../../pagination";
+import { getPage } from "../../../../pagination";
 import SurveyContents from "../SurveyContents/SurveyContents";
-import { useSurveyNavigationQueryQuery } from "../../../generated/graphql";
-import Loading from "../../Loading/Loading";
+import { useSurveyNavigationQueryQuery } from "../../../../generated/graphql";
+import Loading from "../../../Generic/Loading/Loading";
 
 interface Props {
   pageId: string;
