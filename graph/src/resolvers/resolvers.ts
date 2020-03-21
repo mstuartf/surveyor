@@ -1,4 +1,5 @@
 import { getFullAnonUserResponse } from "./getFullAnonUserResponse";
+import { ApolloError } from "apollo-server";
 
 const resolvers = {
   Query: {
@@ -8,6 +9,11 @@ const resolvers = {
     },
     survey: async (_, { id }, { dataSources }) => {
       const survey = await dataSources.surveys.get(id);
+
+      if (!survey) {
+        throw new ApolloError("No survey with this ID!");
+      }
+
       const pages = await dataSources.pages.getForSurvey(survey.dataValues.id);
       const questions = await dataSources.questions.getForPages(
         pages.map(page => page.dataValues.id)

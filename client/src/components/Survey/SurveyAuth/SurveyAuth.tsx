@@ -3,6 +3,7 @@ import React from "react";
 import SurveyNavigation from "../SurveyNavigation/SurveyNavigation";
 import Loading from "../../Loading/Loading";
 import { useSurveyAuthQueryQuery } from "../../../generated/graphql";
+import NotFound from "../../NotFound/NotFound";
 
 interface Props
   extends RouteComponentProps<{ surveyId: string; pageId: string }> {}
@@ -15,9 +16,13 @@ const SurveyAuth = (props: Props) => {
   const { pageId, surveyId } = props.match.params;
   const isComplete: boolean = pageId === "complete";
 
-  const { data } = useSurveyAuthQueryQuery({
+  const { data, error } = useSurveyAuthQueryQuery({
     variables: { surveyId }
   });
+
+  if (error) {
+    return <NotFound />;
+  }
 
   if (!data) {
     return <Loading />;
