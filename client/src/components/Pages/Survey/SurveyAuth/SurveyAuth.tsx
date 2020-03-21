@@ -28,7 +28,7 @@ const SurveyAuth = (props: Props) => {
     return <Loading />;
   }
 
-  if (pageId && (!data || !data.anonUserId)) {
+  if (pageId && !data.anonUserId) {
     return <Redirect to={`/survey/${surveyId}`} />;
   }
 
