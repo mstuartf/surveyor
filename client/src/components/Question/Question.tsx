@@ -94,14 +94,14 @@ const Question = ({ questionId }: Props) => {
             possibleValues={data.question.possibleValues}
             min={data.question.minValues || 0}
             max={data.question.maxValues || 0}
-            minValuesReminder={!!data.belowMinValues.length}
+            minValuesReminder={data.belowMinValues.indexOf(questionId) > -1}
             answer={data.question.answer}
           />
         ) : (
           <SingleInput
             onSave={saveAnswerValues}
-            min={data.question.minValues || 0}
-            minValuesReminder={!!data.belowMinValues.length}
+            required={!!data.question.minValues}
+            requiredReminder={data.belowMinValues.indexOf(questionId) > -1}
             answer={data.question.answer}
           />
         )}
