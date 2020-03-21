@@ -26,9 +26,12 @@ const SingleInput = ({ questionId, onSave }: Props) => {
 
   return (
     <>
-      <div className="mt-2">Input answer</div>
+      <div className="mt-2">Input answer ({question.type}):</div>
       <DebouncedInput initialValue={value} callback={v => onSave([v])}>
-        <input type={question.type.toLowerCase()} />
+        <input
+          type={question.type.toLowerCase()}
+          className="border rounded shadow-md"
+        />
       </DebouncedInput>
       {!!minValues && (
         <div
