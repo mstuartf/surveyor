@@ -1,6 +1,5 @@
 import React from "react";
 import { useInputQueryQuery } from "../../../../../generated/graphql";
-import Loading from "../../../../Generic/Loading/Loading";
 
 interface Props {
   questionId: string;
@@ -12,15 +11,11 @@ const BooleanInput = ({ questionId, onSave }: Props) => {
     variables: { questionId }
   });
 
-  if (!data) {
-    return <Loading />;
-  }
-
   const {
     question,
     question: { answer, minValues },
     belowMinValues
-  } = data;
+  } = data!;
 
   const toggleValue = value => {
     let values: string[];

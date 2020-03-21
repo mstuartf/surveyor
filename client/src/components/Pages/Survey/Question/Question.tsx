@@ -1,7 +1,6 @@
 import React from "react";
 import MultipleChoice from "../Inputs/MultipleChoice/MultipleChoice";
 import TypingInput from "../Inputs/TypingInput/TypingInput";
-import Loading from "../../../Generic/Loading/Loading";
 import { GET_QUESTION } from "./Question.graphql";
 import {
   useQuestionMutationMutation,
@@ -15,23 +14,18 @@ interface Props {
 }
 
 const Question = ({ questionId }: Props) => {
-  // this should be fetched from the cache so no need to handle loading state
   const { data, client } = useQuestionQueryQuery({
     variables: { questionId }
   });
 
   const [createAnswer] = useQuestionMutationMutation();
 
-  if (data === undefined) {
-    return <Loading />;
-  }
-
-  const { question } = data;
+  const { question, anonUserId, belowMinValues } = data!;
 
   const saveAnswerValues = (values: string[]) => {
     createAnswer({
       variables: {
-        anonUserId: data.anonUserId,
+        anonUserId,
         questionId: questionId,
         values
       },
@@ -82,7 +76,7 @@ const Question = ({ questionId }: Props) => {
     }, 1000);
   };
 
-  if (data.belowMinValues) {
+  if (belowMinValues) {
     wipeMinValuesReminder();
   }
 

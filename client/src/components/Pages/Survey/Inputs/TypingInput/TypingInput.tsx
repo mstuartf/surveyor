@@ -1,7 +1,6 @@
 import React from "react";
 import { useInputQueryQuery } from "../../../../../generated/graphql";
 import { DebouncedInput } from "../../../../Generic/DebouncedInput/DebouncedInput";
-import Loading from "../../../../Generic/Loading/Loading";
 
 interface Props {
   questionId: string;
@@ -14,15 +13,12 @@ const TypingInput = ({ questionId, onSave, children }: Props) => {
     variables: { questionId }
   });
 
-  if (!data) {
-    return <Loading />;
-  }
-
   const {
     question,
     question: { answer, minValues },
     belowMinValues
-  } = data;
+  } = data!;
+
   const value = answer ? answer.values[0] : "";
 
   return (

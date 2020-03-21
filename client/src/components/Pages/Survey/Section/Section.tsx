@@ -1,5 +1,4 @@
 import React from "react";
-import Loading from "../../../Generic/Loading/Loading";
 import { usePageQueryQuery } from "../../../../generated/graphql";
 import Question from "../Question/Question";
 import Progress from "../Progress/Progress";
@@ -15,13 +14,13 @@ const Section = ({ pageId, surveyId }: Props) => {
     variables: { pageId }
   });
 
-  if (data === undefined) {
-    return <Loading />;
-  }
+  const {
+    page: { questions }
+  } = data!;
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      {sortResource(data.page.questions).map(question => (
+      {sortResource(questions).map(question => (
         <Question key={question.id} questionId={question.id} />
       ))}
 

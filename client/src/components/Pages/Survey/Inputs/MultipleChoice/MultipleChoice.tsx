@@ -1,6 +1,5 @@
 import React from "react";
 import { useMultipleChoiceQueryQuery } from "../../../../../generated/graphql";
-import Loading from "../../../../Generic/Loading/Loading";
 import { sortResource } from "../../../../../pagination";
 
 interface Props {
@@ -13,14 +12,10 @@ const MultipleChoice = ({ questionId, onSave }: Props) => {
     variables: { questionId }
   });
 
-  if (!data) {
-    return <Loading />;
-  }
-
   const {
     question: { answer, minValues, maxValues, possibleValues },
     belowMinValues
-  } = data;
+  } = data!;
 
   const toggleValue = value => {
     let values: string[];

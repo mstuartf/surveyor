@@ -1,6 +1,5 @@
 import React from "react";
 import { usePageCounterQueryQuery } from "../../../../generated/graphql";
-import Loading from "../../../Generic/Loading/Loading";
 
 interface Props {
   surveyId: string;
@@ -12,13 +11,11 @@ const Progress = ({ surveyId, pageId }: Props) => {
     variables: { surveyId }
   });
 
-  if (!data) {
-    return <Loading />;
-  }
+  const {
+    survey: { pages }
+  } = data!;
 
-  const sorted = [...data.survey.pages].sort((a, b) =>
-    a.order > b.order ? 1 : -1
-  );
+  const sorted = [...pages].sort((a, b) => (a.order > b.order ? 1 : -1));
   const current = sorted.findIndex(q => q.id === pageId);
 
   return (
