@@ -1,17 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 
 interface Props {
   initialValue: string;
   callback: (v: string) => void;
   timeout?: number;
-  type: string;
+  children: any;
 }
 
 export const DebouncedInput = ({
   initialValue,
   callback,
   timeout = 500,
-  type
+  children
 }: Props) => {
   const [value, setValue] = useState(initialValue);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -29,7 +29,10 @@ export const DebouncedInput = ({
     }, timeout);
   }, [value]);
 
-  return (
-    <input type={type} value={value} onChange={e => setValue(e.target.value)} />
-  );
+  const extraProps = {
+    value,
+    onChange: (e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)
+  };
+
+  return React.cloneElement(children, extraProps);
 };
