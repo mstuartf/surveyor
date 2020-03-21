@@ -5,7 +5,7 @@ import Loading from "../../../../Generic/Loading/Loading";
 
 interface Props {
   questionId: string;
-  onSave: Function;
+  onSave: (values: string[]) => void;
   children: React.ReactNode;
 }
 

@@ -8,6 +8,7 @@ import {
   useQuestionQueryQuery
 } from "../../../../generated/graphql";
 import BooleanInput from "../Inputs/BooleanInput/BooleanInput";
+import DropDown from "../Inputs/DropDown/DropDown";
 
 interface Props {
   questionId: string;
@@ -111,6 +112,9 @@ const Question = ({ questionId }: Props) => {
         )}
         {["BOOLEAN"].indexOf(question.type) > -1 && (
           <BooleanInput questionId={questionId} onSave={saveAnswerValues} />
+        )}
+        {["DROPDOWN"].indexOf(question.type) > -1 && (
+          <DropDown questionId={questionId} onSave={saveAnswerValues} />
         )}
       </div>
     </div>

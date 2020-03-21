@@ -4,7 +4,7 @@ import Loading from "../../../../Generic/Loading/Loading";
 
 interface Props {
   questionId: string;
-  onSave: Function;
+  onSave: (values: string[]) => void;
 }
 
 const BooleanInput = ({ questionId, onSave }: Props) => {

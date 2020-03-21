@@ -5,7 +5,7 @@ import { sortResource } from "../../../../../pagination";
 
 interface Props {
   questionId: string;
-  onSave: Function;
+  onSave: (values: string[]) => void;
 }
 
 const MultipleChoice = ({ questionId, onSave }: Props) => {
