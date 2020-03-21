@@ -7,6 +7,7 @@ import {
   useQuestionMutationMutation,
   useQuestionQueryQuery
 } from "../../generated/graphql";
+import BooleanInput from "../BooleanInput/BooleanInput";
 
 interface Props {
   questionId: string;
@@ -107,6 +108,9 @@ const Question = ({ questionId }: Props) => {
               ...
             </textarea>
           </TypingInput>
+        )}
+        {["BOOLEAN"].indexOf(question.type) > -1 && (
+          <BooleanInput questionId={questionId} onSave={saveAnswerValues} />
         )}
       </div>
     </div>
