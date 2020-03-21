@@ -6,9 +6,10 @@ import Loading from "../Loading/Loading";
 interface Props {
   questionId: string;
   onSave: Function;
+  children: React.ReactNode;
 }
 
-const SingleInput = ({ questionId, onSave }: Props) => {
+const TypingInput = ({ questionId, onSave, children }: Props) => {
   const { data } = useInputQueryQuery({
     variables: { questionId }
   });
@@ -28,10 +29,7 @@ const SingleInput = ({ questionId, onSave }: Props) => {
     <>
       <div className="mt-2">Input answer ({question.type}):</div>
       <DebouncedInput initialValue={value} callback={v => onSave([v])}>
-        <input
-          type={question.type.toLowerCase()}
-          className="border rounded shadow-md"
-        />
+        {children}
       </DebouncedInput>
       {!!minValues && (
         <div
@@ -48,4 +46,4 @@ const SingleInput = ({ questionId, onSave }: Props) => {
   );
 };
 
-export default SingleInput;
+export default TypingInput;

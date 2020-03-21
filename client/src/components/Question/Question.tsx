@@ -1,6 +1,6 @@
 import React from "react";
 import MultipleChoice from "../MultipleChoice/MultipleChoice";
-import SingleInput from "../SingleInput/SingleInput";
+import TypingInput from "../TypingInput/TypingInput";
 import Loading from "../Loading/Loading";
 import { GET_QUESTION } from "./Question.graphql";
 import {
@@ -94,7 +94,19 @@ const Question = ({ questionId }: Props) => {
           <MultipleChoice onSave={saveAnswerValues} questionId={questionId} />
         )}
         {["TEXT", "NUMBER", "EMAIL"].indexOf(question.type) > -1 && (
-          <SingleInput onSave={saveAnswerValues} questionId={questionId} />
+          <TypingInput onSave={saveAnswerValues} questionId={questionId}>
+            <input
+              type={question.type.toLowerCase()}
+              className="border rounded shadow-md"
+            />
+          </TypingInput>
+        )}
+        {["TEXTAREA"].indexOf(question.type) > -1 && (
+          <TypingInput onSave={saveAnswerValues} questionId={questionId}>
+            <textarea className="border rounded shadow-md resize-none" rows={3}>
+              ...
+            </textarea>
+          </TypingInput>
         )}
       </div>
     </div>
