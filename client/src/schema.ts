@@ -10,5 +10,6 @@ export const typeDefs = gql`
     anonUserId: String!
     cardEntryDirection: CardEntryDirection!
     minValuesReminder: Boolean!
+    question(id: ID!, anonUserId: ID): Question!
   }
 `;

@@ -6,21 +6,6 @@ const resolvers = {
       const anonUser = await dataSources.anonUsers.get(id);
       return getFullAnonUserResponse(dataSources, anonUser);
     },
-    question: async (_, { id, anonUserId }, { dataSources }) => {
-      const question = await dataSources.questions.get(id);
-      const answers = await dataSources.answers.get(anonUserId, id);
-      return {
-        ...question.dataValues,
-        answer: answers
-          .map(answer => ({
-            ...answer.dataValues,
-            values: answer.dataValues.values.split("|")
-          }))
-          .sort()
-          .reverse()
-          .first()
-      };
-    },
     survey: async (_, { id }, { dataSources }) => {
       const survey = await dataSources.surveys.get(id);
       const questions = await dataSources.questions.getForSurvey(
