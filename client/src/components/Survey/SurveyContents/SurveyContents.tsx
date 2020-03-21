@@ -1,13 +1,19 @@
 import React from "react";
 import StartSurvey from "../../StartSurvey/StartSurvey";
 import Completed from "../../Completed/Completed";
-import Question from "../../Question/Question";
+import Page from "../../Page/Page";
 
-const SurveyContents = ({ questionId, surveyId, isComplete }) => {
+interface Props {
+  pageId: string;
+  surveyId: string;
+  isComplete: boolean;
+}
+
+const SurveyContents = ({ pageId, surveyId, isComplete }: Props) => {
   return (
     <>
-      {questionId && !isComplete ? (
-        <Question questionId={questionId} surveyId={surveyId} />
+      {pageId && !isComplete ? (
+        <Page pageId={pageId} surveyId={surveyId} />
       ) : !isComplete ? (
         <StartSurvey surveyId={surveyId} />
       ) : (

@@ -2,17 +2,24 @@ import React from "react";
 import DraggableStack from "../../DraggableStack/DraggableStack";
 import { CardEntryDirection } from "../../DraggableStack/variants";
 import { useHistory } from "react-router";
-import { getQuestion } from "./nextQuestion";
+import { getPage } from "./nextPage";
 import SurveyContents from "../SurveyContents/SurveyContents";
 import { useSurveyNavigationQueryQuery } from "../../../generated/graphql";
 import Loading from "../../Loading/Loading";
 
+interface Props {
+  pageId: string;
+  surveyId: string;
+  isComplete: boolean;
+  belowMinValues: string[];
+}
+
 const SurveyNavigation = ({
-  questionId,
+  pageId,
   surveyId,
   isComplete,
   belowMinValues
-}) => {
+}: Props) => {
   const history = useHistory();
 
   const { data, client } = useSurveyNavigationQueryQuery({
@@ -24,10 +31,10 @@ const SurveyNavigation = ({
   }
 
   const cardSwiped = (navigateForward: boolean) => {
-    if (navigateForward && belowMinValues) {
+    if (navigateForward && belowMinValues.length) {
       client.writeData({
         data: {
-          minValuesReminder: true
+          belowMinValues
         }
       });
       return;
@@ -43,24 +50,21 @@ const SurveyNavigation = ({
       }
     });
 
-    const [prevQuestionId, nextQuestionId] = getQuestion(
-      questionId,
-      data.survey.questions
-    );
+    const [prevPageId, nextPageId] = getPage(pageId, data.survey.pages);
 
-    if (navigateForward && nextQuestionId) {
-      history.push(`/survey/${surveyId}/question/${nextQuestionId}`);
+    if (navigateForward && nextPageId) {
+      history.push(`/survey/${surveyId}/page/${nextPageId}`);
     } else if (navigateForward) {
       history.push(`/survey/${surveyId}/complete`);
-    } else if (prevQuestionId) {
-      history.push(`/survey/${surveyId}/question/${prevQuestionId}`);
+    } else if (prevPageId) {
+      history.push(`/survey/${surveyId}/page/${prevPageId}`);
     } else {
       history.push(`/survey/${surveyId}`);
     }
   };
 
   // this needs to be unique or transitions get messed up
-  const cardKey = questionId ? questionId : isComplete ? "complete" : "start";
+  const cardKey = pageId ? pageId : isComplete ? "complete" : "start";
 
   return (
     <>
@@ -73,7 +77,7 @@ const SurveyNavigation = ({
         <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
           <SurveyContents
             surveyId={surveyId}
-            questionId={questionId}
+            pageId={pageId}
             isComplete={isComplete}
           />
         </div>

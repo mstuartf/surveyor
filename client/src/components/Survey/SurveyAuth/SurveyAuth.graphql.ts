@@ -7,6 +7,7 @@ export const GET_USER_ID = gql`
       id
       name
       pages {
+        id
         questions {
           id
           text

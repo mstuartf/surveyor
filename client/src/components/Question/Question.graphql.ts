@@ -3,7 +3,7 @@ import { gql } from "apollo-boost";
 export const GET_QUESTION = gql`
   query QuestionQuery($questionId: ID!) {
     anonUserId @client
-    minValuesReminder @client
+    belowMinValues @client
     question(id: $questionId) {
       id
       text

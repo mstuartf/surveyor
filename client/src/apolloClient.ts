@@ -5,13 +5,13 @@ import { CardEntryDirection } from "./components/DraggableStack/variants";
 interface ClientData {
   cardEntryDirection: CardEntryDirection;
   anonUserId: number | null;
-  minValuesReminder: boolean;
+  belowMinValues: string[];
 }
 
 const defaults: ClientData = {
   cardEntryDirection: "fromRight", // default to sliding in from the right
   anonUserId: null,
-  minValuesReminder: false
+  belowMinValues: []
 };
 
 // In some cases, a query requests data that already exists in the client store under a different key.
@@ -20,6 +20,8 @@ const defaults: ClientData = {
 const cache = new InMemoryCache({
   cacheRedirects: {
     Query: {
+      page: (_, args, { getCacheKey }) =>
+        getCacheKey({ __typename: "Page", id: args.id }),
       question: (_, args, { getCacheKey }) =>
         getCacheKey({ __typename: "Question", id: args.id })
     }

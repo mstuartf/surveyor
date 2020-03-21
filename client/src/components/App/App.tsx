@@ -14,10 +14,7 @@ const App = () => {
     <div className="p-8 w-full h-screen m-auto overflow-hidden">
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route
-          path="/survey/:surveyId/(question)?/:questionId?"
-          component={Survey}
-        />
+        <Route path="/survey/:surveyId/(page)?/:pageId?" component={Survey} />
         <Route component={NotFound} />
       </Switch>
     </div>

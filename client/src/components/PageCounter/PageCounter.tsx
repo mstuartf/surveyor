@@ -1,14 +1,14 @@
 import React from "react";
 import { usePageCounterQueryQuery } from "../../generated/graphql";
 import Loading from "../Loading/Loading";
-import { sortQuestions } from "../../sortQuestions";
+import { sortPages } from "../../sortPages";
 
 interface Props {
   surveyId: string;
-  questionId: string;
+  pageId: string;
 }
 
-const PageCounter = ({ surveyId, questionId }: Props) => {
+const PageCounter = ({ surveyId, pageId }: Props) => {
   const { data } = usePageCounterQueryQuery({
     variables: { surveyId }
   });
@@ -17,8 +17,8 @@ const PageCounter = ({ surveyId, questionId }: Props) => {
     return <Loading />;
   }
 
-  const sorted = sortQuestions(data.survey.questions);
-  const current = sorted.findIndex(q => q.id === questionId);
+  const sorted = sortPages(data.survey.pages);
+  const current = sorted.findIndex(q => q.id === pageId);
 
   return (
     <div>

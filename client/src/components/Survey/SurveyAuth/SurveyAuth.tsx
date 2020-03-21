@@ -4,47 +4,43 @@ import SurveyNavigation from "../SurveyNavigation/SurveyNavigation";
 import Loading from "../../Loading/Loading";
 import { useSurveyAuthQueryQuery } from "../../../generated/graphql";
 
-interface MatchParams {
-  surveyId: string;
-  questionId: string;
-}
-
-interface Props extends RouteComponentProps<MatchParams> {}
+interface Props
+  extends RouteComponentProps<{ surveyId: string; pageId: string }> {}
 
 // when the user tries to access a survey page (start, question, or complete)
 // this component checks whether the survey has been started
 // if not, the user is redirected to the start page
 
 const SurveyAuth = (props: Props) => {
-  const { questionId, surveyId } = props.match.params;
-  const isComplete: boolean = questionId === "complete";
+  const { pageId, surveyId } = props.match.params;
+  const isComplete: boolean = pageId === "complete";
 
-  const { data, loading } = useSurveyAuthQueryQuery({
+  const { data } = useSurveyAuthQueryQuery({
     variables: { surveyId }
   });
 
-  if (loading) {
+  if (!data) {
     return <Loading />;
   }
 
-  if (questionId && (!data || !data.anonUserId)) {
+  if (pageId && (!data || !data.anonUserId)) {
     return <Redirect to={`/survey/${surveyId}`} />;
   }
 
-  // @ts-ignore
-  const question = data.survey.questions.find(
-    question => question.id === questionId
-  );
-  // @ts-ignore
-  const belowMinValues: boolean = question
-    ? !!question.minValues &&
-      (!question.answer || question.answer.values.length < question.minValues)
-    : false;
+  // todo: how to force .find not to return possibly undefined
+  const page = data.survey.pages.find(page => page.id === pageId);
+
+  // all question IDs missing min values on current page
+  const belowMinValues: string[] = (page ? page.questions : [])
+    .filter(
+      q => q.minValues && (!q.answer || q.answer.values.length < q.minValues)
+    )
+    .map(q => q.id);
 
   return (
     <SurveyNavigation
       surveyId={surveyId}
-      questionId={questionId}
+      pageId={pageId}
       isComplete={isComplete}
       belowMinValues={belowMinValues}
     />

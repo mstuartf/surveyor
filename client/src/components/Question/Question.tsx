@@ -7,14 +7,12 @@ import {
   useQuestionMutationMutation,
   useQuestionQueryQuery
 } from "../../generated/graphql";
-import PageCounter from "../PageCounter/PageCounter";
 
 interface Props {
-  surveyId: string;
   questionId: string;
 }
 
-const Question = ({ questionId, surveyId }: Props) => {
+const Question = ({ questionId }: Props) => {
   // this should be fetched from the cache so no need to handle loading state
   const { data, client } = useQuestionQueryQuery({
     variables: { questionId }
@@ -74,13 +72,13 @@ const Question = ({ questionId, surveyId }: Props) => {
     setTimeout(() => {
       client.writeData({
         data: {
-          minValuesReminder: false
+          belowMinValues: [] // todo this should remove the individual ID
         }
       });
     }, 1000);
   };
 
-  if (data.minValuesReminder) {
+  if (data.belowMinValues) {
     wipeMinValuesReminder();
   }
 
@@ -96,20 +94,17 @@ const Question = ({ questionId, surveyId }: Props) => {
             possibleValues={data.question.possibleValues}
             min={data.question.minValues || 0}
             max={data.question.maxValues || 0}
-            minValuesReminder={data.minValuesReminder}
+            minValuesReminder={!!data.belowMinValues.length}
             answer={data.question.answer}
           />
         ) : (
           <SingleInput
             onSave={saveAnswerValues}
             min={data.question.minValues || 0}
-            minValuesReminder={data.minValuesReminder}
+            minValuesReminder={!!data.belowMinValues.length}
             answer={data.question.answer}
           />
         )}
-      </div>
-      <div className="h-1/4 border w-full flex justify-center items-center">
-        <PageCounter surveyId={surveyId} questionId={questionId} />
       </div>
     </div>
   );

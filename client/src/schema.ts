@@ -9,7 +9,8 @@ export const typeDefs = gql`
   type Query {
     anonUserId: String!
     cardEntryDirection: CardEntryDirection!
-    minValuesReminder: Boolean!
-    question(id: ID!, anonUserId: ID): Question!
+    belowMinValues: [String!]!
+    question(id: ID!): Question!
+    page(id: ID!): Page!
   }
 `;

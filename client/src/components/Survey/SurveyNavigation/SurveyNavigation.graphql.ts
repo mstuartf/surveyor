@@ -7,6 +7,7 @@ export const GET_SURVEY = gql`
       id
       name
       pages {
+        id
         questions {
           id
           text
