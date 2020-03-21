@@ -32,7 +32,9 @@ const MultipleChoice = ({ questionId, onSave }: Props) => {
     } else {
       values = [value];
     }
-    values = values.slice(-Math.max(values.length - (maxValues || 0), 0));
+
+    values = values.slice(-(maxValues || 0));
+
     onSave(values);
   };
 
