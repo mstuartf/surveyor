@@ -1,6 +1,6 @@
 import React from "react";
 
-const Completed = () => {
+const Complete = () => {
   return (
     <div className="w-full h-full flex items-center justify-center bg-blue-100">
       Completed
@@ -8,4 +8,4 @@ const Completed = () => {
   );
 };
 
-export default Completed;
+export default Complete;

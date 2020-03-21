@@ -10,14 +10,14 @@ import Loading from "../../../Generic/Loading/Loading";
 interface Props {
   pageId: string;
   surveyId: string;
-  isComplete: boolean;
+  submit: boolean;
   belowMinValues: string[];
 }
 
 const SurveyNavigation = ({
   pageId,
   surveyId,
-  isComplete,
+  submit,
   belowMinValues
 }: Props) => {
   const history = useHistory();
@@ -55,7 +55,7 @@ const SurveyNavigation = ({
     if (navigateForward && nextPageId) {
       history.push(`/survey/${surveyId}/page/${nextPageId}`);
     } else if (navigateForward) {
-      history.push(`/survey/${surveyId}/complete`);
+      history.push(`/survey/${surveyId}/submit`);
     } else if (prevPageId) {
       history.push(`/survey/${surveyId}/page/${prevPageId}`);
     } else {
@@ -64,7 +64,7 @@ const SurveyNavigation = ({
   };
 
   // this needs to be unique or transitions get messed up
-  const cardKey = pageId ? pageId : isComplete ? "complete" : "start";
+  const cardKey = pageId ? pageId : submit ? "submit" : "start";
 
   return (
     <>
@@ -75,11 +75,7 @@ const SurveyNavigation = ({
         previousCard={() => cardSwiped(false)}
       >
         <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
-          <SurveyContents
-            surveyId={surveyId}
-            pageId={pageId}
-            isComplete={isComplete}
-          />
+          <SurveyContents surveyId={surveyId} pageId={pageId} submit={submit} />
         </div>
       </DraggableStack>
     </>

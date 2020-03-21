@@ -14,7 +14,7 @@ interface Props
 
 const SurveyAuth = (props: Props) => {
   const { pageId, surveyId } = props.match.params;
-  const isComplete: boolean = pageId === "complete";
+  const submit: boolean = pageId === "submit";
 
   const { data, error } = useSurveyAuthQueryQuery({
     variables: { surveyId }
@@ -46,7 +46,7 @@ const SurveyAuth = (props: Props) => {
     <SurveyNavigation
       surveyId={surveyId}
       pageId={pageId}
-      isComplete={isComplete}
+      submit={submit}
       belowMinValues={belowMinValues}
     />
   );

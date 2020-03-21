@@ -1,23 +1,23 @@
 import React from "react";
 import StartSurvey from "../../../Pages/StartSurvey/StartSurvey";
-import Completed from "../../../Pages/Completed/Completed";
+import Submit from "../../../Pages/Submit/Submit";
 import Section from "../Section/Section";
 
 interface Props {
   pageId: string;
   surveyId: string;
-  isComplete: boolean;
+  submit: boolean;
 }
 
-const SurveyContents = ({ pageId, surveyId, isComplete }: Props) => {
+const SurveyContents = ({ pageId, surveyId, submit }: Props) => {
   return (
     <>
-      {pageId && !isComplete ? (
+      {pageId && !submit ? (
         <Section pageId={pageId} surveyId={surveyId} />
-      ) : !isComplete ? (
+      ) : !submit ? (
         <StartSurvey surveyId={surveyId} />
       ) : (
-        <Completed />
+        <Submit surveyId={surveyId} />
       )}
     </>
   );
