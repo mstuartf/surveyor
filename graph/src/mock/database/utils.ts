@@ -49,18 +49,22 @@ export const createStore = (intialise?: boolean) => {
       autoIncrement: true
     },
     order: SQL.FLOAT,
-    createdAt: SQL.DATE,
-    updatedAt: SQL.DATE,
     text: {
       type: SQL.STRING,
       allowNull: false
     },
+    inputType: SQL.STRING,
+    minValues: SQL.INTEGER,
+    maxValues: SQL.INTEGER,
+    min: SQL.INTEGER,
+    max: SQL.INTEGER,
+    maxLength: SQL.INTEGER,
+    createdAt: SQL.DATE,
+    updatedAt: SQL.DATE,
     pageId: {
       type: SQL.INTEGER,
       allowNull: false
     },
-    minValues: SQL.INTEGER,
-    maxValues: SQL.INTEGER,
     valueType: SQL.STRING
   });
 
@@ -143,7 +147,9 @@ export const createStore = (intialise?: boolean) => {
                 questions.create({
                   text: "How tall are you?",
                   order: 2.2,
-                  pageId: page.id
+                  pageId: page.id,
+                  inputType: "NUMBER",
+                  max: 100
                 })
               )
               .then(question => {
@@ -155,7 +161,8 @@ export const createStore = (intialise?: boolean) => {
                       order: 1.1,
                       pageId: page.id,
                       minValues: 1,
-                      maxValues: 1
+                      maxValues: 1,
+                      inputType: "CHOICE"
                     })
                   )
                   .then(question => {

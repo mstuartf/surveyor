@@ -4,6 +4,7 @@ import SingleInput from "../SingleInput/SingleInput";
 import Loading from "../Loading/Loading";
 import { GET_QUESTION } from "./Question.graphql";
 import {
+  GQLPossibleValue,
   useQuestionMutationMutation,
   useQuestionQueryQuery
 } from "../../generated/graphql";
@@ -23,6 +24,8 @@ const Question = ({ questionId }: Props) => {
   if (data === undefined) {
     return <Loading />;
   }
+
+  const { question } = data;
 
   const saveAnswerValues = (values: string[]) => {
     createAnswer({
@@ -85,24 +88,25 @@ const Question = ({ questionId }: Props) => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
       <div className="h-1/4 border w-full flex justify-center items-center">
-        {data!.question.text}
+        {question.text}
       </div>
       <div className="flex-grow border border-red-400 w-full">
-        {data.question.possibleValues && data.question.possibleValues.length ? (
+        {["CHOICE"].indexOf(question.inputType) > -1 && (
           <MultipleChoice
             onSave={saveAnswerValues}
-            possibleValues={data.question.possibleValues}
-            min={data.question.minValues || 0}
-            max={data.question.maxValues || 0}
+            possibleValues={question.possibleValues as GQLPossibleValue[]}
+            min={question.minValues || 0}
+            max={question.maxValues || 0}
             minValuesReminder={data.belowMinValues.indexOf(questionId) > -1}
-            answer={data.question.answer}
+            answer={question.answer}
           />
-        ) : (
+        )}
+        {["TEXT", "NUMBER"].indexOf(question.inputType) > -1 && (
           <SingleInput
             onSave={saveAnswerValues}
-            required={!!data.question.minValues}
+            required={!!question.minValues}
             requiredReminder={data.belowMinValues.indexOf(questionId) > -1}
-            answer={data.question.answer}
+            answer={question.answer}
           />
         )}
       </div>

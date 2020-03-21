@@ -6,13 +6,14 @@ import { gql } from "apollo-server";
 // The language we'll use to write the schema is GraphQL's schema definition language (SDL).
 export const typeDefs = gql`
   enum InputType {
-    RANGE
-    NUMBER
     TEXT
     EMAIL
     TEXTAREA
+    RANGE
+    NUMBER
     CHOICE
     DROPDOWN
+    BOOLEAN
   }
 
   type Survey {
@@ -32,11 +33,33 @@ export const typeDefs = gql`
     order: Float!
     text: String!
     answer: Answer
-    maxValues: Int
+    inputType: InputType!
+
+    """
+     used to set any field as required
+    """
     minValues: Int
-    answerType: String
+
+    """
+     TEXT and TEXTAREA inputs
+    """
     maxLength: Int
-    possibleValues: [PossibleValue!]!
+
+    """
+     CHOICE and DROPDOWN
+    """
+    possibleValues: [PossibleValue!]
+
+    """
+     CHOICE
+    """
+    maxValues: Int
+
+    """
+     RANGE and NUMBER
+    """
+    max: Int
+    min: Int
   }
 
   type Answer {

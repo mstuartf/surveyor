@@ -20,6 +20,10 @@ export const GET_QUESTION = gql`
         label
         value
       }
+      inputType
+      maxLength
+      max
+      min
     }
   }
 `;

@@ -25,6 +25,10 @@ export const GET_USER_ID = gql`
             label
             value
           }
+          inputType
+          maxLength
+          max
+          min
         }
       }
     }
