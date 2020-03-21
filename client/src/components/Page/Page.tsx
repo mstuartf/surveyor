@@ -21,7 +21,7 @@ const Page = ({ pageId, surveyId }: Props) => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
       {data.page.questions.map(question => (
-        <Question questionId={question.id} />
+        <Question key={question.id} questionId={question.id} />
       ))}
 
       <div className="h-1/4 border w-full flex justify-center items-center">
