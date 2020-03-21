@@ -1,14 +1,41 @@
 import React, { useEffect } from "react";
 import { useCompleteQueryQuery } from "../../../generated/graphql";
+import { GET_USER_ID } from "../Survey/SurveyAuth/SurveyAuth.graphql";
+import { RouteComponentProps } from "react-router";
 
-const Complete = () => {
+interface Props extends RouteComponentProps<{ surveyId: string }> {}
+
+const Complete = (props: Props) => {
+  const { surveyId } = props.match.params;
   const { data, client } = useCompleteQueryQuery();
-  console.log(data);
 
   const completeSurvey = () => {
     client.writeData({
       data: {
-        anonUserId: null
+        anonUserId: null // wipe user id so answers can no longer be edited
+      }
+    });
+
+    const query = client.readQuery({
+      query: GET_USER_ID,
+      variables: { surveyId }
+    });
+
+    client.writeQuery({
+      query: GET_USER_ID,
+      variables: { surveyId },
+      data: {
+        ...query,
+        survey: {
+          ...query.survey,
+          pages: query.survey.pages.map(page => ({
+            ...page,
+            questions: page.questions.map(question => ({
+              ...question,
+              answer: null // wipe all answers
+            }))
+          }))
+        }
       }
     });
   };
