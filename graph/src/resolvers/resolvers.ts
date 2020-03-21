@@ -30,6 +30,7 @@ const resolvers = {
                 .filter(value => value.questionId === question.id)
                 .map(possibleAnswer => ({
                   id: possibleAnswer.id,
+                  order: possibleAnswer.order,
                   value: possibleAnswer.value,
                   label: possibleAnswer.label
                 }))

@@ -5,6 +5,7 @@ export const PAGE_COUNTER = gql`
     survey(id: $surveyId) {
       pages {
         id
+        order
       }
     }
   }

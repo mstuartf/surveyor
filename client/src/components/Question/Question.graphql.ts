@@ -6,6 +6,7 @@ export const GET_QUESTION = gql`
     belowMinValues @client
     question(id: $questionId) {
       id
+      order
       text
       minValues
       maxValues
@@ -15,6 +16,7 @@ export const GET_QUESTION = gql`
       }
       possibleValues {
         id
+        order
         label
         value
       }

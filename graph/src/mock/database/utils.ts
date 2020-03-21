@@ -33,6 +33,7 @@ export const createStore = (intialise?: boolean) => {
       primaryKey: true,
       autoIncrement: true
     },
+    order: SQL.FLOAT,
     createdAt: SQL.DATE,
     updatedAt: SQL.DATE,
     surveyId: {
@@ -47,6 +48,7 @@ export const createStore = (intialise?: boolean) => {
       primaryKey: true,
       autoIncrement: true
     },
+    order: SQL.FLOAT,
     createdAt: SQL.DATE,
     updatedAt: SQL.DATE,
     text: {
@@ -68,6 +70,7 @@ export const createStore = (intialise?: boolean) => {
       primaryKey: true,
       autoIncrement: true
     },
+    order: SQL.FLOAT,
     createdAt: SQL.DATE,
     updatedAt: SQL.DATE,
     label: {
@@ -129,7 +132,8 @@ export const createStore = (intialise?: boolean) => {
         db.sync()
           .then(() =>
             pages.create({
-              surveyId: survey.id
+              surveyId: survey.id,
+              order: 1.1
             })
           )
           .then(page => {
@@ -138,6 +142,7 @@ export const createStore = (intialise?: boolean) => {
               .then(() =>
                 questions.create({
                   text: "How tall are you?",
+                  order: 2.2,
                   pageId: page.id
                 })
               )
@@ -147,6 +152,7 @@ export const createStore = (intialise?: boolean) => {
                   .then(() =>
                     questions.create({
                       text: "What's your favourite colour?",
+                      order: 1.1,
                       pageId: page.id,
                       minValues: 1,
                       maxValues: 1
@@ -158,6 +164,7 @@ export const createStore = (intialise?: boolean) => {
                       .then(() =>
                         possibleValues.create({
                           questionId: question.id,
+                          order: 2.2,
                           label: "Bright Green",
                           value: "green"
                         })
@@ -169,6 +176,7 @@ export const createStore = (intialise?: boolean) => {
                             possibleValues.create({
                               questionId: question.id,
                               label: "Bright Pink",
+                              order: 1.1,
                               value: "pink"
                             })
                           )

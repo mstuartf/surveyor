@@ -1,11 +1,10 @@
-import { sortPages } from "../../../sortPages";
-import { GQLPage } from "../../../generated/graphql";
+import { GQLPage } from "./generated/graphql";
 
 export const getPage = (
   currentQuestionId: string,
-  pages: Pick<GQLPage, "id">[]
+  pages: Pick<GQLPage, "id" | "order">[]
 ): [string, string] => {
-  pages = sortPages(pages);
+  pages.sort((a, b) => (a.order > b.order ? 1 : -1));
 
   let index: number = pages.findIndex(
     question => question.id === currentQuestionId

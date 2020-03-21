@@ -23,11 +23,13 @@ export const typeDefs = gql`
 
   type Page {
     id: ID!
+    order: Float!
     questions: [Question!]!
   }
 
   type Question {
     id: ID!
+    order: Float!
     text: String!
     answer: Answer
     maxValues: Int
@@ -44,6 +46,7 @@ export const typeDefs = gql`
 
   type PossibleValue {
     id: ID!
+    order: Float!
     value: String!
     label: String!
   }

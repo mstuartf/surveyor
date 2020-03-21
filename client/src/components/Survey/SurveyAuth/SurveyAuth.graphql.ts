@@ -8,8 +8,10 @@ export const GET_USER_ID = gql`
       name
       pages {
         id
+        order
         questions {
           id
+          order
           text
           minValues
           maxValues
@@ -19,6 +21,7 @@ export const GET_USER_ID = gql`
           }
           possibleValues {
             id
+            order
             label
             value
           }

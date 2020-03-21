@@ -20,9 +20,11 @@ const Page = ({ pageId, surveyId }: Props) => {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      {data.page.questions.map(question => (
-        <Question key={question.id} questionId={question.id} />
-      ))}
+      {data.page.questions
+        .sort((a, b) => (a.order > b.order ? 1 : -1))
+        .map(question => (
+          <Question key={question.id} questionId={question.id} />
+        ))}
 
       <div className="h-1/4 border w-full flex justify-center items-center">
         <PageCounter surveyId={surveyId} pageId={pageId} />

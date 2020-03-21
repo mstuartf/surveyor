@@ -2,7 +2,7 @@ import React from "react";
 import DraggableStack from "../../DraggableStack/DraggableStack";
 import { CardEntryDirection } from "../../DraggableStack/variants";
 import { useHistory } from "react-router";
-import { getPage } from "./nextPage";
+import { getPage } from "../../../pagination";
 import SurveyContents from "../SurveyContents/SurveyContents";
 import { useSurveyNavigationQueryQuery } from "../../../generated/graphql";
 import Loading from "../../Loading/Loading";

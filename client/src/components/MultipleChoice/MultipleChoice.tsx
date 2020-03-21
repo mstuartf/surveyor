@@ -41,19 +41,21 @@ const MultipleChoice = ({
       <div>Max values: {max || "n/a"}</div>
       <div className="mt-2">Select answers:</div>
       <div className="flex flex-col mt-2">
-        {possibleValues.map(option => (
-          <button
-            className={
-              answer && answer.values.indexOf(option.value) > -1
-                ? "bg-red-500"
-                : ""
-            }
-            key={option.value}
-            onClick={() => toggleValue(option.value)}
-          >
-            {option.label}
-          </button>
-        ))}
+        {possibleValues
+          .sort((a, b) => (a.order > b.order ? 1 : -1))
+          .map(option => (
+            <button
+              className={
+                answer && answer.values.indexOf(option.value) > -1
+                  ? "bg-red-500"
+                  : ""
+              }
+              key={option.value}
+              onClick={() => toggleValue(option.value)}
+            >
+              {option.label}
+            </button>
+          ))}
       </div>
     </>
   );

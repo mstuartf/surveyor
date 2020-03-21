@@ -8,8 +8,10 @@ export const GET_SURVEY = gql`
       name
       pages {
         id
+        order
         questions {
           id
+          order
           text
           minValues
           answer {
