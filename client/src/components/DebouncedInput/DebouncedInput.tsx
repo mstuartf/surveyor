@@ -4,12 +4,14 @@ interface Props {
   initialValue: string;
   callback: (v: string) => void;
   timeout?: number;
+  type: string;
 }
 
 export const DebouncedInput = ({
   initialValue,
   callback,
-  timeout = 500
+  timeout = 500,
+  type
 }: Props) => {
   const [value, setValue] = useState(initialValue);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -28,6 +30,6 @@ export const DebouncedInput = ({
   }, [value]);
 
   return (
-    <input type="text" value={value} onChange={e => setValue(e.target.value)} />
+    <input type={type} value={value} onChange={e => setValue(e.target.value)} />
   );
 };

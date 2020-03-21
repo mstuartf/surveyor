@@ -5,6 +5,7 @@ const GET_INPUT_QUESTION = gql`
     belowMinValues @client
     question(id: $questionId) {
       id
+      type
       minValues
       answer {
         id

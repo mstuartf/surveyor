@@ -18,6 +18,7 @@ const SingleInput = ({ questionId, onSave }: Props) => {
   }
 
   const {
+    question,
     question: { answer, minValues },
     belowMinValues
   } = data;
@@ -26,7 +27,11 @@ const SingleInput = ({ questionId, onSave }: Props) => {
   return (
     <>
       <div className="mt-2">Input answer</div>
-      <DebouncedInput initialValue={value} callback={v => onSave([v])} />
+      <DebouncedInput
+        initialValue={value}
+        type={question.type.toLowerCase()}
+        callback={v => onSave([v])}
+      />
       {!!minValues && (
         <div
           className={

@@ -93,7 +93,7 @@ const Question = ({ questionId }: Props) => {
         {["CHOICE"].indexOf(question.type) > -1 && (
           <MultipleChoice onSave={saveAnswerValues} questionId={questionId} />
         )}
-        {["TEXT", "NUMBER"].indexOf(question.type) > -1 && (
+        {["TEXT", "NUMBER", "EMAIL"].indexOf(question.type) > -1 && (
           <SingleInput onSave={saveAnswerValues} questionId={questionId} />
         )}
       </div>
