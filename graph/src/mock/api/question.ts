@@ -19,7 +19,7 @@ export class QuestionAPI extends DataSource {
     return await this.store.questions.findAll({ where: { pageId: pageIds } });
   }
 
-  async create(pageId, order, text) {
+  async create(pageId, order, text, config) {
     const existing = await this.store.questions.find({
       where: { pageId, order, text }
     });
@@ -28,6 +28,11 @@ export class QuestionAPI extends DataSource {
       return null;
     }
 
-    return await this.store.questions.create({ pageId, order, text });
+    return await this.store.questions.create({
+      pageId,
+      order,
+      text,
+      ...config
+    });
   }
 }

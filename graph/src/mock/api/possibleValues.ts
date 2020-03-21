@@ -11,4 +11,13 @@ export class PossibleValueAPI extends DataSource {
   async get() {
     return await this.store.possibleValues.findAll();
   }
+
+  async create(questionId, order, value, label) {
+    return await this.store.possibleValues.create({
+      questionId,
+      order,
+      value,
+      label
+    });
+  }
 }

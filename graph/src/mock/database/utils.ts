@@ -53,7 +53,7 @@ export const createStore = (intialise?: boolean) => {
       type: SQL.STRING,
       allowNull: false
     },
-    inputType: SQL.STRING,
+    type: SQL.STRING,
     minValues: SQL.INTEGER,
     maxValues: SQL.INTEGER,
     min: SQL.INTEGER,

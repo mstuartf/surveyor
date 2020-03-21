@@ -89,10 +89,34 @@ const resolvers = {
         questions: []
       };
     },
-    createQuestion: async (_, { pageId, order, text }, { dataSources }) => {
-      const question = await dataSources.questions.create(pageId, order, text);
+    createQuestion: async (
+      _,
+      { pageId, order, text, config },
+      { dataSources }
+    ) => {
+      const question = await dataSources.questions.create(
+        pageId,
+        order,
+        text,
+        config
+      );
       return {
         ...question.dataValues
+      };
+    },
+    createPossibleValue: async (
+      _,
+      { questionId, order, value, label },
+      { dataSources }
+    ) => {
+      const possibleValue = await dataSources.possibleValues.create(
+        questionId,
+        order,
+        value,
+        label
+      );
+      return {
+        ...possibleValue.dataValues
       };
     }
   }

@@ -5,17 +5,6 @@ import { gql } from "apollo-server";
 
 // The language we'll use to write the schema is GraphQL's schema definition language (SDL).
 export const typeDefs = gql`
-  enum InputType {
-    TEXT
-    EMAIL
-    TEXTAREA
-    RANGE
-    NUMBER
-    CHOICE
-    DROPDOWN
-    BOOLEAN
-  }
-
   type Survey {
     id: ID!
     name: String!
@@ -33,7 +22,7 @@ export const typeDefs = gql`
     order: Float!
     text: String!
     answer: Answer
-    inputType: InputType!
+    type: QuestionType!
 
     """
     used to set any field as required
@@ -62,6 +51,26 @@ export const typeDefs = gql`
     min: Int
   }
 
+  input QuestionConfig {
+    type: QuestionType!
+    minValues: Int
+    maxLength: Int
+    maxValues: Int
+    max: Int
+    min: Int
+  }
+
+  enum QuestionType {
+    TEXT
+    EMAIL
+    TEXTAREA
+    RANGE
+    NUMBER
+    CHOICE
+    DROPDOWN
+    BOOLEAN
+  }
+
   type Answer {
     id: ID!
     values: [String!]!
@@ -88,7 +97,18 @@ export const typeDefs = gql`
     createAnonUser(surveyId: ID!): CreateAnonUserResponse!
     createSurvey(name: String!): Survey!
     createPage(surveyId: ID!, order: Float): Page!
-    createQuestion(pageId: ID!, order: Float, text: String): Question!
+    createQuestion(
+      pageId: ID!
+      order: Float
+      text: String
+      config: QuestionConfig!
+    ): Question!
+    createPossibleValue(
+      questionId: ID!
+      order: Float!
+      value: String!
+      label: String!
+    ): PossibleValue!
     createAnswer(
       anonUserId: ID!
       questionId: ID!
