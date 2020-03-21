@@ -36,27 +36,27 @@ export const typeDefs = gql`
     inputType: InputType!
 
     """
-     used to set any field as required
+    used to set any field as required
     """
     minValues: Int
 
     """
-     TEXT and TEXTAREA inputs
+    TEXT and TEXTAREA inputs
     """
     maxLength: Int
 
     """
-     CHOICE and DROPDOWN
+    CHOICE and DROPDOWN
     """
     possibleValues: [PossibleValue!]
 
     """
-     CHOICE
+    CHOICE
     """
     maxValues: Int
 
     """
-     RANGE and NUMBER
+    RANGE and NUMBER
     """
     max: Int
     min: Int
@@ -86,6 +86,9 @@ export const typeDefs = gql`
 
   type Mutation {
     createAnonUser(surveyId: ID!): CreateAnonUserResponse!
+    createSurvey(name: String!): Survey!
+    createPage(surveyId: ID!, order: Float): Page!
+    createQuestion(pageId: ID!, order: Float, text: String): Question!
     createAnswer(
       anonUserId: ID!
       questionId: ID!

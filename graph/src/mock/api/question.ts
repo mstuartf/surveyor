@@ -19,15 +19,15 @@ export class QuestionAPI extends DataSource {
     return await this.store.questions.findAll({ where: { pageId: pageIds } });
   }
 
-  async create(surveyId, text) {
+  async create(pageId, order, text) {
     const existing = await this.store.questions.find({
-      where: { surveyId, text }
+      where: { pageId, order, text }
     });
 
     if (existing) {
       return null;
     }
 
-    return await this.store.questions.create({ surveyId, text });
+    return await this.store.questions.create({ pageId, order, text });
   }
 }

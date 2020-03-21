@@ -74,6 +74,26 @@ const resolvers = {
         message: "anonUser created",
         anonUser: getFullAnonUserResponse(dataSources, anonUser)
       };
+    },
+    createSurvey: async (_, { name }, { dataSources }) => {
+      const survey = await dataSources.surveys.create(name);
+      return {
+        ...survey.dataValues,
+        pages: []
+      };
+    },
+    createPage: async (_, { surveyId, order }, { dataSources }) => {
+      const page = await dataSources.pages.create(surveyId, order);
+      return {
+        ...page.dataValues,
+        questions: []
+      };
+    },
+    createQuestion: async (_, { pageId, order, text }, { dataSources }) => {
+      const question = await dataSources.questions.create(pageId, order, text);
+      return {
+        ...question.dataValues
+      };
     }
   }
 };

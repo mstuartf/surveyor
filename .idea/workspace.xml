@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ec8a2548-b22d-4e0e-9724-40096b1a3bb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Question/Question.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Question/Question.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/tailwind.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/tailwind.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/src/mock/api/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/graph/src/mock/api/page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/src/mock/api/question.ts" beforeDir="false" afterPath="$PROJECT_DIR$/graph/src/mock/api/question.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/src/resolvers/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/graph/src/resolvers/resolvers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/src/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/graph/src/schema.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="89" column="62" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="62" />
+            <state relative-caret-position="363">
+              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -30,40 +32,61 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/tailwind.js">
+        <entry file="file://$PROJECT_DIR$/graph/src/schema.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="282" column="19" selection-start-line="282" selection-start-column="19" selection-end-line="282" selection-end-column="19" />
+            <state relative-caret-position="468">
+              <caret line="98" column="31" lean-forward="true" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyNavigation/SurveyNavigation.tsx">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/graph/src/resolvers/resolvers.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-627">
+            <state relative-caret-position="543">
+              <caret line="94" column="30" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="30" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#68#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyAuth/SurveyAuth.tsx">
+        <entry file="file://$PROJECT_DIR$/graph/src/mock/api/question.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-162">
-              <folding>
-                <element signature="e#0#61#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="345">
+              <caret line="23" column="36" lean-forward="true" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyContents/SurveyContents.tsx">
+        <entry file="file://$PROJECT_DIR$/graph/src/mock/api/page.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="390">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/graph/node_modules/@types/sequelize/index.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="4036" column="8" selection-start-line="4036" selection-start-column="8" selection-end-line="4036" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/MultipleChoice/MultipleChoice.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="42" column="49" lean-forward="true" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="49" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -82,16 +105,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>max-h</find>
-      <find>anonUserId</find>
-      <find>lastQuestionId</find>
-      <find>nextQuestionId</find>
-      <find>anonUserCac</find>
-      <find>writeData</find>
-      <find>direc§</find>
-      <find>HasStar</find>
-      <find>direction</find>
-      <find>link</find>
       <find>CREATE_ANON_USER</find>
       <find>GET_U</find>
       <find>HAS_ANON_USER</find>
@@ -112,9 +125,20 @@
       <find>InputField</find>
       <find>saveFn</find>
       <find>height</find>
+      <find>CREATE_ANSWER</find>
+      <find>nextQuestionId</find>
+      <find>questions</find>
+      <find>belowMin</find>
+      <find>minValuesReminder</find>
+      <find>UserInputError</find>
+      <find>data.qu</find>
+      <find>data.question</find>
+      <find>order</find>
+      <find>createSurvey</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/client/src</dir>
+      <dir>$PROJECT_DIR$/client/src/components</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -123,22 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/graph/src/resolvers/getFullAnonUserResponse.ts" />
-        <option value="$PROJECT_DIR$/client/src/components/CardStack/CardStack.tsx" />
-        <option value="$PROJECT_DIR$/client/src/Question.tsx" />
-        <option value="$PROJECT_DIR$/client/src/Home.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/CardStack/variants.ts" />
-        <option value="$PROJECT_DIR$/client/src/Survey.tsx" />
-        <option value="$PROJECT_DIR$/client/src/HasStarted.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/Survey/nextQuestion.ts" />
-        <option value="$PROJECT_DIR$/client/src/components/Survey/Surveycontents.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/Loading/Loading.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyContents.tsx" />
-        <option value="$PROJECT_DIR$/client/src/Completed.tsx" />
-        <option value="$PROJECT_DIR$/client/public/index.html" />
-        <option value="$PROJECT_DIR$/client/src/StartSurvey.tsx" />
-        <option value="$PROJECT_DIR$/graph/src/mock/api/question.ts" />
-        <option value="$PROJECT_DIR$/client/src/Root.tsx" />
         <option value="$PROJECT_DIR$/client/src/App.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyInner.tsx" />
         <option value="$PROJECT_DIR$/client/src/index.tsx" />
@@ -146,34 +154,50 @@
         <option value="$PROJECT_DIR$/client/src/client.ts" />
         <option value="$PROJECT_DIR$/client/src/components/Root/Root.tsx" />
         <option value="$PROJECT_DIR$/client/package.json" />
-        <option value="$PROJECT_DIR$/client/src/apolloClient.ts" />
-        <option value="$PROJECT_DIR$/graph/src/mock/database/utils.ts" />
         <option value="$PROJECT_DIR$/client/src/components/DraggableItem/DraggableItem.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/DraggableStack/variants.ts" />
         <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyNav.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/DraggableStack/DraggableStack.tsx" />
         <option value="$PROJECT_DIR$/client/src/interfaces.ts" />
         <option value="$PROJECT_DIR$/client/src/components/Question/Question.gql.ts" />
-        <option value="$PROJECT_DIR$/graph/src/resolvers/resolvers.ts" />
-        <option value="$PROJECT_DIR$/client/src/components/App/App.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyContents/SurveyContents.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/Survey/CheckSurveyStarted/CheckSurveyStarted.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/Survey/CheckSurveyStarted/SurveyAuth.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/Survey/Survey.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyAuth/SurveyAuth.graphql.ts" />
-        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyAuth/SurveyAuth.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyNavigation/SurveyNavigation.graphql.ts" />
-        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyNavigation/SurveyNavigation.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/StartSurvey/StartSurvey.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/StartSurvey/StartSurvey.graphql.ts" />
         <option value="$PROJECT_DIR$/client/codegen.yml" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/client/src/components/MultipleChoice/MultipleChoice.tsx" />
-        <option value="$PROJECT_DIR$/graph/src/schema.ts" />
-        <option value="$PROJECT_DIR$/client/src/components/SingleInput/SingleInput.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/DebouncedInput.tsx" />
         <option value="$PROJECT_DIR$/client/tailwind.js" />
+        <option value="$PROJECT_DIR$/graph/src/index.ts" />
+        <option value="$PROJECT_DIR$/graph/src/resolvers/getFullAnonUserResponse.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyContents/SurveyContents.tsx" />
+        <option value="$PROJECT_DIR$/client/src/sortQuestions.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyNavigation/nextQuestion.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/App/App.tsx" />
+        <option value="$PROJECT_DIR$/client/src/apolloClient.ts" />
+        <option value="$PROJECT_DIR$/client/src/schema.ts" />
+        <option value="$PROJECT_DIR$/client/src/sortPages.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyNavigation/SurveyNavigation.tsx" />
+        <option value="$PROJECT_DIR$/client/src/components/Page/Page.tsx" />
+        <option value="$PROJECT_DIR$/client/src/pagination.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/PageCounter/PageCounter.graphql.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/PageCounter/PageCounter.tsx" />
+        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyNavigation/SurveyNavigation.graphql.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/Page/Page.graphql.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyAuth/SurveyAuth.tsx" />
+        <option value="$PROJECT_DIR$/client/src/components/Survey/SurveyAuth/SurveyAuth.graphql.ts" />
+        <option value="$PROJECT_DIR$/graph/src/mock/database/utils.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/MultipleChoice/MultipleChoice.graphql.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/MultipleChoice/MultipleChoice.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/Question/Question.tsx" />
+        <option value="$PROJECT_DIR$/client/src/components/SingleInput/SingleInput.graphql.ts" />
+        <option value="$PROJECT_DIR$/client/src/components/SingleInput/SingleInput.tsx" />
+        <option value="$PROJECT_DIR$/client/src/components/Question/Question.graphql.ts" />
+        <option value="$PROJECT_DIR$/graph/src/mock/api/page.ts" />
+        <option value="$PROJECT_DIR$/graph/src/schema.ts" />
+        <option value="$PROJECT_DIR$/graph/src/mock/api/question.ts" />
+        <option value="$PROJECT_DIR$/graph/src/resolvers/resolvers.ts" />
       </list>
     </option>
   </component>
@@ -190,7 +214,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,12 +224,34 @@
             <path>
               <item name="surveyor" type="b2602c69:ProjectViewProjectNode" />
               <item name="surveyor" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="graph" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="surveyor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="surveyor" type="462c0819:PsiDirectoryNode" />
+              <item name="graph" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="surveyor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="surveyor" type="462c0819:PsiDirectoryNode" />
+              <item name="graph" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mock" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="surveyor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="surveyor" type="462c0819:PsiDirectoryNode" />
+              <item name="graph" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mock" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -222,11 +267,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/components/DebouncedInput" />
+      <recent name="$PROJECT_DIR$/client/src/components/PageCounter" />
       <recent name="$PROJECT_DIR$/client/src/components/Survey" />
       <recent name="$PROJECT_DIR$/client/src/components/SurveyNavigation" />
       <recent name="$PROJECT_DIR$/client/src/components/SurveyContents" />
-      <recent name="$PROJECT_DIR$/client/src/components/CheckSurveyStarted" />
-      <recent name="$PROJECT_DIR$/client/src/components/Root" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -259,17 +304,21 @@
       <workItem from="1584303071217" duration="8347000" />
       <workItem from="1584433536710" duration="7809000" />
       <workItem from="1584695395465" duration="2146000" />
+      <workItem from="1584789450638" duration="1432000" />
+      <workItem from="1584790887218" duration="2356000" />
+      <workItem from="1584793390243" duration="2928000" />
+      <workItem from="1584805375737" duration="2984000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94744000" />
+    <option name="totallyTimeSpent" value="109682000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26752505" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.29399142" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -287,10 +336,10 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="Terminal" order="3" visible="true" weight="0.37911302" />
+      <window_info active="true" anchor="right" id="Terminal" order="3" visible="true" weight="0.34978542" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20529328" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2746781" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -308,7 +357,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Terminal" order="3" weight="0.3891273" />
+      <window_info active="true" anchor="right" id="Terminal" order="3" visible="true" weight="0.34978542" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,64 +368,105 @@
     <entry file="file://$PROJECT_DIR$/client/src/Question.tsx" />
     <entry file="file://$PROJECT_DIR$/client/src/resolvers.ts" />
     <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.interfaces.ts" />
+    <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyNavigation/nextPage.ts" />
+    <entry file="file://$PROJECT_DIR$/client/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/MultipleChoice/MultipleChoice.graphql.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="13" lean-forward="true" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/MultipleChoice/MultipleChoice.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="183">
+          <caret line="42" column="49" lean-forward="true" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="49" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/DraggableItem/DraggableItem.tsx">
+    <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.graphql.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyAuth/SurveyAuth.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-162">
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyContents/SurveyContents.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Survey/SurveyNavigation/SurveyNavigation.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-627">
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/tailwind.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="282" column="19" selection-start-line="282" selection-start-column="19" selection-end-line="282" selection-end-column="19" />
+        <state relative-caret-position="465">
+          <caret line="31" column="18" lean-forward="true" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/Question/Question.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="89" column="62" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="62" />
+        <state relative-caret-position="363">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/SingleInput/SingleInput.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/SingleInput/SingleInput.graphql.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph/node_modules/@types/sequelize/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="4036" column="8" selection-start-line="4036" selection-start-column="8" selection-end-line="4036" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph/src/mock/api/survey.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph/src/mock/api/page.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph/src/schema.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="98" column="31" lean-forward="true" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph/src/mock/api/question.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="36" lean-forward="true" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph/src/resolvers/resolvers.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="94" column="30" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
           </folding>
         </state>
       </provider>

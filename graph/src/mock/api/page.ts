@@ -12,15 +12,15 @@ export class PageAPI extends DataSource {
     return await this.store.pages.findAll({ where: { surveyId } });
   }
 
-  // async create(surveyId, text) {
-  //   const existing = await this.store.questions.find({
-  //     where: { surveyId, text }
-  //   });
-  //
-  //   if (existing) {
-  //     return null;
-  //   }
-  //
-  //   return await this.store.questions.create({ surveyId, text });
-  // }
+  async create(surveyId, order) {
+    const existing = await this.store.pages.find({
+      where: { surveyId, order }
+    });
+
+    if (existing) {
+      return null;
+    }
+
+    return await this.store.pages.create({ surveyId, order });
+  }
 }
