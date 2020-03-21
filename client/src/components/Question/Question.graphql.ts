@@ -6,19 +6,11 @@ export const GET_QUESTION = gql`
     belowMinValues @client
     question(id: $questionId) {
       id
-      order
       text
       minValues
-      maxValues
       answer {
         id
         values
-      }
-      possibleValues {
-        id
-        order
-        label
-        value
       }
       inputType
       maxLength

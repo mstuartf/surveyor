@@ -4,7 +4,6 @@ import SingleInput from "../SingleInput/SingleInput";
 import Loading from "../Loading/Loading";
 import { GET_QUESTION } from "./Question.graphql";
 import {
-  GQLPossibleValue,
   useQuestionMutationMutation,
   useQuestionQueryQuery
 } from "../../generated/graphql";
@@ -92,14 +91,7 @@ const Question = ({ questionId }: Props) => {
       </div>
       <div className="flex-grow border border-red-400 w-full">
         {["CHOICE"].indexOf(question.inputType) > -1 && (
-          <MultipleChoice
-            onSave={saveAnswerValues}
-            possibleValues={question.possibleValues as GQLPossibleValue[]}
-            min={question.minValues || 0}
-            max={question.maxValues || 0}
-            minValuesReminder={data.belowMinValues.indexOf(questionId) > -1}
-            answer={question.answer}
-          />
+          <MultipleChoice onSave={saveAnswerValues} questionId={questionId} />
         )}
         {["TEXT", "NUMBER"].indexOf(question.inputType) > -1 && (
           <SingleInput

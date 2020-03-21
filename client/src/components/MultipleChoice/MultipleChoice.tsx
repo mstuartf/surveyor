@@ -1,23 +1,26 @@
 import React from "react";
-import { GQLAnswer, GQLPossibleValue } from "../../generated/graphql";
+import { useMultipleChoiceQueryQuery } from "../../generated/graphql";
+import Loading from "../Loading/Loading";
 
 interface Props {
-  minValuesReminder: boolean;
-  min: number;
-  max: number;
-  answer?: GQLAnswer | null;
-  possibleValues: GQLPossibleValue[];
+  questionId: string;
   onSave: Function;
 }
 
-const MultipleChoice = ({
-  minValuesReminder,
-  min,
-  max = 0,
-  answer,
-  possibleValues,
-  onSave
-}: Props) => {
+const MultipleChoice = ({ questionId, onSave }: Props) => {
+  const { data } = useMultipleChoiceQueryQuery({
+    variables: { questionId }
+  });
+
+  if (!data) {
+    return <Loading />;
+  }
+
+  const {
+    question: { answer, minValues, maxValues, possibleValues },
+    belowMinValues
+  } = data;
+
   const toggleValue = value => {
     let values: string[];
     if (answer) {
@@ -29,19 +32,25 @@ const MultipleChoice = ({
     } else {
       values = [value];
     }
-    values = values.slice(-Math.max(values.length - max, 0));
+    values = values.slice(-Math.max(values.length - (maxValues || 0), 0));
     onSave(values);
   };
 
   return (
     <>
-      <div className={minValuesReminder ? "text-red-600 underline" : ""}>
-        Min values: {min || "n/a"}
+      <div
+        className={
+          belowMinValues.indexOf(questionId) > -1
+            ? "text-red-600 underline"
+            : ""
+        }
+      >
+        Min values: {minValues || "n/a"}
       </div>
-      <div>Max values: {max || "n/a"}</div>
+      <div>Max values: {maxValues || "n/a"}</div>
       <div className="mt-2">Select answers:</div>
       <div className="flex flex-col mt-2">
-        {possibleValues
+        {possibleValues!
           .sort((a, b) => (a.order > b.order ? 1 : -1))
           .map(option => (
             <button
