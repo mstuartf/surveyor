@@ -1,5 +1,6 @@
 import React from "react";
 import { useInputQueryQuery } from "../../../../../generated/graphql";
+import Flicker from "../../Flicker/Flicker";
 
 interface Props {
   questionId: string;
@@ -13,8 +14,7 @@ const BooleanInput = ({ questionId, onSave }: Props) => {
 
   const {
     question,
-    question: { answer, minValues },
-    belowMinValues
+    question: { answer, minValues }
   } = data!;
 
   const toggleValue = value => {
@@ -45,15 +45,9 @@ const BooleanInput = ({ questionId, onSave }: Props) => {
         False
       </button>
       {!!minValues && (
-        <div
-          className={
-            belowMinValues.indexOf(questionId) > -1
-              ? "text-red-600 underline"
-              : ""
-          }
-        >
-          Required
-        </div>
+        <Flicker questionId={questionId} reminderClass="text-red-700">
+          <div>Required</div>
+        </Flicker>
       )}
     </>
   );

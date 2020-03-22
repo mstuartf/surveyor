@@ -1,6 +1,7 @@
 import React from "react";
 import { useInputQueryQuery } from "../../../../../generated/graphql";
 import { DebouncedInput } from "../../../../Generic/DebouncedInput/DebouncedInput";
+import Flicker from "../../Flicker/Flicker";
 
 interface Props {
   questionId: string;
@@ -15,8 +16,7 @@ const TypingInput = ({ questionId, onSave, children }: Props) => {
 
   const {
     question,
-    question: { answer, minValues },
-    belowMinValues
+    question: { answer, minValues }
   } = data!;
 
   const value = answer ? answer.values[0] : "";
@@ -28,15 +28,9 @@ const TypingInput = ({ questionId, onSave, children }: Props) => {
         {children}
       </DebouncedInput>
       {!!minValues && (
-        <div
-          className={
-            belowMinValues.indexOf(questionId) > -1
-              ? "text-red-600 underline"
-              : ""
-          }
-        >
-          Required
-        </div>
+        <Flicker questionId={questionId} reminderClass="text-red-700">
+          <div>Required</div>
+        </Flicker>
       )}
     </>
   );

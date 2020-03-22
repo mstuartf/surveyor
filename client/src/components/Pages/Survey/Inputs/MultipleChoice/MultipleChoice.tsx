@@ -1,6 +1,7 @@
 import React from "react";
 import { useMultipleChoiceQueryQuery } from "../../../../../generated/graphql";
 import { sortResource } from "../../../../../pagination";
+import Flicker from "../../Flicker/Flicker";
 
 interface Props {
   questionId: string;
@@ -13,8 +14,7 @@ const MultipleChoice = ({ questionId, onSave }: Props) => {
   });
 
   const {
-    question: { answer, minValues, maxValues, possibleValues },
-    belowMinValues
+    question: { answer, minValues, maxValues, possibleValues }
   } = data!;
 
   const toggleValue = value => {
@@ -36,15 +36,9 @@ const MultipleChoice = ({ questionId, onSave }: Props) => {
 
   return (
     <>
-      <div
-        className={
-          belowMinValues.indexOf(questionId) > -1
-            ? "text-red-600 underline"
-            : ""
-        }
-      >
-        Min values: {minValues || "n/a"}
-      </div>
+      <Flicker questionId={questionId} reminderClass="text-red-700">
+        <div>Min values: {minValues || "n/a"}</div>
+      </Flicker>
       <div>Max values: {maxValues || "n/a"}</div>
       <div className="mt-2">Select answers:</div>
       <div className="flex flex-col mt-2">

@@ -14,13 +14,13 @@ interface Props {
 }
 
 const Question = ({ questionId }: Props) => {
-  const { data, client } = useQuestionQueryQuery({
+  const { data } = useQuestionQueryQuery({
     variables: { questionId }
   });
 
   const [createAnswer] = useQuestionMutationMutation();
 
-  const { question, anonUserId, belowMinValues } = data!;
+  const { question, anonUserId } = data!;
 
   const saveAnswerValues = (values: string[]) => {
     createAnswer({
@@ -65,20 +65,6 @@ const Question = ({ questionId }: Props) => {
       }
     });
   };
-
-  const wipeMinValuesReminder = () => {
-    setTimeout(() => {
-      client.writeData({
-        data: {
-          belowMinValues: [] // todo this should remove the individual ID
-        }
-      });
-    }, 1000);
-  };
-
-  if (belowMinValues) {
-    wipeMinValuesReminder();
-  }
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">

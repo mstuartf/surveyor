@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from "react";
 import { useDropDownQueryQuery } from "../../../../../generated/graphql";
 import { sortResource } from "../../../../../pagination";
+import Flicker from "../../Flicker/Flicker";
 
 interface Props {
   questionId: string;
@@ -13,8 +14,7 @@ const DropDown = ({ questionId, onSave }: Props) => {
   });
 
   const {
-    question: { answer, possibleValues },
-    belowMinValues
+    question: { answer, possibleValues }
   } = data!;
 
   const selectValue = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -25,15 +25,9 @@ const DropDown = ({ questionId, onSave }: Props) => {
 
   return (
     <>
-      <div
-        className={
-          belowMinValues.indexOf(questionId) > -1
-            ? "text-red-600 underline"
-            : ""
-        }
-      >
-        Required
-      </div>
+      <Flicker questionId={questionId} reminderClass="text-red-700">
+        <div>Required</div>
+      </Flicker>
       <div className="mt-2">Select answers:</div>
       <select
         className="flex flex-col mt-2"
