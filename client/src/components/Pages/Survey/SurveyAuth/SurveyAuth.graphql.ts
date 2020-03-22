@@ -13,6 +13,7 @@ export const GET_USER_ID = gql`
           id
           order
           text
+          instructions
           minValues
           maxValues
           answer {

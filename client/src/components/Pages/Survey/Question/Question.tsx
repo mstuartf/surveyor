@@ -9,6 +9,7 @@ import {
 import BooleanInput from "../Inputs/BooleanInput/BooleanInput";
 import DropDown from "../Inputs/DropDown/DropDown";
 import QuestionText from "../../../Generic/QuestionText";
+import ReminderText from "../../../Generic/ReminderText";
 
 interface Props {
   questionId: string;
@@ -77,6 +78,11 @@ const Question = ({ questionId }: Props) => {
           {question.minValues ? `${question.text}*` : question.text}
         </QuestionText>
       </div>
+      {question.instructions && (
+        <div className="w-full flex flex-col justify-center items-center px-4 pt-2 pb-4 text-center">
+          <ReminderText>{question.instructions}</ReminderText>
+        </div>
+      )}
       <div className="flex-grow w-full">
         {["CHOICE"].indexOf(question.type) > -1 && (
           <MultipleChoice onSave={saveAnswerValues} questionId={questionId} />
