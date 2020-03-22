@@ -75,7 +75,7 @@ const SurveyNavigation = ({
         previousCard={() => cardSwiped(false)}
       >
         <div className="w-full h-full p-8">
-          <div className="w-full h-full rounded-lg bg-white box-border shadow-2xl">
+          <div className="w-full h-full rounded-lg bg-white box-border shadow-2xl p-4">
             <SurveyContents
               surveyId={surveyId}
               pageId={pageId}

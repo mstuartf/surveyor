@@ -69,7 +69,7 @@ const Question = ({ questionId }: Props) => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center pb-6">
-      <div className="w-full flex flex-col justify-center items-center px-10 py-4 text-center">
+      <div className="w-full flex flex-col justify-center items-center px-4 pt-2 pb-4 text-center">
         <QuestionText>{question.text}</QuestionText>
       </div>
       <div className="flex-grow w-full">

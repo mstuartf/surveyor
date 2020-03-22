@@ -28,9 +28,7 @@ const Section = ({ pageId, surveyId }: Props) => {
         </div>
       </div>
 
-      <div className="w-full flex justify-center items-center pb-6">
-        <Progress surveyId={surveyId} pageId={pageId} />
-      </div>
+      <Progress surveyId={surveyId} pageId={pageId} />
     </div>
   );
 };
