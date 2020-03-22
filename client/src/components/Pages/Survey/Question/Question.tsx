@@ -71,7 +71,7 @@ const Question = ({ questionId }: Props) => {
   };
 
   const inputStyling =
-    "bg-gray-200 appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500";
+    "appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500";
 
   return (
     <div className="w-full flex flex-col items-center justify-center pb-6">

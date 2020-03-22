@@ -33,12 +33,13 @@ const MultipleChoice = ({ questionId, onSave }: Props) => {
     onSave(values);
   };
 
-  const shared = "focus:outline-none rounded-lg font-light px-2 py-4";
-  const unselected = "text-purple-500 border border-purple-500";
-  const selected = "text-white bg-purple-500 border border-purple-500";
+  const shared =
+    "block border border-purple-500 rounded py-3 px-4 leading-tight focus:outline-none";
+  const unselected = "text-purple-500";
+  const selected = "text-white bg-purple-500";
 
   return (
-    <div className="grid grid-cols-1 gap-4 py-4">
+    <div className="grid grid-cols-1 gap-4 py-8">
       {sortResource(possibleValues!).map(option => (
         <button
           className={
