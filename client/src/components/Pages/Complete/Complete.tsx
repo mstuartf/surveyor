@@ -48,7 +48,7 @@ const Complete = (props: Props) => {
   }, []);
 
   return (
-    <div className="w-full h-full flex items-center justify-center">
+    <div className="w-full h-full flex items-center justify-center bg-white">
       <QuestionText>Thanks for taking part in the survey!</QuestionText>
     </div>
   );
