@@ -18,9 +18,9 @@ const Progress = ({ surveyId, pageId }: Props) => {
   const sorted = [...pages].sort((a, b) => (a.order > b.order ? 1 : -1));
   const current = sorted.findIndex(q => q.id === pageId);
 
-  // @ts-ignore
+  // for some reason this style attribute is not recognised
   const style: CSSProperties = {
-    "grid-template-columns": `repeat(${pages.length}, minmax(0, 1fr))`
+    ["grid-template-columns" as any]: `repeat(${pages.length}, minmax(0, 1fr))`
   };
   const shared = "border-b-2 pb-4";
 
