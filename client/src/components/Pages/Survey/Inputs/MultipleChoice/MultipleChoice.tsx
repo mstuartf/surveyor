@@ -1,7 +1,7 @@
 import React from "react";
 import { useMultipleChoiceQueryQuery } from "../../../../../generated/graphql";
 import { sortResource } from "../../../../../pagination";
-import Flicker from "../../Flicker/Flicker";
+import ReminderText from "../../../../Generic/ReminderText";
 
 interface Props {
   questionId: string;
@@ -34,20 +34,22 @@ const MultipleChoice = ({ questionId, onSave }: Props) => {
     onSave(values);
   };
 
+  const shared = "focus:outline-none rounded-lg font-light px-2 py-4";
+  const unselected = "text-purple-500 border border-purple-500";
+  const selected = "text-white bg-purple-500 border border-purple-500";
+
   return (
     <>
-      <Flicker questionId={questionId} reminderClass="text-red-700">
-        <div>Min values: {minValues || "n/a"}</div>
-      </Flicker>
-      <div>Max values: {maxValues || "n/a"}</div>
-      <div className="mt-2">Select answers:</div>
-      <div className="flex flex-col mt-2">
+      <div className="flex items-center justify-center py-4">
+        <ReminderText>{`Choose ${minValues}-${maxValues} options.`}</ReminderText>
+      </div>
+      <div className="grid grid-cols-1 gap-4 p-4">
         {sortResource(possibleValues!).map(option => (
           <button
             className={
               answer && answer.values.indexOf(option.value) > -1
-                ? "bg-red-500"
-                : ""
+                ? `${shared} ${selected}`
+                : `${shared} ${unselected}`
             }
             key={option.value}
             onClick={() => toggleValue(option.value)}

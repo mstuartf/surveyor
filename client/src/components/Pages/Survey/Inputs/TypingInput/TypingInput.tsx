@@ -1,7 +1,7 @@
 import React from "react";
 import { useInputQueryQuery } from "../../../../../generated/graphql";
 import { DebouncedInput } from "../../../../Generic/DebouncedInput/DebouncedInput";
-import Flicker from "../../Flicker/Flicker";
+import ReminderText from "../../../../Generic/ReminderText";
 
 interface Props {
   questionId: string;
@@ -28,9 +28,9 @@ const TypingInput = ({ questionId, onSave, children }: Props) => {
         {children}
       </DebouncedInput>
       {!!minValues && (
-        <Flicker questionId={questionId} reminderClass="text-red-700">
-          <div>Required</div>
-        </Flicker>
+        <div className="flex items-center justify-center py-4">
+          <ReminderText>This question is required!</ReminderText>
+        </div>
       )}
     </>
   );

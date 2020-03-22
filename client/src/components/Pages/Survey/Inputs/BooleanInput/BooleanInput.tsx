@@ -1,6 +1,6 @@
 import React from "react";
 import { useInputQueryQuery } from "../../../../../generated/graphql";
-import Flicker from "../../Flicker/Flicker";
+import ReminderText from "../../../../Generic/ReminderText";
 
 interface Props {
   questionId: string;
@@ -34,10 +34,8 @@ const BooleanInput = ({ questionId, onSave }: Props) => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex items-center justify-center py-4 text-purple-500 text-sm font-hairline invisible">
-        <Flicker questionId={questionId} reminderClass="visible">
-          <div>This question is required!</div>
-        </Flicker>
+      <div className="flex items-center justify-center py-4">
+        <ReminderText>This question is required!</ReminderText>
       </div>
 
       <div className="flex py-4">

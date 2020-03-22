@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react";
 import { useDropDownQueryQuery } from "../../../../../generated/graphql";
 import { sortResource } from "../../../../../pagination";
-import Flicker from "../../Flicker/Flicker";
+import ReminderText from "../../../../Generic/ReminderText";
 
 interface Props {
   questionId: string;
@@ -25,9 +25,9 @@ const DropDown = ({ questionId, onSave }: Props) => {
 
   return (
     <>
-      <Flicker questionId={questionId} reminderClass="text-red-700">
-        <div>Required</div>
-      </Flicker>
+      <div className="flex items-center justify-center py-4">
+        <ReminderText>This question is required!</ReminderText>
+      </div>
       <div className="mt-2">Select answers:</div>
       <select
         className="flex flex-col mt-2"

@@ -5,11 +5,7 @@ interface Props {
 }
 
 const QuestionText = ({ children }: Props) => {
-  return (
-    <div className="text-xl text-center text-purple-500 font-light">
-      {children}
-    </div>
-  );
+  return <div className="text-xl text-purple-500 font-light">{children}</div>;
 };
 
 export default QuestionText;
