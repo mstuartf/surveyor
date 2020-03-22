@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import QuestionText from "../../Generic/QuestionText";
 
 interface Props {
   surveyId: string;
@@ -7,9 +8,15 @@ interface Props {
 
 const Submit = ({ surveyId }: Props) => {
   return (
-    <div className="w-full h-full flex items-center justify-center bg-blue-100">
-      Submit
-      <Link to={`/survey/${surveyId}/complete`}>Save</Link>
+    <div className="w-full h-full flex flex-col items-center justify-center">
+      <QuestionText>You've finished!</QuestionText>
+      <div className="py-8">
+        <Link to={`/survey/${surveyId}/complete`}>
+          <button className="focus:outline-none rounded-lg font-light px-8 py-4 text-white bg-purple-500 border border-purple-500">
+            Save results
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

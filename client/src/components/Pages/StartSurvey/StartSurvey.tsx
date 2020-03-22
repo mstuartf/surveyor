@@ -4,11 +4,15 @@ import {
   useStartSurveyMutationMutation,
   useStartSurveyQueryQuery
 } from "../../../generated/graphql";
+import QuestionText from "../../Generic/QuestionText";
+import ReminderText from "../../Generic/ReminderText";
 
 const StartSurvey = ({ surveyId }) => {
   const client = useApolloClient();
 
-  const { data } = useStartSurveyQueryQuery();
+  const { data } = useStartSurveyQueryQuery({
+    variables: { surveyId }
+  });
 
   const [startSurvey] = useStartSurveyMutationMutation({
     variables: { surveyId: surveyId },
@@ -34,9 +38,14 @@ const StartSurvey = ({ surveyId }) => {
     }
   }, []);
 
+  const { survey } = data!;
+
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center bg-yellow-100 overflow-y-auto">
-      Survey {surveyId} - swipe to start...
+    <div className="w-full h-full flex flex-col items-center justify-center">
+      <QuestionText>{survey.name}</QuestionText>
+      <div className="p-4">
+        <ReminderText>Swipe to start!</ReminderText>
+      </div>
     </div>
   );
 };

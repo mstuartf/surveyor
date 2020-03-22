@@ -11,7 +11,11 @@ export const START_SURVEY = gql`
 `;
 
 export const GET_USER_ID = gql`
-  query StartSurveyQuery {
+  query StartSurveyQuery($surveyId: ID!) {
     anonUserId @client
+    survey(id: $surveyId) {
+      id
+      name
+    }
   }
 `;

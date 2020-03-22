@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useCompleteQueryQuery } from "../../../generated/graphql";
 import { GET_USER_ID } from "../Survey/SurveyAuth/SurveyAuth.graphql";
 import { RouteComponentProps } from "react-router";
+import QuestionText from "../../Generic/QuestionText";
 
 interface Props extends RouteComponentProps<{ surveyId: string }> {}
 
@@ -47,8 +48,8 @@ const Complete = (props: Props) => {
   }, []);
 
   return (
-    <div className="w-full h-full flex items-center justify-center bg-blue-100">
-      Completed
+    <div className="w-full h-full flex items-center justify-center">
+      <QuestionText>Thanks for taking part in the survey!</QuestionText>
     </div>
   );
 };
