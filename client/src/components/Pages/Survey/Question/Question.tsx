@@ -67,6 +67,9 @@ const Question = ({ questionId }: Props) => {
     });
   };
 
+  const inputStyling =
+    "bg-gray-200 appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500";
+
   return (
     <div className="w-full flex flex-col items-center justify-center pb-6">
       <div className="w-full flex flex-col justify-center items-center px-4 pt-2 pb-4 text-center">
@@ -80,13 +83,17 @@ const Question = ({ questionId }: Props) => {
           <TypingInput onSave={saveAnswerValues} questionId={questionId}>
             <input
               type={question.type.toLowerCase()}
-              className="border rounded shadow-md"
+              className={
+                question.type === "NUMBER"
+                  ? `${inputStyling} text-center`
+                  : `${inputStyling} text-center w-full`
+              }
             />
           </TypingInput>
         )}
         {["TEXTAREA"].indexOf(question.type) > -1 && (
           <TypingInput onSave={saveAnswerValues} questionId={questionId}>
-            <textarea className="border rounded shadow-md resize-none" rows={3}>
+            <textarea className={`${inputStyling} w-full resize-none`} rows={5}>
               ...
             </textarea>
           </TypingInput>

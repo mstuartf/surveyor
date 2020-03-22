@@ -21,7 +21,7 @@ const Section = ({ pageId, surveyId }: Props) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="flex flex-grow items-center">
-        <div>
+        <div className="w-full">
           {sortResource(questions).map(question => (
             <Question key={question.id} questionId={question.id} />
           ))}
