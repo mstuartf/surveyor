@@ -12,8 +12,7 @@ const BooleanInput = ({ questionId, onSave }: Props) => {
   });
 
   const {
-    question,
-    question: { answer, minValues }
+    question: { answer }
   } = data!;
 
   const toggleValue = value => {

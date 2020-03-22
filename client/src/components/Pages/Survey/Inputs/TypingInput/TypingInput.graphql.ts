@@ -5,7 +5,6 @@ const GET_INPUT_QUESTION = gql`
     question(id: $questionId) {
       id
       type
-      minValues
       answer {
         id
         values

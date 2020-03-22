@@ -4,8 +4,6 @@ const GET_CHOICE_QUESTION = gql`
   query DropDownQuery($questionId: ID!) {
     question(id: $questionId) {
       id
-      minValues
-      maxValues
       answer {
         id
         values

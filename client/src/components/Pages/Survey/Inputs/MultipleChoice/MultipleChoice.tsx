@@ -13,7 +13,7 @@ const MultipleChoice = ({ questionId, onSave }: Props) => {
   });
 
   const {
-    question: { answer, minValues, maxValues, possibleValues }
+    question: { answer, maxValues, possibleValues }
   } = data!;
 
   const toggleValue = value => {

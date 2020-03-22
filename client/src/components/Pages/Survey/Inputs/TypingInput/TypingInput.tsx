@@ -14,8 +14,7 @@ const TypingInput = ({ questionId, onSave, children }: Props) => {
   });
 
   const {
-    question,
-    question: { answer, minValues }
+    question: { answer }
   } = data!;
 
   const value = answer ? answer.values[0] : "";
