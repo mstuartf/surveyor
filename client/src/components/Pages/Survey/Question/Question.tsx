@@ -8,6 +8,7 @@ import {
 } from "../../../../generated/graphql";
 import BooleanInput from "../Inputs/BooleanInput/BooleanInput";
 import DropDown from "../Inputs/DropDown/DropDown";
+import QuestionText from "../../../Generic/QuestionText";
 
 interface Props {
   questionId: string;
@@ -67,11 +68,11 @@ const Question = ({ questionId }: Props) => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center">
-      <div className="h-1/4 border w-full flex justify-center items-center">
-        {question.text}
+    <div className="w-full flex flex-col items-center justify-center pb-6">
+      <div className="w-full flex flex-col justify-center items-center px-12 py-4">
+        <QuestionText>{question.text}</QuestionText>
       </div>
-      <div className="flex-grow border border-red-400 w-full">
+      <div className="flex-grow w-full">
         {["CHOICE"].indexOf(question.type) > -1 && (
           <MultipleChoice onSave={saveAnswerValues} questionId={questionId} />
         )}

@@ -74,8 +74,14 @@ const SurveyNavigation = ({
         nextCard={() => cardSwiped(true)}
         previousCard={() => cardSwiped(false)}
       >
-        <div className="w-full h-full border border-gray-300 rounded bg-white box-border shadow-md">
-          <SurveyContents surveyId={surveyId} pageId={pageId} submit={submit} />
+        <div className="w-full h-full p-8">
+          <div className="w-full h-full rounded-lg bg-white box-border shadow-2xl">
+            <SurveyContents
+              surveyId={surveyId}
+              pageId={pageId}
+              submit={submit}
+            />
+          </div>
         </div>
       </DraggableStack>
     </>

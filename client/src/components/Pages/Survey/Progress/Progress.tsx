@@ -19,7 +19,7 @@ const Progress = ({ surveyId, pageId }: Props) => {
   const current = sorted.findIndex(q => q.id === pageId);
 
   return (
-    <div>
+    <div className="text-md text-gray-500 font-light">
       {current + 1}/{sorted.length}
     </div>
   );

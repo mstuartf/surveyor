@@ -19,12 +19,16 @@ const Section = ({ pageId, surveyId }: Props) => {
   } = data!;
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center">
-      {sortResource(questions).map(question => (
-        <Question key={question.id} questionId={question.id} />
-      ))}
+    <div className="w-full h-full flex flex-col">
+      <div className="flex flex-grow items-center">
+        <div>
+          {sortResource(questions).map(question => (
+            <Question key={question.id} questionId={question.id} />
+          ))}
+        </div>
+      </div>
 
-      <div className="h-1/4 border w-full flex justify-center items-center">
+      <div className="w-full flex justify-center items-center pb-6">
         <Progress surveyId={surveyId} pageId={pageId} />
       </div>
     </div>

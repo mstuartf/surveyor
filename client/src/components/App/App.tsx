@@ -12,7 +12,7 @@ import Complete from "../Pages/Complete/Complete";
 
 const App = () => {
   return (
-    <div className="p-8 w-full h-screen m-auto overflow-hidden">
+    <div className="w-full h-screen m-auto overflow-hidden bg-purple-100">
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/survey/:surveyId/complete" component={Complete} />
