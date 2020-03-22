@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFlickerQueryQuery } from "../../../../generated/graphql";
 
 interface Props {
@@ -15,8 +15,8 @@ const Flicker = ({
   reminderClass
 }: Props) => {
   const { data, client } = useFlickerQueryQuery();
-
   const { belowMinValues } = data!;
+  const reminder = belowMinValues.indexOf(questionId) > -1;
 
   const wipeMinValuesReminder = () => {
     setTimeout(() => {
@@ -28,11 +28,11 @@ const Flicker = ({
     }, delay);
   };
 
-  if (belowMinValues) {
-    wipeMinValuesReminder();
-  }
-
-  const reminder = belowMinValues.indexOf(questionId) > -1;
+  useEffect(() => {
+    if (reminder) {
+      wipeMinValuesReminder();
+    }
+  }, [belowMinValues]);
 
   return React.cloneElement(children, {
     className: reminder ? reminderClass : ""
