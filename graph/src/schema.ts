@@ -21,6 +21,7 @@ export const typeDefs = gql`
     id: ID!
     order: Float!
     text: String!
+    instructions: String
     answer: Answer
     type: QuestionType!
 
@@ -102,14 +103,15 @@ export const typeDefs = gql`
     ): CreateAnswerResponse!
 
     """
-     admin endpoints for populating database
+    admin endpoints for populating database
     """
     createSurvey(name: String!): Survey!
     createPage(surveyId: ID!, order: Float): Page!
     createQuestion(
       pageId: ID!
-      order: Float
-      text: String
+      order: Float!
+      text: String!
+      instructions: String
       config: QuestionConfig!
     ): Question!
     createPossibleValue(

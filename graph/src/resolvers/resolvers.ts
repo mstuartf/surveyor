@@ -91,13 +91,14 @@ const resolvers = {
     },
     createQuestion: async (
       _,
-      { pageId, order, text, config },
+      { pageId, order, text, instructions, config },
       { dataSources }
     ) => {
       const question = await dataSources.questions.create(
         pageId,
         order,
         text,
+        instructions,
         config
       );
       return {
