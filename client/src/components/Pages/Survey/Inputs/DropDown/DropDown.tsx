@@ -23,13 +23,13 @@ const DropDown = ({ questionId, onSave }: Props) => {
   const value = answer ? answer.values[0] : "";
 
   return (
-    <div className={"py-4"}>
+    <div className={"py-4 relative"}>
       <select
         className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         onChange={e => selectValue(e)}
         value={value}
       >
-        <option value="">-</option>
+        <option value="">Select</option>
         {sortResource(possibleValues!).map(option => (
           <option key={option.value} value={option.value}>
             {option.label}

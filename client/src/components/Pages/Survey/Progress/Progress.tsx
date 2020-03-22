@@ -26,7 +26,7 @@ const Progress = ({ surveyId, pageId }: Props) => {
 
   return (
     <div className="w-full flex flex-col justify-center items-center pb-6">
-      <div className="text-md text-gray-500 font-light">
+      <div className="text-sm text-gray-500 font-light">
         {current + 1}/{sorted.length}
       </div>
       <div className="w-full grid gap-1" style={style}>
