@@ -1,6 +1,7 @@
 import React from "react";
 import { useMultipleChoiceQueryQuery } from "../../../../../generated/graphql";
 import { sortResource } from "../../../../../pagination";
+import { brandColor } from "../../../../../brand";
 
 interface Props {
   questionId: string;
@@ -33,10 +34,9 @@ const MultipleChoice = ({ questionId, onSave }: Props) => {
     onSave(values);
   };
 
-  const shared =
-    "block border border-purple-500 rounded py-3 px-4 leading-tight focus:outline-none";
-  const unselected = "text-purple-500";
-  const selected = "text-white bg-purple-500";
+  const shared = `block border border-${brandColor}-500 rounded py-3 px-4 leading-tight focus:outline-none`;
+  const unselected = `text-${brandColor}-500`;
+  const selected = `text-white bg-${brandColor}-500`;
 
   return (
     <div className="grid grid-cols-1 gap-4 py-8">

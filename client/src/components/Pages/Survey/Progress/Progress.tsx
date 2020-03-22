@@ -1,5 +1,6 @@
 import React, { CSSProperties } from "react";
 import { usePageCounterQueryQuery } from "../../../../generated/graphql";
+import { brandColor } from "../../../../brand";
 
 interface Props {
   surveyId: string;
@@ -35,7 +36,7 @@ const Progress = ({ surveyId, pageId }: Props) => {
             className={
               index > current
                 ? `${shared} border-gray-300`
-                : `${shared} border-purple-500`
+                : `${shared} border-${brandColor}-500`
             }
           />
         ))}

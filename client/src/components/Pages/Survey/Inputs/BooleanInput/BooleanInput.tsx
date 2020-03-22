@@ -1,5 +1,6 @@
 import React from "react";
 import { useInputQueryQuery } from "../../../../../generated/graphql";
+import { brandColor } from "../../../../../brand";
 
 interface Props {
   questionId: string;
@@ -26,9 +27,9 @@ const BooleanInput = ({ questionId, onSave }: Props) => {
   };
 
   const value = answer && answer.values[0];
-  const shared = "h-20 w-20 focus:outline-none rounded-lg font-light";
-  const unselected = "text-purple-500 border border-purple-500";
-  const selected = "text-white bg-purple-500 border border-purple-500";
+  const shared = `h-20 w-20 focus:outline-none rounded-lg font-light border border-${brandColor}-500`;
+  const unselected = `text-${brandColor}-500`;
+  const selected = `text-white bg-${brandColor}-500`;
 
   return (
     <div className="flex py-4">

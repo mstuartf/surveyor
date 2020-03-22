@@ -1,4 +1,5 @@
 import React from "react";
+import { brandColor } from "../../brand";
 
 interface Props {
   children: any;
@@ -6,7 +7,9 @@ interface Props {
 
 const ReminderText = ({ children }: Props) => {
   return (
-    <div className="text-purple-500 text-sm font-hairline">{children}</div>
+    <div className={`text-${brandColor}-500 text-sm font-hairline`}>
+      {children}
+    </div>
   );
 };
 
