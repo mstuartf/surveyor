@@ -7,6 +7,7 @@ export const GET_QUESTION = gql`
       id
       text
       type
+      minValues
       answer {
         id
         values
