@@ -1,8 +1,6 @@
 import React from "react";
 import { useMultipleChoiceQueryQuery } from "../../../../../generated/graphql";
 import { sortResource } from "../../../../../pagination";
-import ReminderText from "../../../../Generic/ReminderText";
-import HowManyToChoose from "../../../../Generic/HowManyToChoose";
 
 interface Props {
   questionId: string;
@@ -40,28 +38,21 @@ const MultipleChoice = ({ questionId, onSave }: Props) => {
   const selected = "text-white bg-purple-500 border border-purple-500";
 
   return (
-    <>
-      <div className="flex items-center justify-center py-4">
-        <ReminderText>
-          <HowManyToChoose minValues={minValues} maxValues={maxValues} />
-        </ReminderText>
-      </div>
-      <div className="grid grid-cols-1 gap-4 py-4">
-        {sortResource(possibleValues!).map(option => (
-          <button
-            className={
-              answer && answer.values.indexOf(option.value) > -1
-                ? `${shared} ${selected}`
-                : `${shared} ${unselected}`
-            }
-            key={option.value}
-            onClick={() => toggleValue(option.value)}
-          >
-            {option.label}
-          </button>
-        ))}
-      </div>
-    </>
+    <div className="grid grid-cols-1 gap-4 py-4">
+      {sortResource(possibleValues!).map(option => (
+        <button
+          className={
+            answer && answer.values.indexOf(option.value) > -1
+              ? `${shared} ${selected}`
+              : `${shared} ${unselected}`
+          }
+          key={option.value}
+          onClick={() => toggleValue(option.value)}
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
   );
 };
 

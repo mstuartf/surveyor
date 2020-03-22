@@ -1,6 +1,5 @@
 import React from "react";
 import { useInputQueryQuery } from "../../../../../generated/graphql";
-import ReminderText from "../../../../Generic/ReminderText";
 
 interface Props {
   questionId: string;
@@ -33,37 +32,31 @@ const BooleanInput = ({ questionId, onSave }: Props) => {
   const selected = "text-white bg-purple-500 border border-purple-500";
 
   return (
-    <div className="flex flex-col">
-      <div className="flex items-center justify-center py-4">
-        <ReminderText>This question is required!</ReminderText>
+    <div className="flex py-4">
+      <div className="w-1/2 flex items-center justify-end pr-4">
+        <button
+          className={
+            value === "false"
+              ? `${shared} ${selected}`
+              : `${shared} ${unselected}`
+          }
+          onClick={() => toggleValue("false")}
+        >
+          No
+        </button>
       </div>
 
-      <div className="flex py-4">
-        <div className="w-1/2 flex items-center justify-end pr-4">
-          <button
-            className={
-              value === "false"
-                ? `${shared} ${selected}`
-                : `${shared} ${unselected}`
-            }
-            onClick={() => toggleValue("false")}
-          >
-            No
-          </button>
-        </div>
-
-        <div className="w-1/2 flex items-center justify-start pl-4">
-          <button
-            className={
-              value === "true"
-                ? `${shared} ${selected}`
-                : `${shared} ${unselected}`
-            }
-            onClick={() => toggleValue("true")}
-          >
-            Yes
-          </button>
-        </div>
+      <div className="w-1/2 flex items-center justify-start pl-4">
+        <button
+          className={
+            value === "true"
+              ? `${shared} ${selected}`
+              : `${shared} ${unselected}`
+          }
+          onClick={() => toggleValue("true")}
+        >
+          Yes
+        </button>
       </div>
     </div>
   );

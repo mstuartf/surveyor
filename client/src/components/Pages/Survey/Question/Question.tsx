@@ -10,6 +10,8 @@ import BooleanInput from "../Inputs/BooleanInput/BooleanInput";
 import DropDown from "../Inputs/DropDown/DropDown";
 import QuestionText from "../../../Generic/QuestionText";
 import ReminderText from "../../../Generic/ReminderText";
+import Flicker from "../Flicker/Flicker";
+import ValidationText from "../../../Generic/ValidationText";
 
 interface Props {
   questionId: string;
@@ -113,6 +115,15 @@ const Question = ({ questionId }: Props) => {
           <DropDown questionId={questionId} onSave={saveAnswerValues} />
         )}
       </div>
+      {!!question.minValues && (
+        <div className={"flex justify-center py-4"}>
+          <Flicker questionId={questionId} addClass="visible">
+            <span className={"invisible"}>
+              <ValidationText>This question is required.</ValidationText>
+            </span>
+          </Flicker>
+        </div>
+      )}
     </div>
   );
 };
