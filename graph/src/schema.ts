@@ -95,6 +95,15 @@ export const typeDefs = gql`
 
   type Mutation {
     createAnonUser(surveyId: ID!): CreateAnonUserResponse!
+    createAnswer(
+      anonUserId: ID!
+      questionId: ID!
+      values: [String]
+    ): CreateAnswerResponse!
+
+    """
+     admin endpoints for populating database
+    """
     createSurvey(name: String!): Survey!
     createPage(surveyId: ID!, order: Float): Page!
     createQuestion(
@@ -109,11 +118,6 @@ export const typeDefs = gql`
       value: String!
       label: String!
     ): PossibleValue!
-    createAnswer(
-      anonUserId: ID!
-      questionId: ID!
-      values: [String]
-    ): CreateAnswerResponse!
   }
 
   type CreateAnonUserResponse {
