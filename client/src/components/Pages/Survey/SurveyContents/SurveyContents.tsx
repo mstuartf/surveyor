@@ -1,7 +1,7 @@
 import React from "react";
 import StartSurvey from "../../../Pages/StartSurvey/StartSurvey";
 import Submit from "../../../Pages/Submit/Submit";
-import Section from "../Section/Section";
+import SurveyPage from "../SurveyPage/SurveyPage";
 
 interface Props {
   pageId: string;
@@ -13,7 +13,7 @@ const SurveyContents = ({ pageId, surveyId, submit }: Props) => {
   return (
     <>
       {pageId && !submit ? (
-        <Section pageId={pageId} surveyId={surveyId} />
+        <SurveyPage pageId={pageId} surveyId={surveyId} />
       ) : !submit ? (
         <StartSurvey surveyId={surveyId} />
       ) : (

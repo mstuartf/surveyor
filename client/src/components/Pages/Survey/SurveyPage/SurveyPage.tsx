@@ -9,7 +9,7 @@ interface Props {
   pageId: string;
 }
 
-const Section = ({ pageId, surveyId }: Props) => {
+const SurveyPage = ({ pageId, surveyId }: Props) => {
   const { data } = usePageQueryQuery({
     variables: { pageId }
   });
@@ -33,4 +33,4 @@ const Section = ({ pageId, surveyId }: Props) => {
   );
 };
 
-export default Section;
+export default SurveyPage;
